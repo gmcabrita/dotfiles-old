@@ -12,7 +12,7 @@ xset fp rehash
 xrdb ~/.Xresources
 setxkbmap us -option compose:ralt -option ctrl:nocaps
 xsetroot -cursor_name left_ptr &
-hsetroot -fill ~/Windows/Users/gmc/Dropbox/pix/wallpapers/simpledesktops.com/elefanto_wallpaper.png &
+hsetroot -fill ~/Dropbox/pix/wallpapers/simpledesktops.com/elefanto_wallpaper.png &
 dropbox &
 start-pulseaudio-x11 &
 compton &
