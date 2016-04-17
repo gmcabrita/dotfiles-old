@@ -18,6 +18,7 @@ start-pulseaudio-x11 &
 compton &
 dunst -conf ~/.config/dunst/dunstrc &
 sxhkd &
+mopidy &
 #redshift -l 60.1726430:24.9194430 &
 eval $(ssh-agent) &
 exec bspwm -c ~/.config/bspwm/bspwmrc
