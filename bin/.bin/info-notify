@@ -1,0 +1,12 @@
+#!/bin/bash
+
+
+if [ `command -v upower`  ]; then
+  notify-desktop "clock     vol     batt" "`date +'%R'`     `amixer get Master | tail -1 | awk '{print $5}' | tr -d '[]'`     `cat /sys/class/power_supply/BAT0/capacity`"
+  bat=`bat`
+  state=`echo $bat | sed -e 's/.*state: *\([a-z]*\).*/\1/' | cut -c-10`
+  remaining=`echo $bat | sed -e 's/.*time.*: *\(.*\).*percentage.*/\1/'`
+  notify-desktop "batt time ($state)" "$remaining"
+else
+  notify-desktop "clock     vol" "`date +'%R'`     `amixer get Master | tail -1 | awk '{print $5}' | tr -d '[]'`"
+fi
