@@ -34,5 +34,5 @@ bspc config focused_frame_opacity 0.0
 
 # Exec on start
 wmname LG3D
-~/scripts/workspaces &
-~/scripts/initlock &
+~/.bin/workspaces &
+~/.bin/initlock &
