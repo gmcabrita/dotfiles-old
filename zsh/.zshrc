@@ -1,6 +1,7 @@
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
-export PATH=/usr/local/bin:/usr/local/sbin:~/.bin:$PATH
+export GOPATH=~/Projects/go
+export PATH=/usr/local/bin:/usr/local/sbin:$GOPATH/bin:~/.bin:$PATH
 export EDITOR=nvim
 export BROWSER=google-chrome-stable
 
