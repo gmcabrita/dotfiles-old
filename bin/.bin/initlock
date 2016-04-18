@@ -1,2 +1,2 @@
 #!/bin/sh
-/usr/bin/xautolock -time 5 -locker /home/gmc/scripts/lockscreen -detectsleep
+/usr/bin/xautolock -time 5 -locker ~/.bin/lockscreen -detectsleep
