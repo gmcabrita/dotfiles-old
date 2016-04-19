@@ -50,6 +50,7 @@ bindkey "\eOd" emacs-backward-word
 bindkey "\ee[C" forward-word
 bindkey "\ee[D" backward-word
 bindkey "^H" backward-delete-word
+bindkey "^[[3^" delete-word
 
 # for rxvt
 bindkey "\e[8~" end-of-line
