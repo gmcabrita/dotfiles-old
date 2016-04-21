@@ -43,3 +43,4 @@ bindkey "\e[1;5C" forward-word
 bindkey "\e[1;5D" backward-word
 bindkey "^H" backward-delete-word
 bindkey "\e[3;5~" delete-word
+bindkey "\e[3~" delete-char
