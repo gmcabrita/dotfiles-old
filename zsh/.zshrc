@@ -1,7 +1,8 @@
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 export GOPATH=~/Projects/go
-export PATH=/usr/local/bin:/usr/local/sbin:$GOPATH/bin:~/.bin:$PATH
+export PATH=/usr/local/bin:/usr/local/sbin:~/.gem/ruby/2.3.0/bin:$GOPATH/bin:~/.cargo/bin:~/.bin:$PATH
+export RUST_SRC_PATH=~/src/rust/src
 export EDITOR=nvim
 export BROWSER=google-chrome-stable
 
