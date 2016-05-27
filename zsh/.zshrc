@@ -12,6 +12,9 @@ autoload -U compinit && compinit
 source ~/async.zsh
 source ~/pure.zsh
 
+export SAVEHIST=100000
+export HISTFILE=~/.zsh_history
+
 alias ls='ls -G --color=auto'
 alias ll='ls -GlhF --color=auto'
 alias la='ls -GalhF --color=auto'
