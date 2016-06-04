@@ -28,6 +28,8 @@ alias df='df -h'
 alias ccal="cal | grep -C5 --color=auto "`date +%d | sed s/^0/\ /`""
 alias ..='cd ..'
 alias :q=exit
+alias e18='. ~/erlangs/18.3/activate'
+alias e16='. ~/erlangs/r16b02/activate'
 
 alias mtop="ps --no-header -eo pmem,size,vsize,comm | sort -nr | sed 10q"
 alias ctop="ps --no-header -eo pcpu,comm | sort -nr | sed 10q"
@@ -48,3 +50,9 @@ bindkey "\e[1;5D" backward-word
 bindkey "^H" backward-delete-word
 bindkey "\e[3;5~" delete-word
 bindkey "\e[3~" delete-char
+
+# kiex
+test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
+
+# opam
+. /home/gmc/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
