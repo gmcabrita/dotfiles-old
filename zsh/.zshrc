@@ -1,7 +1,6 @@
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 
 export GOPATH=~/Projects/go
-export PATH=/usr/local/bin:/usr/local/sbin:~/.gem/ruby/2.3.0/bin:$GOPATH/bin:~/.cargo/bin:~/.bin:$PATH
 export RUST_SRC_PATH=~/src/rust/src
 export EDITOR=nvim
 export BROWSER=google-chrome-stable
@@ -50,9 +49,3 @@ bindkey "\e[1;5D" backward-word
 bindkey "^H" backward-delete-word
 bindkey "\e[3;5~" delete-word
 bindkey "\e[3~" delete-char
-
-# kiex
-test -s "$HOME/.kiex/scripts/kiex" && source "$HOME/.kiex/scripts/kiex"
-
-# opam
-. /home/gmc/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
