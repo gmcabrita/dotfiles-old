@@ -1,4 +1,5 @@
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
+source ~/.zprofile
 
 export GOPATH=~/Projects/go
 export RUST_SRC_PATH=~/src/rust/src
