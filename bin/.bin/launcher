@@ -1,3 +1,0 @@
-#!/bin/bash
-
-dmenu_run -i -l 1 -p "execute" -fn "Hack-12" -nb "#000000" -nf "#bbbbbb" -sb "#000000" -sf "#377222"

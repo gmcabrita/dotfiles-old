@@ -1,3 +1,0 @@
-#!/bin/bash
-
-ntfs-3g /dev/sda2 ~/Windows

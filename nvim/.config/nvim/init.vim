@@ -16,37 +16,10 @@ endif
 call plug#begin(path)
 Plug 'bling/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'terryma/vim-multiple-cursors'
 Plug 'ctrlpvim/ctrlp.vim'
-Plug 'scrooloose/nerdtree'
 Plug 'powerman/vim-plugin-AnsiEsc'
 Plug 'w0ng/vim-hybrid'
-Plug 'benekastah/neomake'
-Plug 'Shougo/deoplete.nvim'
-Plug 'Shougo/neosnippet.vim'
-Plug 'Shougo/neosnippet-snippets'
-Plug 'carlitux/deoplete-ternjs'
-Plug 'uarun/vim-protobuf'
-Plug 'solarnz/thrift.vim'
-Plug 'Raimondi/delimitMate'
-Plug 'majutsushi/tagbar'
-Plug 'scrooloose/syntastic'
-Plug 'derekwyatt/vim-scala', { 'for' : 'scala' }
-Plug 'elixir-lang/vim-elixir', { 'for': 'elixir'}
-Plug 'slashmili/alchemist.vim', { 'for': 'elixir'}
-Plug 'pangloss/vim-javascript', { 'for': 'javascript'}
-Plug 'elzr/vim-json', { 'for': 'json' }
-Plug 'mxw/vim-jsx', { 'for': 'jsx'}
 call plug#end()
-
-map <C-c> :NERDTreeToggle<CR>
-map <C-b> :TagbarToggle<CR>
-
-imap <C-k>     <Plug>(neosnippet_expand_or_jump)
-smap <C-k>     <Plug>(neosnippet_expand_or_jump)
-xmap <C-k>     <Plug>(neosnippet_expand_target)
 
 syntax enable
 set ffs=unix
@@ -93,23 +66,8 @@ autocmd FileType javascript set softtabstop=2
 autocmd FileType javascript set shiftwidth=2
 " }}}
 
-" react {{{
-let g:syntastic_javascript_checkers = ['eslint']
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-" }}}
-
 " remove whitespace
 nnoremap <Leader>rws :%s/\s\+$//e<CR>
-
-" Close Vim if NERDTree is the last thing open {{{
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Automatically jump to where you were when you closed the file upon
 " re-opening it {{{

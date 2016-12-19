@@ -1,6 +1,7 @@
 [user]
 	email = _@gmcabrita.com
 	name = Gonçalo Cabrita
+	signingkey = 49023B37
 [credential]
 	helper = cache --timeout 3600
 [core]
@@ -11,13 +12,12 @@
 [gist]
 	private = yes
 [diff]
-	tool = nvim
+	tool = vim
 [difftool "nvim"]
 	cmd = "nvim -d" "$LOCAL" "$REMOTE"
 [difftool]
 	prompt = false
 [alias]
-	initial = commit -am 'initial commit'
 	s = status -s
 	dif = difftool
 	d = diff
@@ -29,3 +29,4 @@
 	rebase = true
 [commit]
 	template = ~/.git_commit_msg
+	gpgsign = true
