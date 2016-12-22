@@ -1,11 +1,6 @@
 [[ -r "/usr/share/z/z.sh" ]] && source /usr/share/z/z.sh
 source ~/.zprofile
 
-export GOPATH=~/Projects/go
-export RUST_SRC_PATH=~/src/rust/src
-export EDITOR=nvim
-export BROWSER=google-chrome-stable
-
 autoload -U promptinit && promptinit
 autoload -U compinit && compinit
 
@@ -28,8 +23,6 @@ alias df='df -h'
 alias ccal="cal | grep -C5 --color=auto "`date +%d | sed s/^0/\ /`""
 alias ..='cd ..'
 alias :q=exit
-alias e18='. ~/erlangs/18.3/activate'
-alias e16='. ~/erlangs/r16b02/activate'
 
 alias mtop="ps --no-header -eo pmem,size,vsize,comm | sort -nr | sed 10q"
 alias ctop="ps --no-header -eo pcpu,comm | sort -nr | sed 10q"
