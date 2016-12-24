@@ -12,4 +12,6 @@ sudo groupadd docker
 sudo usermod -aG docker "$USER"
 
 # install a bunch of extra stuff from AUR
-yaourt --noconfirm -S z google-chrome libtinfo pgcli ngrok heroku-toolbelt slack-desktop enpass-bin foxitreader discord-canary sublime-text-dev gtk-theme-arc-git
+yaourt --noconfirm -S z google-chrome libtinfo pgcli ngrok heroku-toolbelt slack-desktop enpass-bin discord-canary sublime-text-dev gtk-theme-arc-git yarn simplenote-electron-bin chrome-gnome-shell-git skypeforlinux-bin
+
+sudo yarn global add dockerlint
