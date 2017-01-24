@@ -80,7 +80,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo apt-get -y install docker-engine
 
 	# Setup Docker for non-root
-	sudo groupadd docker
 	sudo usermod -aG docker "$USER"
 
 	# Set Docker to autostart
