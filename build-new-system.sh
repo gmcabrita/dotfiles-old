@@ -60,7 +60,8 @@ sudo apt-get -y install \
 	pcregrep \
 	linux-image-extra-$(uname -r) \
 	linux-image-extra-virtual \
-	dconf-tools
+	dconf-tools \
+	fonts-hack-ttf
 
 # Teleport
 touch ~/.tp_aliases
@@ -165,8 +166,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo apt-get update
 	sudo apt-get -y install yarn
 
+	ln -s /usr/bin/node /usr/bin/js
+
 	# Install dockerlint
 	sudo yarn global add dockerlint
+
+	# Install write-good
+	sudo yarn global add write-good
 fi;
 
 # Skype
