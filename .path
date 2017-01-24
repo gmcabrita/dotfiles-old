@@ -1,0 +1,6 @@
+export GOPATH=$HOME/Projects/go
+export PATH=/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$HOME/.cargo/bin:~/.bin:$PATH
+export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
+
+. $HOME/.asdf/asdf.sh
+. $HOME/.tp_command
