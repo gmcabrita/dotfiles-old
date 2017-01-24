@@ -111,7 +111,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl -o keybase.deb https://prerelease.keybase.io/keybase_amd64.deb
 	sudo dpkg -i keybase.deb
 	sudo apt-get -f -y install
-	echo "Don't forget to execute `run_keybase` later to setup Keybase."
 fi;
 
 # Chrome
@@ -140,7 +139,7 @@ fi;
 read -p "Do you want to install Discord? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o discord.deb https://discordapp.com/api/download?platform=linux&format=deb
+	curl -o discord.deb -L https://discordapp.com/api/download?platform=linux&format=deb
 	sudo dpkg -i discord.deb
 	sudo apt-get -f -y install
 fi;
