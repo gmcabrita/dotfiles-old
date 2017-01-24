@@ -74,7 +74,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
 	sudo add-apt-repository -y \
 		"deb https://apt.dockerproject.org/repo/ \
-		ubuntu-$(lsb_release -cs) \
+		ubuntu-$(lsb_release -ucs) \
 		main"
 	sudo apt-get update
 	sudo apt-get -y install docker-engine
