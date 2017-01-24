@@ -82,6 +82,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	# Setup Docker for non-root
 	sudo groupadd docker
 	sudo usermod -aG docker "$USER"
+
+	# Set Docker to autostart
+	sudo systemctl enable docker
 fi;
 
 # Neovim
