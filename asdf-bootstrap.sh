@@ -10,6 +10,7 @@ read -p "Do you want to install asdf? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.0
+	. $HOME/.asdf/asdf.sh
 
 	read -p "Do you want to install Erlang? (y/n) " -n 1;
 	echo "";
