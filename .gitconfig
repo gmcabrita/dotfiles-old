@@ -10,7 +10,7 @@
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
 	#whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-	editor = nvim +2
+	editor = nvim
 	fscache = true
 [color]
 	ui = auto
