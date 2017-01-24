@@ -1,0 +1,28 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Dockerfile Syntax Highlighting",
+		"EditorConfig",
+		"Elixir",
+		"GitGutter",
+		"Gnuplot",
+		"LaTeXBox",
+		"Markdown Preview",
+		"MarkdownEditing",
+		"Package Control",
+		"ProjectManager",
+		"Rust Enhanced",
+		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-contrib-write-good",
+		"Theme - Kronuz",
+		"TodoReview",
+		"TOML",
+		"Tomorrow Color Schemes",
+		"Tomorrow Night Italics Color Scheme"
+	]
+}
