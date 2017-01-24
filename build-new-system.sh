@@ -139,7 +139,7 @@ fi;
 read -p "Do you want to install Discord? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o discord.deb -L https://discordapp.com/api/download?platform=linux&format=deb
+	curl -o discord.deb https://dl.discordapp.net/apps/linux/0.0.1/discord-0.0.1.deb
 	sudo dpkg -i discord.deb
 	sudo apt-get -f -y install
 fi;
