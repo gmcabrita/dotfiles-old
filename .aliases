@@ -28,6 +28,13 @@ alias ctop="ps --no-header -eo pcpu,comm | sort -nr | sed 10q"
 # modern make
 alias make='mmake'
 
+# docker aliases
+alias cleancontainers='docker rm -v "$(docker ps -a -q -f status=exited)"'
+alias cleanc='cleancontainers'
+alias cleanimages='docker rmi "$(docker images -q -f dangling=true)" && docker rm -v $(docker ps -a -q -f status=exited)'
+alias cleani='cleanimages'
+alias cleandocker='cleanc; cleani'
+
 # Neovim
 alias vim='nvim'
 alias vimdiff='nvim -d'
