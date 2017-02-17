@@ -2,7 +2,7 @@
 set -e
 
 # Rust
-read -p "Do you want to install Rust? (y/n) " -n 1;
+read -rp "Do you want to install Rust? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path

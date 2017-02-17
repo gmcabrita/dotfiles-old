@@ -6,13 +6,14 @@ ELIXIR="1.4.0";
 GO="1.8";
 
 # asdf
-read -p "Do you want to install asdf? (y/n) " -n 1;
+read -rp "Do you want to install asdf? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.0
-	. $HOME/.asdf/asdf.sh
+  # shellcheck disable=SC1090
+  . "$HOME/.asdf/asdf.sh"
 
-	read -p "Do you want to install Erlang? (y/n) " -n 1;
+	read -rp "Do you want to install Erlang? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang
@@ -20,7 +21,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		asdf global erlang $ERLANG
 	fi;
 
-	read -p "Do you want to install Elixir? (y/n) " -n 1;
+	read -rp "Do you want to install Elixir? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir
@@ -28,7 +29,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		asdf global elixir $ELIXIR
 	fi;
 
-	read -p "Do you want to install Go? (y/n) " -n 1;
+	read -rp "Do you want to install Go? (y/n) " -n 1;
 	echo "";
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		asdf plugin-add go https://github.com/kennyp/asdf-golang
