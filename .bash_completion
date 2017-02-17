@@ -1,10 +1,14 @@
-# Bash completion for teleport command
-#
-# https://github.com/alvinj/Teleport
-#
+#!/bin/bash
+# Bash completions
+
+
+
+# teleport: tp
 
 _teleport-command()
 {
+  local opts
+  local cur
   COMPREPLY=()
   cur=${COMP_WORDS[COMP_CWORD]}
 
@@ -33,4 +37,26 @@ _teleport-command()
 
 }
 
+# teleport: tpa
+
+_teleportalias-command()
+{
+  local opts
+  local cur
+  COMPREPLY=()
+  cur=${COMP_WORDS[COMP_CWORD]}
+
+  opts=""
+
+  # ALIAS COMPLETION
+  while read i; do
+    opts="$opts `echo $i | sed -e 's#:.*##g'`"
+  done < ~/.tp_aliases
+
+  COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+  return 0
+
+}
+
 complete -o default -F _teleport-command tp
+complete -o default -F _teleportalias-command tpa

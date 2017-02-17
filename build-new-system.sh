@@ -66,7 +66,6 @@ sudo apt-get -y install \
 # Teleport
 touch ~/.tp_aliases
 touch ~/.tp_history
-sudo cp .completion /etc/bash_completion.d/teleport
 
 # Docker
 read -rp "Do you want to install Docker? (y/n) " -n 1;

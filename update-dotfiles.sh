@@ -12,7 +12,6 @@ function doIt() {
 		--exclude "build-new-system.sh" \
 		--exclude "update-dotfiles.sh" \
 		--exclude "README.md" \
-		--exclude ".completion" \
 		--exclude ".travis.yml" \
 		--exclude ".test.sh" \
 		--exclude "Makefile" \
