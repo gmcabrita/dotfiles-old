@@ -19,11 +19,14 @@
 		"destructured",
 		"serializable"
 	],
-	"auto_complete": true,
+	"always_show_minimap_viewport": true,
+	"auto_complete": false,
+	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
-	"color_scheme": "Packages/User/SublimeLinter/Tomorrow-Night (SL).tmTheme",
+	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
 	"default_line_ending": "unix",
 	"draw_white_space": "all",
+	"enable_tab_scrolling": false,
 	"fold_buttons": false,
 	"folder_exclude_patterns":
 	[
@@ -52,13 +55,20 @@
 		"Rust",
 		"Vintage"
 	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
 	"rulers":
 	[
-		80,
+		72,
+		79,
 		100
 	],
 	"scroll_speed": 0,
 	"theme": "Theme - Kronuz.sublime-theme",
+	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"word_wrap": true
 }
