@@ -4,3 +4,5 @@ export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu
 
 . $HOME/.asdf/asdf.sh
 . $HOME/.tp_command
+
+export GOROOT=$(go env GOROOT)

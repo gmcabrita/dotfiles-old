@@ -32,6 +32,8 @@ sudo apt-get -y install \
 	libgl1-mesa-dev \
 	libglu1-mesa-dev \
 	libpng3 \
+	python3 \
+	python3-pip \
 	libssh-dev \
 	curl \
 	htop \
@@ -93,6 +95,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo add-apt-repository -y ppa:neovim-ppa/unstable
 	sudo apt-get update
 	sudo apt-get -y install neovim
+	sudo pip3 install neovim
 fi;
 
 # Dropbox
@@ -180,5 +183,14 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl -o skype.deb https://www.skype.com/en/download-skype/skype-for-linux/downloading/?type=ubuntu64
 	sudo dpkg -i skype.deb
+	sudo apt-get -f -y install
+fi;
+
+# Visual Studio Code
+read -rp "Do you want to install vscode? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	curl -o vscode.deb -L https://go.microsoft.com/fwlink/?LinkID=760868
+	sudo dpkg -i vscode.deb
 	sudo apt-get -f -y install
 fi;
