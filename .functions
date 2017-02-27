@@ -2,22 +2,18 @@
 
 # Create a new directory and enter it
 function mkd() {
+	# shellcheck disable=SC2164
 	mkdir -p "$@" && cd "$_";
-}
-
-# Change working directory to the top-most Finder window location
-function cdf() { # short for `cdfinder`
-	cd "$(osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)')";
 }
 
 # Create a .tar.gz archive, using `zopfli`, `pigz` or `gzip` for compression
 function targz() {
-	local tmpFile="${@%/}.tar";
+	local tmpFile="${*%/}.tar";
 	tar -cvf "${tmpFile}" --exclude=".DS_Store" "${@}" || return 1;
 
 	size=$(
 		stat -f"%z" "${tmpFile}" 2> /dev/null; # macOS `stat`
-		stat -c"%s" "${tmpFile}" 2> /dev/null;  # GNU `stat`
+		stat -c"%s" "${tmpFile}" 2> /dev/null; # GNU `stat`
 	);
 
 	local cmd="";
@@ -59,8 +55,7 @@ function fs() {
 }
 
 # Use Git’s colored diff when available
-hash git &>/dev/null;
-if [ $? -eq 0 ]; then
+if hash git &>/dev/null; then
 	function diff() {
 		git diff --no-index --color-words "$@";
 	}
@@ -68,7 +63,8 @@ fi;
 
 # Create a data URL from a file
 function dataurl() {
-	local mimeType=$(file -b --mime-type "$1");
+	local mimeType;
+	mimeType=$(file -b --mime-type "$1");
 	if [[ $mimeType == text/* ]]; then
 		mimeType="${mimeType};charset=utf-8";
 	fi
@@ -77,7 +73,7 @@ function dataurl() {
 
 # Create a git.io short URL
 function gitio() {
-	if [ -z "${1}" -o -z "${2}" ]; then
+	if [ -z "${1}" ] || [ -z "${2}" ]; then
 		echo "Usage: \`gitio slug url\`";
 		return 1;
 	fi;
@@ -95,9 +91,12 @@ function server() {
 
 # Compare original and gzipped file size
 function gz() {
-	local origsize=$(wc -c < "$1");
-	local gzipsize=$(gzip -c "$1" | wc -c);
-	local ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
+	local origsize;
+	local gzipsize;
+	local ratio;
+	origsize=$(wc -c < "$1");
+	gzipsize=$(gzip -c "$1" | wc -c);
+	ratio=$(echo "$gzipsize * 100 / $origsize" | bc -l);
 	printf "orig: %d bytes\n" "$origsize";
 	printf "gzip: %d bytes (%2.2f%%)\n" "$gzipsize" "$ratio";
 }
@@ -117,33 +116,6 @@ function digga() {
 	dig +nocmd "$1" any +multiline +noall +answer;
 }
 
-# UTF-8-encode a string of Unicode symbols
-function escape() {
-	printf "\\\x%s" $(printf "$@" | xxd -p -c1 -u);
-	# print a newline unless we’re piping the output to another program
-	if [ -t 1 ]; then
-		echo ""; # newline
-	fi;
-}
-
-# Decode \x{ABCD}-style Unicode escape sequences
-function unidecode() {
-	perl -e "binmode(STDOUT, ':utf8'); print \"$@\"";
-	# print a newline unless we’re piping the output to another program
-	if [ -t 1 ]; then
-		echo ""; # newline
-	fi;
-}
-
-# Get a character’s Unicode code point
-function codepoint() {
-	perl -e "use utf8; print sprintf('U+%04X', ord(\"$@\"))";
-	# print a newline unless we’re piping the output to another program
-	if [ -t 1 ]; then
-		echo ""; # newline
-	fi;
-}
-
 # Show all the names (CNs and SANs) listed in the SSL certificate
 # for a given domain
 function getcertnames() {
@@ -156,11 +128,13 @@ function getcertnames() {
 	echo "Testing ${domain}…";
 	echo ""; # newline
 
-	local tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
+	local tmp;
+	tmp=$(echo -e "GET / HTTP/1.0\nEOT" \
 		| openssl s_client -connect "${domain}:443" -servername "${domain}" 2>&1);
 
 	if [[ "${tmp}" = *"-----BEGIN CERTIFICATE-----"* ]]; then
-		local certText=$(echo "${tmp}" \
+		local certText;
+		certText=$(echo "${tmp}" \
 			| openssl x509 -text -certopt "no_aux, no_header, no_issuer, no_pubkey, \
 			no_serial, no_sigdump, no_signame, no_validity, no_version");
 		echo "Common Name:";
@@ -175,36 +149,6 @@ function getcertnames() {
 	else
 		echo "ERROR: Certificate not found.";
 		return 1;
-	fi;
-}
-
-# `s` with no arguments opens the current directory in Sublime Text, otherwise
-# opens the given location
-function s() {
-	if [ $# -eq 0 ]; then
-		subl .;
-	else
-		subl "$@";
-	fi;
-}
-
-# `a` with no arguments opens the current directory in Atom Editor, otherwise
-# opens the given location
-function a() {
-	if [ $# -eq 0 ]; then
-		atom .;
-	else
-		atom "$@";
-	fi;
-}
-
-# `v` with no arguments opens the current directory in Vim, otherwise opens the
-# given location
-function v() {
-	if [ $# -eq 0 ]; then
-		vim .;
-	else
-		vim "$@";
 	fi;
 }
 

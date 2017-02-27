@@ -21,7 +21,7 @@ alias :q="exit"
 alias df='df -h'
 
 # Fancy quick top
-alias ccal="cal | grep -C5 --color=auto "`date +%d | sed s/^0/\ /`""
+alias ccal='cal | grep -C5 --color=auto "$(date +%d | sed s/^0/\ /)"'
 alias mtop="ps --no-header -eo pmem,size,vsize,comm | sort -nr | sed 10q"
 alias ctop="ps --no-header -eo pcpu,comm | sort -nr | sed 10q"
 
@@ -42,15 +42,19 @@ else # macOS `ls`
 fi
 
 # List all files colorized in long format
+# shellcheck disable=SC2139
 alias l="ls -lF ${colorflag}"
 
 # List all files colorized in long format, including dot files
+# shellcheck disable=SC2139
 alias la="ls -laF ${colorflag}"
 
 # List only directories
+# shellcheck disable=SC2139
 alias lsd="ls -lF ${colorflag} | grep --color=never '^d'"
 
 # Always use color output for `ls`
+# shellcheck disable=SC2139
 alias ls="command ls ${colorflag}"
 
 # Always enable colored `grep` output
@@ -106,11 +110,12 @@ alias map="xargs -n1"
 
 # One of @janmoesen’s ProTip™s
 for method in GET HEAD POST PUT DELETE TRACE OPTIONS; do
+	# shellcheck disable=SC2139,SC2140
 	alias "$method"="lwp-request -m '$method'"
 done
 
 # Reload the shell (i.e. invoke as a login shell)
-alias reload="exec $SHELL -l"
+alias reload='exec ${SHELL} -l'
 
 # Print each PATH entry on a separate line
 alias path='echo -e ${PATH//:/\\n}'
