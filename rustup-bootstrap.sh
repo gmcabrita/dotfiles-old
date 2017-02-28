@@ -10,6 +10,8 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	rustup component add rust-src
 	cargo install racer
 	cargo install rustfmt
+	cargo install cargo-edit
 	cargo install ripgrep
+	rustup run nightly cargo install cargo-fuzz
 	rustup run nightly cargo install clippy
 fi;

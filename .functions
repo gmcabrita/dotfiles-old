@@ -169,3 +169,19 @@ function o() {
 function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
+
+function clippy() {
+	rustup run nightly cargo clippy
+}
+
+function cargonew() {
+	rustup run nightly cargo new $1 --template https://github.com/gmcabrita/template
+}
+
+function fuzzi() {
+	rustup run nightly cargo fuzz --init
+}
+
+function fuzz() {
+	rustup run nightly cargo fuzz $*
+}
