@@ -175,7 +175,7 @@ function clippy() {
 }
 
 function cargonew() {
-	rustup run nightly cargo new $1 --template https://github.com/gmcabrita/template
+	rustup run nightly cargo new "$1" --template https://github.com/gmcabrita/template
 }
 
 function fuzzi() {
@@ -183,5 +183,5 @@ function fuzzi() {
 }
 
 function fuzz() {
-	rustup run nightly cargo fuzz $*
+	rustup run nightly cargo fuzz "$@"
 }
