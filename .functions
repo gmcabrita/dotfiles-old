@@ -170,22 +170,27 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
+# Run nightly cargo-clippy
 function clippy() {
 	rustup run nightly cargo clippy;
 }
 
+# Generate a new rust project based on a template
 function cargonew() {
 	rustup run nightly cargo new "$1" --template https://github.com/gmcabrita/template;
 }
 
+# Init nightly cargo-fuzz
 function fuzzi() {
 	rustup run nightly cargo fuzz --init;
 }
 
+# Run nightly cargo-fuzz
 function fuzz() {
 	rustup run nightly cargo fuzz "$@";
 }
 
+# Generate a new go project
 function gonew() {
 	local dir;
 	dir="$GOPATH/src/github.com/gmcabrita/$1";
@@ -197,10 +202,12 @@ function gonew() {
 	sed -i "s/FIXME/$1/g" README.md;
 }
 
+# Build go release binaries for multiple platforms
 function gorelease() {
 	gox -os="linux darwin windows openbsd" ./...;
 }
 
+# Output TODOs for the current folder
 function todo() {
 	grep \
 		--exclude-dir=vendor \
@@ -208,4 +215,32 @@ function todo() {
 		--text \
 		--color \
 		-nRo 'TODO:.*' .;
+}
+
+# Change to the directory of the specified Go package name.
+function gg() {
+	paths=($(ggg "$@"));
+	path_index=0;
+
+	if [ ${#paths[@]} -gt 1 ]; then
+		c=1;
+		for path in "${paths[@]}"; do
+			echo [$c]: cd "${GOPATH}/${path}";
+			c=$((c+1));
+		done;
+		echo -n "Go to which path: ";
+		read -r path_index;
+
+		path_index=$((path_index-1));
+	fi;
+
+	path=${paths[$path_index]};
+	cd "$GOPATH/src/$path" || exit;
+}
+
+# Print the directories of the specified Go package name.
+function ggg() {
+	local pkg_candidates;
+	pkg_candidates="$( (cd "$GOPATH/src" && find . -mindepth 1 -maxdepth 5 -type d \( -path "*/$1" -or -path "*/$1.git" \) -print) | sed 's/^\.\///g')";
+	echo "$pkg_candidates";
 }
