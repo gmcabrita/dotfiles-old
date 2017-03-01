@@ -9,6 +9,7 @@ function doIt() {
 	rsync --exclude ".git/" \
 		--exclude "asdf-bootstrap.sh" \
 		--exclude "rustup-bootstrap.sh" \
+		--exclude "golang-bootstrap.sh" \
 		--exclude "build-new-system.sh" \
 		--exclude "update-dotfiles.sh" \
 		--exclude "README.md" \
