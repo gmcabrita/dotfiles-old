@@ -171,17 +171,38 @@ function tre() {
 }
 
 function clippy() {
-	rustup run nightly cargo clippy
+	rustup run nightly cargo clippy;
 }
 
 function cargonew() {
-	rustup run nightly cargo new "$1" --template https://github.com/gmcabrita/template
+	rustup run nightly cargo new "$1" --template https://github.com/gmcabrita/template;
 }
 
 function fuzzi() {
-	rustup run nightly cargo fuzz --init
+	rustup run nightly cargo fuzz --init;
 }
 
 function fuzz() {
-	rustup run nightly cargo fuzz "$@"
+	rustup run nightly cargo fuzz "$@";
+}
+
+function gonew() {
+	local dir;
+	dir="$GOPATH/src/github.com/gmcabrita/$1";
+	mkdir -p "$dir";
+	cd "$dir";
+	curl -o .travis.yml -s https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw;
+}
+
+function gorelease() {
+	gox -os="linux darwin windows openbsd" ./...;
+}
+
+function todo() {
+	grep \
+		--exclude-dir=vendor \
+		--exclude-dir=_build \
+		--text \
+		--color \
+		-nRo 'TODO:.*' .;
 }
