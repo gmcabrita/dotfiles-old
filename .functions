@@ -190,7 +190,7 @@ function gonew() {
 	local dir;
 	dir="$GOPATH/src/github.com/gmcabrita/$1";
 	mkdir -p "$dir";
-	cd "$dir";
+	cd "$dir" || exit;
 	curl -o .travis.yml -s https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw;
 }
 
