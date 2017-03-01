@@ -27,3 +27,5 @@ go get -u github.com/uber-common/cpustat
 go get -u github.com/google/gops
 go get -u github.com/rakyll/hey
 go get -u github.com/gmcabrita/stats
+
+gometalinter --install
