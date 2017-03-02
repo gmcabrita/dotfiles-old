@@ -2,7 +2,7 @@
 set -ue;
 
 if [ -z "${1:-}" ]; then
-	echo "Usage: ./airport.sh <interface>";
+	echo "Usage: ./airport <interface>";
 	exit 1;
 fi;
 
