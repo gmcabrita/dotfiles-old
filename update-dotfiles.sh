@@ -7,6 +7,7 @@ git pull origin master;
 
 function doIt() {
 	rsync --exclude ".git/" \
+		--exclude "systemd/" \
 		--exclude "asdf-bootstrap.sh" \
 		--exclude "rustup-bootstrap.sh" \
 		--exclude "golang-bootstrap.sh" \

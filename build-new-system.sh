@@ -194,3 +194,13 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo dpkg -i vscode.deb
 	sudo apt-get -f -y install
 fi;
+
+# Setup PowerTOP
+read -rp "Do you want to install and setup PowerTOP? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	sudo apt-get -y install powertop;
+	sudo cp systemd/powertop.service /etc/systemd/system/powertop.service
+	sudo systemctl daemon-reload
+	sudo systemctl enable powertop.service
+fi;
