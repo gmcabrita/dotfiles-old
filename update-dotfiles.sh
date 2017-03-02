@@ -15,7 +15,7 @@ function doIt() {
 		--exclude "update-dotfiles.sh" \
 		--exclude "README.md" \
 		--exclude ".travis.yml" \
-		--exclude ".test.sh" \
+		--exclude "test.sh" \
 		--exclude "Makefile" \
 		-avh --no-perms . ~;
   # shellcheck disable=SC1090
