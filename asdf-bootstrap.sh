@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-ERLANG="19.2";
+ERLANG="19.3";
 ELIXIR="1.4.0";
 GO="1.8";
 
