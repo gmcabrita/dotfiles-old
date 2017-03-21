@@ -178,6 +178,18 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo yarn global add write-good
 fi;
 
+# Pony-lang
+read -rp "Do you want to install Pony-lang? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	sudo add-apt-repository -y \
+		"deb https://dl.bintray.com/pony-language/ponyc-debian \
+		pony-language \
+		main"
+	sudo apt-get update
+	sudo apt-get -y install ponyc
+fi;
+
 # Skype
 read -rp "Do you want to install Skype? (y/n) " -n 1;
 echo "";
