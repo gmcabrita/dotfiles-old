@@ -70,6 +70,14 @@ sudo apt-get -y install \
 touch ~/.tp_aliases
 touch ~/.tp_history
 
+# SSD trim
+read -rp "Do you want to setup SSD trimming? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	sudo systemctl enable fstrim
+	sudo systemctl enable fstrim.timer
+fi;
+
 # Docker
 read -rp "Do you want to install Docker? (y/n) " -n 1;
 echo "";
