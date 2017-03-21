@@ -63,7 +63,8 @@ sudo apt-get -y install \
 	linux-image-extra-"$(uname -r)" \
 	linux-image-extra-virtual \
 	dconf-tools \
-	fonts-hack-ttf
+	fonts-hack-ttf \
+	glances
 
 # Teleport
 touch ~/.tp_aliases
