@@ -217,3 +217,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo systemctl daemon-reload
 	sudo systemctl enable powertop.service
 fi;
+
+# Setup TLP
+read -rp "Do you want to install and setup TLP? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	sudo add-apt-repository ppa:linrunner/tlp
+	sudo apt-get update
+	sudo apt-get -y install tlp tlp-rdw
+fi;
