@@ -31,7 +31,7 @@ sudo apt-get -y install \
 	libwxgtk3.0-dev \
 	libgl1-mesa-dev \
 	libglu1-mesa-dev \
-	libpng3 \
+	libpng-dev \
 	python3 \
 	python3-pip \
 	libssh-dev \
@@ -70,14 +70,6 @@ sudo apt-get -y install \
 touch ~/.tp_aliases
 touch ~/.tp_history
 
-# SSD trim
-read -rp "Do you want to setup SSD trimming? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	sudo systemctl enable fstrim
-	sudo systemctl enable fstrim.timer
-fi;
-
 # Docker
 read -rp "Do you want to install Docker? (y/n) " -n 1;
 echo "";
@@ -85,7 +77,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
 	sudo add-apt-repository -y \
 		"deb https://apt.dockerproject.org/repo/ \
-		ubuntu-$(lsb_release -ucs) \
+		ubuntu-$(lsb_release -cs) \
 		main"
 	sudo apt-get update
 	sudo apt-get -y install docker-engine
@@ -111,7 +103,7 @@ fi;
 read -rp "Do you want to install Dropbox? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+	wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
 	sudo dpkg -i dropbox.deb
 	sudo apt-get -f -y install
 fi;
@@ -177,7 +169,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo apt-get update
 	sudo apt-get -y install yarn
 
-	ln -s /usr/bin/node /usr/bin/js
+	sudo ln -s /usr/bin/js /usr/bin/node
 
 	# Install dockerlint
 	sudo yarn global add dockerlint
