@@ -6,6 +6,7 @@ read -rp "Do you want to install Rust? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+	# shellcheck disable=SC1090
 	source ~/.bash_profile
 	rustup install nightly
 	rustup component add rust-src
@@ -18,11 +19,11 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	cargo install cargo-modules
 	cargo install cargo-outdated
 	cargo install cargo-benchcmp
+	cargo install cargo-vendor
 	cargo install cargo-audit
 	cargo install cargo-check
 	cargo install cargo-safety
 	cargo install cargo-update
-	cargo install cargo-vendor
 	cargo install cargo-release
 	cargo install cargo-count
 	cargo install cargo-tree

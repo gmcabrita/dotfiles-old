@@ -18,7 +18,7 @@ function doIt() {
 		--exclude "test.sh" \
 		--exclude "Makefile" \
 		-avh --no-perms . ~;
-  # shellcheck disable=SC1090
+	# shellcheck disable=SC1090
 	source ~/.bash_profile;
 }
 
