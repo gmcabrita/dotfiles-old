@@ -2,8 +2,8 @@
 set -e
 
 ERLANG="19.3";
-ELIXIR="1.4.2";
-GO="1.8.1";
+ELIXIR="1.4.4";
+GO="1.8.3";
 
 # asdf
 read -rp "Do you want to install asdf? (y/n) " -n 1;
