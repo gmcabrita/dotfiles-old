@@ -27,6 +27,6 @@ go get -u github.com/uber-common/cpustat
 go get -u github.com/google/gops
 go get -u github.com/rakyll/hey
 go get -u github.com/gmcabrita/stats
-curl https://glide.sh/get | sh
+go get -u github.com/golang/dep/cmd/dep
 
 gometalinter --install
