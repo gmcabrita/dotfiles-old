@@ -63,6 +63,9 @@
 	# Quick commit ammend
 	amend = commit --amend
 
+	unstage = reset HEAD --
+	uncommit = reset --soft HEAD^
+
 	# Find branches containing commit
 	fb = "!f() { git branch -a --contains $1; }; f"
 
