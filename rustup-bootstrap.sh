@@ -9,6 +9,9 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	# shellcheck disable=SC1090
 	source ~/.bash_profile
 	rustup install nightly
+	rustup component add rls --toolchain nightly
+	rustup component add rust-analysis --toolchain nightly
+	rustup component add rust-src --toolchain nightly
 	rustup component add rust-src
 	cargo install racer
 	cargo install rustsym
