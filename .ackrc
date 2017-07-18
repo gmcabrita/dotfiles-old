@@ -26,3 +26,6 @@
 
 --type-set=elixir=.ex
 --elixir
+
+--type-set=erlang=.erl
+--erlang
