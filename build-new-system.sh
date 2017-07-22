@@ -89,6 +89,16 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo systemctl enable docker
 fi;
 
+# Bazel
+read -rp "Do you want to install Bazel? (y/n)" -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
+	curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
+	sudo apt-get update
+	sudo apt-get -y install bazel
+fi;
+
 # Neovim
 read -rp "Do you want to install Neovim? (y/n) " -n 1;
 echo "";
