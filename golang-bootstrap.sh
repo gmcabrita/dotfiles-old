@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+go get -u github.com/magefile/mage
 go get -u github.com/google/codesearch/cmd/...
 go get -u github.com/mitchellh/gox
 go get -u github.com/dvyukov/go-fuzz/go-fuzz
