@@ -1,7 +1,6 @@
 [user]
 	email = _@gmcabrita.com
 	name = Gonçalo Cabrita
-	signingkey = 49023B37
 [credential]
 	helper = cache --timeout 3600
 [core]
@@ -91,8 +90,6 @@
 [help]
 	# Automatically correct and execute mistyped commands
 	autocorrect = 1
-[commit]
-	gpgsign = true
 
 # URL shorthands
 
