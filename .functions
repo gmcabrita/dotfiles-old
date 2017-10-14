@@ -170,26 +170,6 @@ function tre() {
 	tree -aC -I '.git|node_modules|bower_components' --dirsfirst "$@" | less -FRNX;
 }
 
-# Run nightly cargo-clippy
-function clippy() {
-	rustup run nightly cargo clippy;
-}
-
-# Generate a new rust project based on a template
-function cargonew() {
-	rustup run nightly cargo new "$1" --template https://github.com/gmcabrita/template;
-}
-
-# Init nightly cargo-fuzz
-function fuzzi() {
-	rustup run nightly cargo fuzz --init;
-}
-
-# Run nightly cargo-fuzz
-function fuzz() {
-	rustup run nightly cargo fuzz "$@";
-}
-
 # Generate a new go project
 function gonew() {
 	local dir;
