@@ -2,7 +2,7 @@
 set -e
 
 ERLANG="20.0";
-ELIXIR="1.5.0";
+ELIXIR="1.5.2";
 GO="1.9.2";
 
 # asdf
