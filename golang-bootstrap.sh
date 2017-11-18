@@ -8,6 +8,7 @@ go get -u github.com/dvyukov/go-fuzz/go-fuzz
 go get -u github.com/dvyukov/go-fuzz/go-fuzz-build
 go get -u github.com/nsf/gocode
 go get -u github.com/tpng/gopkgs
+go get -u github.com/fatih/gomodifytags
 go get -u github.com/lukehoban/go-outline
 go get -u github.com/newhook/go-symbols
 go get -u golang.org/x/tools/cmd/guru
