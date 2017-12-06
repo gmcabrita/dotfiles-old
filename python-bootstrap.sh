@@ -9,7 +9,12 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
 	pyenv install $PYTHON
 	pyenv global $PYTHON
-	pip install pipenv \
+fi;
+
+read -rp "Do you want to install/upgrade packages? (y/n) " -n 1;
+echo "";
+if [[ $REPLY =~ ^[Yy]$ ]]; then
+	pip install -U pipenv \
 		ipython \
 		mypy \
 		requests \
@@ -28,5 +33,16 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		pylama \
 		pydocstyle \
 		awscli \
-		aws-shell
+		aws-shell \
+		numpy \
+		scipy \
+		sympy \
+		matplotlib \
+		pandas \
+		scikit-learn \
+		theano \
+		nltk \
+		statsmodels \
+		gensim \
+		jupyter
 fi;

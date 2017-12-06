@@ -72,7 +72,9 @@ sudo apt-get -y install \
 	libncursesw5-dev \
 	xz-utils \
 	tk-dev \
-	exuberant-ctags
+	exuberant-ctags \
+	libopenblas-base \
+	libopenblas-dev
 
 # Teleport
 touch ~/.tp_aliases
