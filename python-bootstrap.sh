@@ -27,5 +27,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		flake8 \
 		pylama \
 		pydocstyle \
-		awscli
+		awscli \
+		aws-shell
 fi;
