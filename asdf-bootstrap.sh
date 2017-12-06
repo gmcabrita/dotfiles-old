@@ -10,8 +10,8 @@ read -rp "Do you want to install asdf? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.0
-  # shellcheck disable=SC1090
-  . "$HOME/.asdf/asdf.sh"
+	# shellcheck disable=SC1090
+	. "$HOME/.asdf/asdf.sh"
 
 	read -rp "Do you want to install Erlang? (y/n) " -n 1;
 	echo "";
