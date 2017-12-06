@@ -71,7 +71,8 @@ sudo apt-get -y install \
 	llvm \
 	libncursesw5-dev \
 	xz-utils \
-	tk-dev
+	tk-dev \
+	exuberant-ctags
 
 # Teleport
 touch ~/.tp_aliases

@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-$PYTHON="3.6.3"
+PYTHON="3.6.3"
 
 read -rp "Do you want to install pyenv and python? (y/n) " -n 1;
 echo "";
@@ -16,5 +16,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		hypothesis \
 		flask \
 		django \
-		sqlalchemy
+		sqlalchemy \
+		pylint \
+		autopep8 \
+		yapf \
+		pytest \
+		nose \
+		pycodestyle \
+		prospector \
+		flake8 \
+		pylama \
+		pydocstyle
 fi;
