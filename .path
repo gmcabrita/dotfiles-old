@@ -8,3 +8,7 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 . $HOME/.tp_command
 
 export GOROOT=$(go env GOROOT)
+
+export PATH="/home/gmc/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"

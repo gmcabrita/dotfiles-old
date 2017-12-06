@@ -64,7 +64,14 @@ sudo apt-get -y install \
 	linux-image-extra-virtual \
 	dconf-tools \
 	fonts-hack-ttf \
-	glances
+	libssl-dev \
+	libbz2-dev \
+	libreadline-dev \
+	libsqlite3-dev \
+	llvm \
+	libncursesw5-dev \
+	xz-utils \
+	tk-dev
 
 # Teleport
 touch ~/.tp_aliases
