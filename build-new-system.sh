@@ -97,16 +97,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo systemctl enable docker
 fi;
 
-# Bazel
-read -rp "Do you want to install Bazel? (y/n)" -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	echo "deb [arch=amd64] https://storage.googleapis.com/bazel-apt stable jdk1.8" | sudo tee /etc/apt/sources.list.d/bazel.list
-	curl https://bazel.build/bazel-release.pub.gpg | sudo apt-key add -
-	sudo apt-get update
-	sudo apt-get -y install bazel
-fi;
-
 # Neovim
 read -rp "Do you want to install Neovim? (y/n) " -n 1;
 echo "";
@@ -123,15 +113,6 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	wget -O dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
 	sudo dpkg -i dropbox.deb
-	sudo apt-get -f -y install
-fi;
-
-# Keybase
-read -rp "Do you want to install Keybase? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o keybase.deb https://prerelease.keybase.io/keybase_amd64.deb
-	sudo dpkg -i keybase.deb
 	sudo apt-get -f -y install
 fi;
 
@@ -161,7 +142,7 @@ fi;
 read -rp "Do you want to install Discord? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o discord.deb https://dl.discordapp.net/apps/linux/0.0.1/discord-0.0.1.deb
+	curl -o discord.deb https://dl.discordapp.net/apps/linux/0.0.2/discord-0.0.2.deb
 	sudo dpkg -i discord.deb
 	sudo apt-get -f -y install
 fi;
@@ -196,18 +177,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo yarn global add write-good
 fi;
 
-# Pony-lang
-read -rp "Do you want to install Pony-lang? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	sudo add-apt-repository -y \
-		"deb https://dl.bintray.com/pony-language/ponyc-debian \
-		pony-language \
-		main"
-	sudo apt-get update
-	sudo apt-get -y install ponyc
-fi;
-
 # Skype
 read -rp "Do you want to install Skype? (y/n) " -n 1;
 echo "";
@@ -234,13 +203,4 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 	sudo cp systemd/powertop.service /etc/systemd/system/powertop.service
 	sudo systemctl daemon-reload
 	sudo systemctl enable powertop.service
-fi;
-
-# Setup TLP
-read -rp "Do you want to install and setup TLP? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	sudo add-apt-repository ppa:linrunner/tlp
-	sudo apt-get update
-	sudo apt-get -y install tlp tlp-rdw
 fi;

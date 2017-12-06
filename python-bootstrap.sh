@@ -26,5 +26,6 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		prospector \
 		flake8 \
 		pylama \
-		pydocstyle
+		pydocstyle \
+		awscli
 fi;
