@@ -34,6 +34,7 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		pydocstyle \
 		awscli \
 		aws-shell \
+		azure-cli \
 		numpy \
 		scipy \
 		sympy \
