@@ -1,0 +1,31 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Anaconda",
+		"Color Highlighter",
+		"Dockerfile Syntax Highlighting",
+		"EditorConfig",
+		"Elixir",
+		"Emmet",
+		"GitGutter",
+		"GitSavvy",
+		"GitStatusBar",
+		"Jinja2",
+		"MarkdownEditing",
+		"Package Control",
+		"ProjectManager",
+		"requirementstxt",
+		"RestructuredText Improved",
+		"SideBarEnhancements",
+		"SyncedSideBar",
+		"Theme - Kronuz",
+		"TodoReview",
+		"TOML",
+		"Tomorrow Color Schemes",
+		"Tomorrow Night Italics Color Scheme"
+	]
+}

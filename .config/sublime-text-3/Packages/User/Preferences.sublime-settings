@@ -1,0 +1,54 @@
+{
+	"always_show_minimap_viewport": true,
+	"auto_complete": true,
+	"bold_folder_labels": true,
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+	"default_line_ending": "unix",
+	"draw_white_space": "all",
+	"enable_tab_scrolling": false,
+	"find_selected_text": true,
+	"fold_buttons": false,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"_build",
+		"dist",
+		"build",
+		"site",
+		".eunit",
+		".rebar"
+	],
+	"font_face": "Fira Mono",
+	"font_options":
+	[
+		"gray_antialias",
+		"subpixel_antialias",
+		"directwrite"
+	],
+	"font_size": 13,
+	"highlight_line": true,
+	"ignored_packages":
+	[
+		"RestructuredText",
+		"Vintage"
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"rulers":
+	[
+		79,
+		100
+	],
+	"scroll_speed": 0,
+	"theme": "Theme - Kronuz.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"word_wrap": true
+}

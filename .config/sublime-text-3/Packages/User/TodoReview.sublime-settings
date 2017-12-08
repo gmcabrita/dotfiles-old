@@ -1,0 +1,16 @@
+{
+	"exclude_folders": [
+		".svn",
+		".git",
+		".hg",
+		"CVS",
+		"_build",
+		"dist",
+		"build",
+		"site",
+		".eunit",
+		".rebar",
+		"ebin",
+		"deps"
+	]
+}
