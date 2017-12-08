@@ -4,6 +4,7 @@ set -e
 ERLANG="20.0";
 ELIXIR="1.5.2";
 GO="1.9.2";
+NODEJS="9.2.0";
 
 # asdf
 read -rp "Do you want to install asdf? (y/n) " -n 1;
@@ -35,5 +36,15 @@ if [[ $REPLY =~ ^[Yy]$ ]]; then
 		asdf plugin-add go https://github.com/kennyp/asdf-golang
 		asdf install go $GO
 		asdf global go $GO
+	fi;
+
+	read -rp "Do you want to install Node.js? (y/n) " -n 1;
+	echo "";
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git
+		bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
+		asdf install nodejs $NODEJS
+		asdf global nodejs $NODEJS
+		npm -g install dockerlint
 	fi;
 fi;
