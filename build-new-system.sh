@@ -154,30 +154,9 @@ fi;
 read -rp "Do you want to install Sublime Text 3? (y/n) " -n 1;
 echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o sublime-text.deb https://download.sublimetext.com/sublime-text_build-3125_amd64.deb
-	sudo dpkg -i sublime-text.deb
-	sudo apt-get -f -y install
-fi;
-
-# Yarn
-read -rp "Do you want to install Yarn? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -fsSL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-	sudo add-apt-repository -y \
-			"deb https://dl.yarnpkg.com/debian/ \
-			stable \
-			main"
+	echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 	sudo apt-get update
-	sudo apt-get -y install yarn
-
-	sudo ln -s /usr/bin/js /usr/bin/node
-
-	# Install dockerlint
-	sudo yarn global add dockerlint
-
-	# Install write-good
-	sudo yarn global add write-good
+	sudo apt-get -y install sublime-text
 fi;
 
 # Skype
@@ -186,15 +165,6 @@ echo "";
 if [[ $REPLY =~ ^[Yy]$ ]]; then
 	curl -o skype.deb https://www.skype.com/en/download-skype/skype-for-linux/downloading/?type=ubuntu64
 	sudo dpkg -i skype.deb
-	sudo apt-get -f -y install
-fi;
-
-# Visual Studio Code
-read -rp "Do you want to install vscode? (y/n) " -n 1;
-echo "";
-if [[ $REPLY =~ ^[Yy]$ ]]; then
-	curl -o vscode.deb -L https://go.microsoft.com/fwlink/?LinkID=760868
-	sudo dpkg -i vscode.deb
 	sudo apt-get -f -y install
 fi;
 
