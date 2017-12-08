@@ -41,12 +41,13 @@
 		"draw_normal",
 		"draw_active"
 	],
+	"mouse_wheel_switches_tabs": false,
 	"rulers":
 	[
 		79,
 		100
 	],
-	"scroll_speed": 0,
+	"scroll_speed": 1.0,
 	"theme": "Theme - Kronuz.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
