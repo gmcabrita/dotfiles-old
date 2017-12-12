@@ -14,6 +14,7 @@ function doIt() {
 		--exclude "python-bootstrap.sh" \
 		--exclude "build-new-system.sh" \
 		--exclude "update-dotfiles.sh" \
+		--exclude "st3-fetch.sh" \
 		--exclude "README.md" \
 		--exclude ".travis.yml" \
 		--exclude "test.sh" \
