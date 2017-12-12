@@ -11,7 +11,7 @@
 
 	editor = nvim
 	fscache = true
-	excludesfile ~/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
 [color "branch"]
