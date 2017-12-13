@@ -21,8 +21,8 @@ alias :q="exit"
 alias df='df -h'
 
 # Neovim
-alias vim='nvim'
-alias vimdiff='nvim -d'
+alias vim='vim'
+alias vimdiff='vim -d'
 
 # Detect which `ls` flavor is in use
 if ls --color > /dev/null 2>&1; then # GNU `ls`

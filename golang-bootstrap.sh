@@ -24,7 +24,6 @@ go get -u github.com/derekparker/delve/cmd/dlv
 go get -u github.com/uber/go-torch
 go get -u github.com/tsliwowicz/go-wrk
 go get -u github.com/tockins/realize
-go get -u github.com/golang/protobuf/{proto,protoc-gen-go}
 go get -u github.com/uber-common/cpustat
 go get -u github.com/google/gops
 go get -u github.com/rakyll/hey

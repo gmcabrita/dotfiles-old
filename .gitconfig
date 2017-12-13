@@ -9,7 +9,7 @@
 	# [default] space-before-tab: looks for spaces before tabs at the beginning of a line
 	#whitespace = space-before-tab,-indent-with-non-tab,trailing-space
 
-	editor = nvim
+	editor = vim
 	fscache = true
 	excludesfile = ~/.gitignore_global
 [color]
@@ -31,12 +31,12 @@
 	private = yes
 [diff]
 	renames = copies
-	tool = nvim
+	tool = vim
 [diff "bin"]
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
-[difftool "nvim"]
-	cmd = "nvim -d" "$LOCAL" "$REMOTE"
+[difftool "vim"]
+	cmd = "vim -d" "$LOCAL" "$REMOTE"
 [difftool]
 	prompt = false
 [alias]

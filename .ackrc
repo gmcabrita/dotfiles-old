@@ -1,6 +1,9 @@
 # always color
 --color
 
+# always sort files lexically
+--sort-files
+
 --ignore-dir=.vscode/
 --ignore-dir=node-modules/
 --ignore-dir=vendor/
