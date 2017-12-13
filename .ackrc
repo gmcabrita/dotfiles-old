@@ -5,6 +5,8 @@
 --ignore-dir=node-modules/
 --ignore-dir=vendor/
 --ignore-dir=_build/
+--ignore-dir=.mypy_cache/
+--ignore-dir=__pycache__/
 
 --type-set=svg=.svg
 --nosvg
@@ -29,3 +31,6 @@
 
 --type-set=erlang=.erl
 --erlang
+
+--type-set=python=.py
+--python
