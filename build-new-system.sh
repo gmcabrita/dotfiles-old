@@ -44,6 +44,9 @@ sudo add-apt-repository -y \
     ubuntu-$(lsb_release -cs) \
     main"
 
+# Zeal
+sudo add-apt-repository ppa:zeal-developers/ppa
+
 # Sublime Text 3
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
@@ -124,6 +127,7 @@ sudo apt-get -y install \
     libvirt-bin \
     qemu-kvm \
     dstat \
+    zeal \
     docker-engine \
     enpass \
     sublime-text \
