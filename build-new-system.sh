@@ -45,7 +45,7 @@ sudo add-apt-repository -y \
     main"
 
 # Zeal
-sudo add-apt-repository ppa:zeal-developers/ppa
+sudo add-apt-repository -y ppa:zeal-developers/ppa
 
 # Sublime Text 3
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
