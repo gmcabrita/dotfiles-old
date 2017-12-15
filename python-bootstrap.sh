@@ -7,6 +7,7 @@ PYTHON=$(pyenv install --list | grep -v "[a-Z]" | tail -1 | sed -e "s/  //")
 pyenv install "$PYTHON"
 pyenv global "$PYTHON"
 
+# shellcheck source=/dev/null
 source ~/.bash_profile
 
 # Python packages
