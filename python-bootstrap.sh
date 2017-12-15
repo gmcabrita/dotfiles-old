@@ -3,9 +3,11 @@ set -e
 
 # Python
 curl -L https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-PYTHON=$(pyenv install --list | grep -v "[a-Z]" | tail -1)
+PYTHON=$(pyenv install --list | grep -v "[a-Z]" | tail -1 | sed -e "s/  //")
 pyenv install "$PYTHON"
 pyenv global "$PYTHON"
+
+source ~/.bash_profile
 
 # Python packages
 pip install -U pipenv \

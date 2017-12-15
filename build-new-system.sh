@@ -5,24 +5,7 @@ set -e
 
 sudo apt-get update
 sudo apt-get -y upgrade
-sudo apt-get -y intall curl
-
-#### Install .deb
-
-# Dropbox
-curl -Lso dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
-sudo dpkg -i dropbox.deb
-sudo apt-get -f -y install
-
-# Chrome
-curl -so chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-sudo dpkg -i chrome.deb
-sudo apt-get -f -y install
-
-# Discord
-curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
-sudo dpkg -i discord.deb
-sudo apt-get -f -y install
+sudo apt-get -y install curl wget
 
 #### Setup 3rd party apt-repos
 
@@ -38,16 +21,17 @@ sudo add-apt-repository -y \
     main"
 
 # Docker
-curl -fsSL https://yum.dockerproject.org/gpg | sudo apt-key add -
+curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
 sudo add-apt-repository -y \
-    "deb https://apt.dockerproject.org/repo/ \
-    ubuntu-$(lsb_release -cs) \
-    main"
+    "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+    $(lsb_release -cs) \
+    edge"
 
 # Zeal
 sudo add-apt-repository -y ppa:zeal-developers/ppa
 
 # Sublime Text 3
+curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
 #### Update and install final packages
@@ -128,10 +112,28 @@ sudo apt-get -y install \
     qemu-kvm \
     dstat \
     zeal \
-    docker-engine \
+    docker-ce \
     enpass \
     sublime-text \
     spotify-client
+
+#### Install .deb
+
+# Dropbox
+curl -Lso dropbox.deb https://www.dropbox.com/download?dl=packages/ubuntu/dropbox_2015.10.28_amd64.deb
+sudo apt-get install -y ./dropbox.deb
+
+# Chrome
+curl -so chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt-get install -y ./chrome.deb
+
+# Discord
+curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
+sudo apt-get install -y ./discord.deb
+
+# Slack
+curl -so slack.deb https://downloads.slack-edge.com/linux_releases/slack-desktop-3.0.0-amd64.deb
+sudo apt-get install -y ./slack.deb
 
 #### Setup misc stuff
 

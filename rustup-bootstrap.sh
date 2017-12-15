@@ -16,7 +16,6 @@ cargo install rustsym --force
 cargo install rustfmt --force
 cargo install cargo-check --force
 cargo install cargo-release --force
-cargo install cargo-tree --force
 cargo install ripgrep --force
 cargo install cargo-fuzz --force
 rustup run nightly cargo install clippy --force
