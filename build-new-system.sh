@@ -115,7 +115,8 @@ sudo apt-get -y install \
     docker-ce \
     enpass \
     sublime-text \
-    spotify-client
+    spotify-client \
+    ubuntu-restricted-extras
 
 #### Install .deb
 
