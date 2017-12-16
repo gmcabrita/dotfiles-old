@@ -42,4 +42,5 @@ pip install -U pipenv \
     nltk \
     statsmodels \
     gensim \
-    jupyter
+    jupyter \
+    httpie
