@@ -43,4 +43,5 @@ pip install -U pipenv \
     statsmodels \
     gensim \
     jupyter \
-    httpie
+    httpie \
+    howdoi
