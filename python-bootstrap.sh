@@ -44,4 +44,7 @@ pip install -U pipenv \
     gensim \
     jupyter \
     httpie \
-    howdoi
+    howdoi \
+    tablib \
+    maya \
+    records
