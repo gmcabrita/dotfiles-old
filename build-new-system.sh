@@ -34,6 +34,10 @@ sudo add-apt-repository -y ppa:zeal-developers/ppa
 curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | sudo apt-key add -
 echo "deb https://download.sublimetext.com/ apt/stable/" | sudo tee /etc/apt/sources.list.d/sublime-text.list
 
+# Pony
+sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "D401AB61"
+echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" | sudo tee -a /etc/apt/sources.list
+
 #### Update and install final packages
 
 sudo apt-get update
@@ -116,6 +120,7 @@ sudo apt-get -y install \
     enpass \
     sublime-text \
     spotify-client \
+    ponyc \
     ubuntu-restricted-extras
 
 #### Install .deb
