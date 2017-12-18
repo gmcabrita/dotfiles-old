@@ -13,7 +13,7 @@ KUBECFG=$(curl -s https://api.github.com/repos/ksonnet/kubecfg/releases/latest |
 # asdf
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.2.0
 # shellcheck source=/dev/null
-. "$HOME/.asdf/asdf.sh"
+. "$HOME/.asdf/asdf.sh" || true
 
 # erlang
 asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang

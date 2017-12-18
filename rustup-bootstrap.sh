@@ -4,7 +4,7 @@ set -e
 # Rust
 curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
 # shellcheck disable=SC1090
-source ~/.bash_profile
+source ~/.bash_profile || true
 rustup install nightly
 rustup component add rls-preview
 rustup component add rust-analysis

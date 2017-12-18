@@ -8,7 +8,7 @@ pyenv install "$PYTHON"
 pyenv global "$PYTHON"
 
 # shellcheck source=/dev/null
-source ~/.bash_profile
+source ~/.bash_profile || true
 
 # Python packages
 pip install -U pipenv \
