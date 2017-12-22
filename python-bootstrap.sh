@@ -47,4 +47,5 @@ pip install -U pipenv \
     howdoi \
     tablib \
     maya \
-    records
+    records \
+    pgcli
