@@ -36,6 +36,7 @@ bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
 asdf install nodejs "$NODEJS"
 asdf global nodejs "$NODEJS"
 npm -g install dockerlint
+npm -g install javascript-typescript-langserver
 
 # terraform
 asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git
