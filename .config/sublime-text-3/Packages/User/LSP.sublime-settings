@@ -1,0 +1,25 @@
+{
+	"clients":
+	{
+		"golsp":
+		{
+			"command":
+			[
+				"go-langserver"
+			],
+			"languageId": "go",
+			"scopes":
+			[
+				"source.go"
+			],
+			"syntaxes":
+			[
+				"Packages/Go/Go.sublime-syntax"
+			]
+		},
+		"pyls":
+		{
+			"enabled": true
+		}
+	}
+}

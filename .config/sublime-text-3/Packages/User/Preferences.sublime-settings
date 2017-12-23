@@ -1,6 +1,11 @@
 {
 	"always_show_minimap_viewport": true,
 	"auto_complete": true,
+	"auto_complete_triggers": [
+		{"selector": "source.go", "characters": "."},
+		{"selector": "source.python", "characters": "."},
+		{"selector": "source.rust", "characters": ".:"}
+	],
 	"bold_folder_labels": true,
 	"close_windows_when_empty": false,
 	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
