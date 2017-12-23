@@ -174,6 +174,10 @@ rm ./*.deb
 
 ./update-dotfiles.sh
 
+#### Fonts
+
+sudo cp -r .fonts/* /usr/share/fonts
+
 #### Run remaining bootstraps
 
 ./asdf-bootstrap.sh
