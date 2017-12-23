@@ -7,6 +7,7 @@ curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
 source ~/.bash_profile || true
 rustup install nightly
 rustup component add rls-preview
+rustup component add rustfmt-preview || true
 rustup component add rust-analysis
 rustup component add rust-src
 
