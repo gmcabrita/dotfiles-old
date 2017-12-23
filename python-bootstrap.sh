@@ -48,4 +48,8 @@ pip install -U pipenv \
     tablib \
     maya \
     records \
-    pgcli
+    pgcli \
+    python-language-server \
+    pyls-mypy \
+    isort \
+    pyls-isort

@@ -13,7 +13,6 @@ rustup component add rust-src
 # Useful packages
 cargo install racer --force
 cargo install rustsym --force
-cargo install rustfmt --force
 cargo install cargo-check --force
 cargo install cargo-release --force
 cargo install ripgrep --force
