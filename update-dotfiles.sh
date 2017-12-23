@@ -8,6 +8,7 @@ git pull origin master;
 function doIt() {
 	rsync --exclude ".git/" \
 		--exclude "systemd/" \
+		--exclude ".fonts/" \
 		--exclude "asdf-bootstrap.sh" \
 		--exclude "rustup-bootstrap.sh" \
 		--exclude "golang-bootstrap.sh" \
@@ -15,7 +16,6 @@ function doIt() {
 		--exclude "build-new-system.sh" \
 		--exclude "update-dotfiles.sh" \
 		--exclude "st3-fetch.sh" \
-		--exclude "fira-fonts.sh" \
 		--exclude "README.md" \
 		--exclude ".travis.yml" \
 		--exclude "test.sh" \
