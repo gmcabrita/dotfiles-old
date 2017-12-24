@@ -396,7 +396,7 @@ install_kube() {
 }
 
 get_dotfiles() {
-    cd "$(dirname "${BASH_SOURCE[@]}")"
+    cd "$(dirname "${BASH_SOURCE[0]}")"
     git pull origin master
 
     rsync --exclude ".git/" \
