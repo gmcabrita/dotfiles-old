@@ -207,7 +207,7 @@ base() {
     touch /home/"$TARGET_USER"/.tp_history
 }
 
-# install some extra fonts
+# installs some extra fonts
 install_fonts() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
     cp -r .fonts/* /usr/share/fonts
