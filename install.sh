@@ -236,6 +236,7 @@ install_asdf() {
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.0
     # shellcheck source=/dev/null
     . ~/.asdf/asdf.sh || true
+    asdf update
 }
 
 install_pyenv() {
