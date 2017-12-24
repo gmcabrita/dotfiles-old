@@ -2,7 +2,7 @@
 set -e
 set -o pipefail
 
-# Choose a user account to use for this installation
+# chooses a user account to use for the installation
 get_user() {
     if [ -z "${TARGET_USER-}" ]; then
         PS3='Which user account should be used? '
@@ -14,6 +14,7 @@ get_user() {
     fi
 }
 
+# checks if we are running as root
 check_is_sudo() {
     if [ "$(id -u)" -ne 0 ]; then
         echo "Please run as root."
@@ -21,6 +22,7 @@ check_is_sudo() {
     fi
 }
 
+# checks if we are running without
 check_isnt_sudo() {
     if [ "$(id -u)" -eq 0 ]; then
         echo "Please run without root."
@@ -28,6 +30,7 @@ check_isnt_sudo() {
     fi
 }
 
+# sets up third-party software sources
 setup_sources() {
     apt update
     apt -y upgrade
@@ -76,6 +79,7 @@ setup_sources() {
     echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" > /etc/apt/sources.list.d/pony-lang.list
 }
 
+# installs the vanilla gnome desktop and a nice shell and icon theme
 install_gnome() {
     apt update
     apt install -y \
@@ -88,6 +92,7 @@ install_gnome() {
         chrome-gnome-shell
 }
 
+# installs the base packages
 base() {
     apt update
     apt -y install \
@@ -191,6 +196,7 @@ base() {
     # install and setup powertop if we are a laptop
     if [ -d "/sys/class/power_supply" ]; then
         apt -y install powertop
+        cd "$(dirname "${BASH_SOURCE[0]}")"
         cp systemd/powertop.service /etc/systemd/system/powertop.service
         systemctl daemon-reload
         systemctl enable powertop.service
@@ -201,37 +207,42 @@ base() {
     touch /home/"$TARGET_USER"/.tp_history
 }
 
+# install some extra fonts
 install_fonts() {
-    # install some extra fonts
+    cd "$(dirname "${BASH_SOURCE[0]}")"
     cp -r .fonts/* /usr/share/fonts
 }
 
+# fixes spotify so it can play local files
 fix_spotify() {
-    # fix spotify local file playback
     wget -N https://github.com/ramedeiros/spotify_libraries/raw/master/libavcodec.so.54.71.100 -O /usr/lib/x86_64-linux-gnu/libavcodec.so.54
     wget -N https://github.com/ramedeiros/spotify_libraries/raw/master/libavformat.so.54.36.100 -O /usr/lib/x86_64-linux-gnu/libavformat.so.54
     wget -N https://github.com/ramedeiros/spotify_libraries/raw/master/libavutil.so.52.6.100 -O /usr/lib/x86_64-linux-gnu/libavutil.so.52
     ldconfig
 }
 
+# checks if asdf is installed and installs it
 check_asdf_and_install() {
     if [ ! -d "$HOME/.asdf" ]; then
         install_asdf
     fi
 }
 
+# checks if pyenv is installed and installs it
 check_pyenv_and_install() {
     if [ ! -d "$HOME/.pyenv" ]; then
         install_pyenv
     fi
 }
 
+# checks if rustup is installed and installs it
 check_rustup_and_install() {
     if [ ! -d "$HOME/.rustup" ]; then
         install_rustup
     fi
 }
 
+# installs asdf
 install_asdf() {
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.0
     # shellcheck source=/dev/null
@@ -239,12 +250,14 @@ install_asdf() {
     asdf update
 }
 
+# installs pyenv
 install_pyenv() {
     curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
     # shellcheck source=/dev/null
     . ~/.bash_profile || true
 }
 
+# installs rustup
 install_rustup() {
     curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
     # shellcheck source=/dev/null
@@ -256,6 +269,7 @@ install_rustup() {
     rustup component add rust-src
 }
 
+# installs go and some go packages
 install_golang() {
     golangv=$(curl -sSL "https://golang.org/VERSION?m=text" | sed 's/go//')
     asdf plugin-add go https://github.com/kennyp/asdf-golang || true
@@ -294,6 +308,7 @@ install_golang() {
     gometalinter --install
 }
 
+# installs python and some python packages
 install_python() {
     pythonv=$(pyenv install --list | grep -v "[a-Z]" | tail -1 | sed -e "s/  //")
     pyenv install -s "$pythonv"
@@ -343,7 +358,10 @@ install_python() {
         pyls-isort
 }
 
+# updates rustup and rust, also installs some rust packages
 install_rust() {
+    rustup self update
+    rustup update
     cargo install racer --force
     cargo install rustsym --force
     cargo install cargo-check --force
@@ -353,6 +371,7 @@ install_rust() {
     rustup run nightly cargo install clippy --force
 }
 
+# installs elixir and erlang
 install_elixir() {
     erlangv=$(curl -s https://api.github.com/repos/erlang/otp/releases/latest | jq -r ".tag_name" | sed -e "s/OTP-//")
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
@@ -365,6 +384,7 @@ install_elixir() {
     asdf global elixir "$elixirv"
 }
 
+# installs nodejs and some nodejs packages
 install_nodejs() {
     nodejsv=$(curl -s https://api.github.com/repos/nodejs/node/releases/latest | jq -r ".tag_name" | sed -e "s/v//")
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
@@ -374,6 +394,7 @@ install_nodejs() {
     npm -g install dockerlint javascript-typescript-langserver
 }
 
+# installs terraform and some kubernetes utilities
 install_kube() {
     terraformv=$(curl -s https://api.github.com/repos/hashicorp/terraform/releases/latest | jq -r ".tag_name" | sed -e "s/v//")
     asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git || true
@@ -396,6 +417,7 @@ install_kube() {
     asdf global kubecfg "$kubecfgv"
 }
 
+# updates the local dotfiles with the ones in the repository
 get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
     git pull origin master
