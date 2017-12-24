@@ -128,6 +128,7 @@ base() {
         vlc \
         deluge \
         aspell \
+        alsa-tools-gui \
         aspell-pt-pt \
         ranger \
         p7zip-full \
