@@ -5,6 +5,7 @@
 	],
 	"installed_packages":
 	[
+		"Anaconda",
 		"Color Highlighter",
 		"Dockerfile Syntax Highlighting",
 		"EditorConfig",
@@ -13,9 +14,9 @@
 		"GitGutter",
 		"GitSavvy",
 		"GitStatusBar",
+		"GoSublime",
 		"Hide Menu",
 		"Jinja2",
-		"LSP",
 		"MarkdownEditing",
 		"Package Control",
 		"PlainTasks",
