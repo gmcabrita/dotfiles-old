@@ -30,8 +30,8 @@ check_isnt_sudo() {
     fi
 }
 
-# sets up third-party software sources
-setup_sources() {
+# sets up the base third-party software sources
+setup_sources_base() {
     apt update
     apt -y upgrade
     apt install -y \
@@ -42,6 +42,19 @@ setup_sources() {
 
     dist=$(lsb_release -cs)
     os=$(lsb_release -is | awk '{ print tolower($1) }')
+
+    # docker
+    curl -fsSL https://download.docker.com/linux/"${os}"/gpg | apt-key add -
+    echo "deb [arch=amd64] https://download.docker.com/linux/${os} ${dist} edge" > /etc/apt/sources.list.d/docker.list
+
+    # pony-lang
+    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "D401AB61"
+    echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" > /etc/apt/sources.list.d/pony-lang.list
+}
+
+# sets up third-party software sources
+setup_sources() {
+    setup_sources_base
 
     # chrome
     curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -63,20 +76,12 @@ setup_sources() {
     curl -fsSL https://dl.sinew.in/keys/enpass-linux.key | apt-key add -
     echo "deb http://repo.sinew.in/ stable main" > /etc/apt/sources.list.d/enpass.list
 
-    # docker
-    curl -fsSL https://download.docker.com/linux/"${os}"/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/${os} ${dist} edge" > /etc/apt/sources.list.d/docker.list
-
     # zeal
     add-apt-repository -y ppa:zeal-developers/ppa
 
     # sublime-text 3
     curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
     echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list
-
-    # pony-lang
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "D401AB61"
-    echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" > /etc/apt/sources.list.d/pony-lang.list
 }
 
 # installs the vanilla gnome desktop and a nice shell and icon theme
@@ -112,9 +117,6 @@ base() {
         m4 \
         zlib1g-dev \
         zlibc \
-        google-chrome-stable \
-        dropbox \
-        slack-desktop \
         libncurses5-dev \
         libwxgtk3.0-dev \
         libgl1-mesa-dev \
@@ -124,41 +126,32 @@ base() {
         python3-pip \
         libssh-dev \
         htop \
-        wget \
-        vlc \
-        deluge \
         aspell \
-        alsa-tools-gui \
         aspell-pt-pt \
-        ranger \
         p7zip-full \
         jq \
         tmux \
         imagemagick \
-        ttf-ubuntu-font-family \
         openjdk-8-jdk \
         openjdk-8-jre \
         ffmpeg \
         tree \
-        scrot \
-        arandr \
         dos2unix \
-        xclip \
-        texlive-full \
-        pandoc \
         pcregrep \
         linux-image-extra-virtual \
-        fonts-hack-ttf \
         libssl-dev \
         libbz2-dev \
         libreadline-dev \
         libsqlite3-dev \
         llvm \
         libncursesw5-dev \
+        ponyc \
         xz-utils \
         tk-dev \
         git \
+        docker-ce \
         build-essential \
+        dstat \
         automake \
         autoconf \
         vim \
@@ -166,16 +159,42 @@ base() {
         exuberant-ctags \
         libopenblas-base \
         libopenblas-dev \
-        gdb \
+        gdb
+
+    # setup docker for non-root
+    usermod -aG docker "$TARGET_USER"
+    newgrp docker
+
+    # init teleport
+    touch /home/"$TARGET_USER"/.tp_aliases
+    touch /home/"$TARGET_USER"/.tp_history
+}
+
+# installs all the packages
+full() {
+    base
+
+    apt update
+    apt -y install \
+        vlc \
+        deluge \
+        alsa-tools-gui \
+        fonts-hack-ttf \
+        scrot \
+        ttf-ubuntu-font-family \
+        arandr \
+        xclip \
+        texlive-full \
+        pandoc \
         libvirt-bin \
         qemu-kvm \
-        dstat \
         zeal \
-        docker-ce \
         enpass \
         sublime-text \
         spotify-client \
-        ponyc \
+        google-chrome-stable \
+        dropbox \
+        slack-desktop \
         ubuntu-restricted-extras
 
     # install discord
@@ -186,10 +205,6 @@ base() {
     # setup kvm for non-root
     usermod -aG libvirt "$TARGET_USER"
     newgrp libvirt
-
-    # setup docker for non-root
-    usermod -aG docker "$TARGET_USER"
-    newgrp docker
 
     # set docker to autostart
     systemctl enable docker
@@ -202,10 +217,6 @@ base() {
         systemctl daemon-reload
         systemctl enable powertop.service
     fi
-
-    # init teleport
-    touch /home/"$TARGET_USER"/.tp_aliases
-    touch /home/"$TARGET_USER"/.tp_history
 }
 
 # installs some extra fonts
@@ -445,7 +456,8 @@ get_dotfiles() {
 usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
-    echo "  base                                - setup sources & install base pkgs"
+    echo "  linux                               - setup sources & install base pkgs"
+    echo "  wsl                                 - setup sources & install base pkgs (wsl)"
     echo "  dotfiles                            - get dotfiles"
     echo "  asdf                                - install asdf and plugins"
     echo "  golang                              - install golang and packages"
@@ -468,10 +480,15 @@ main() {
         check_is_sudo
         get_user
         setup_sources
-        base
+        full
         install_gnome
         install_fonts
         fix_spotify
+    elif [[ $cmd == "wsl" ]]; then
+        check_is_sudo
+        get_user
+        setup_sources_base
+        base
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles
