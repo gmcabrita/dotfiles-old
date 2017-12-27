@@ -11,7 +11,7 @@
 
 	editor = nano
 	fscache = true
-	autocrlf = true
+	autocrlf = false
 	excludesfile = ~/.gitignore_global
 [color]
 	ui = auto
