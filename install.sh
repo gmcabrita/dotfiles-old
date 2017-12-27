@@ -61,7 +61,7 @@ setup_sources_base() {
 
 # sets up third-party software sources
 setup_sources() {
-    setup_sources_base
+    setup_sources_base;
 
     # chrome
     curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -69,11 +69,12 @@ setup_sources() {
 
     # dropbox
     apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
-    echo "deb http://linux.dropbox.com/${os} ${dist} main" > /etc/apt/sources.list.d/dropbox.list
+    echo "deb http://linux.dropbox.com/${os} xenial main" > /etc/apt/sources.list.d/dropbox.list
 
     # slack
     curl -fsSL https://packagecloud.io/slacktechnologies/slack/gpgkey | apt-key add -
-    echo "deb https://packagecloud.io/slacktechnologies/slack/${os}/ ${dist} main" > /etc/apt/sources.list.d/slack.list
+    echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list
+    echo "deb-src https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" >> /etc/apt/sources.list.d/slack.list
 
     # spotify
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
@@ -167,18 +168,14 @@ base() {
         libopenblas-dev \
         gdb
 
+
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
-    newgrp docker
-
-    # init teleport
-    touch /home/"$TARGET_USER"/.tp_aliases
-    touch /home/"$TARGET_USER"/.tp_history
 }
 
 # installs all the packages
 full() {
-    base
+    base;
 
     apt update
     apt -y install \
@@ -211,7 +208,7 @@ full() {
 
     # setup kvm for non-root
     usermod -aG libvirt "$TARGET_USER"
-    newgrp libvirt
+
 
     # set docker to autostart
     systemctl enable docker
