@@ -14,6 +14,13 @@ get_user() {
     fi
 }
 
+check_isnt_wsl() {
+    if [[ $(cat /proc/version) =~ .*Microsoft.* ]]; then
+        echo "Don't run this inside WSL."
+        exit
+    fi
+}
+
 # checks if we are running as root
 check_is_sudo() {
     if [ "$(id -u)" -ne 0 ]; then
@@ -473,6 +480,7 @@ main() {
     fi
 
     if [[ $cmd == "linux" ]]; then
+        check_isnt_wsl
         check_is_sudo
         get_user
         setup_sources
