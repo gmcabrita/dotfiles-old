@@ -476,7 +476,7 @@ main() {
         exit 1
     fi
 
-    if [[ $cmd == "base" ]]; then
+    if [[ $cmd == "linux" ]]; then
         check_is_sudo
         get_user
         setup_sources
