@@ -155,7 +155,6 @@ base() {
         automake \
         autoconf \
         vim \
-        linux-image-extra-"$(uname -r)" \
         exuberant-ctags \
         libopenblas-base \
         libopenblas-dev \
@@ -176,6 +175,7 @@ full() {
 
     apt update
     apt -y install \
+        linux-image-extra-"$(uname -r)" \
         vlc \
         deluge \
         alsa-tools-gui \
@@ -432,15 +432,11 @@ install_kube() {
 # updates the local dotfiles with the ones in the repository
 get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
-    git pull origin master
 
     rsync --exclude ".git/" \
         --exclude "systemd/" \
         --exclude ".fonts/" \
-        --exclude "asdf-bootstrap.sh" \
-        --exclude "rustup-bootstrap.sh" \
-        --exclude "golang-bootstrap.sh" \
-        --exclude "python-bootstrap.sh" \
+        --exclude "windows/" \
         --exclude "install.sh" \
         --exclude "st3-fetch.sh" \
         --exclude "README.md" \
