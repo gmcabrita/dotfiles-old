@@ -7,7 +7,7 @@ get_user() {
     if [ -z "${TARGET_USER-}" ]; then
         PS3='Which user account should be used? '
         mapfile -t options < <(find /home/* -maxdepth 0 -printf "%f\\n" -type d)
-        select opt in "${options[@]}"; do
+        select opt in "${options:?[@]}"; do
             readonly TARGET_USER=$opt
             break
         done
@@ -246,7 +246,7 @@ check_rustup_and_install() {
 # installs asdf
 install_asdf() {
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.0
-    # shellcheck source=/dev/null
+    # shellcheck disable=SC1090
     . ~/.asdf/asdf.sh || true
     asdf update
 }
@@ -254,14 +254,14 @@ install_asdf() {
 # installs pyenv
 install_pyenv() {
     curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-    # shellcheck source=/dev/null
+    # shellcheck disable=SC1090
     . ~/.bash_profile || true
 }
 
 # installs rustup
 install_rustup() {
     curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
-    # shellcheck source=/dev/null
+    # shellcheck disable=SC1090
     . ~/.bash_profile || true
     rustup install nightly
     rustup component add rls-preview || true
@@ -438,7 +438,7 @@ get_dotfiles() {
         --exclude "Makefile" \
         -avh --no-perms . ~
 
-    # shellcheck source=/dev/null
+    # shellcheck disable=SC1090
     . ~/.bash_profile
 }
 
