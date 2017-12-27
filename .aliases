@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # add a few aliases if we're in WSL
-if [[ $(cat /proc/version) =! .*Microsoft.* ]]; then
+if [[ $(cat /proc/version) =~ .*Microsoft.* ]]; then
     alias subl="subl.exe"
     alias minikube="minikube.exe"
 fi
