@@ -14,6 +14,7 @@ get_user() {
     fi
 }
 
+# check that we aren't running on WSL
 check_isnt_wsl() {
     if [[ $(cat /proc/version) =~ .*Microsoft.* ]]; then
         echo "Don't run this inside WSL."
@@ -168,7 +169,6 @@ base() {
         libopenblas-dev \
         gdb
 
-
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 }
@@ -208,7 +208,6 @@ full() {
 
     # setup kvm for non-root
     usermod -aG libvirt "$TARGET_USER"
-
 
     # set docker to autostart
     systemctl enable docker
@@ -292,34 +291,34 @@ install_golang() {
     asdf install go "$golangv" || true
     asdf global go "$golangv"
 
-    go get -u github.com/magefile/mage
-    go get -u github.com/google/codesearch/cmd/...
-    go get -u github.com/mitchellh/gox
-    go get -u github.com/dvyukov/go-fuzz/go-fuzz
-    go get -u github.com/dvyukov/go-fuzz/go-fuzz-build
-    go get -u github.com/nsf/gocode
-    go get -u github.com/tpng/gopkgs
-    go get -u github.com/fatih/gomodifytags
-    go get -u github.com/lukehoban/go-outline
-    go get -u github.com/newhook/go-symbols
-    go get -u golang.org/x/tools/cmd/guru
-    go get -u golang.org/x/tools/cmd/gorename
-    go get -u github.com/rogpeppe/godef
-    go get -u sourcegraph.com/sqs/goreturns
-    go get -u github.com/alecthomas/gometalinter
-    go get -u github.com/sourcegraph/go-langserver
-    go get -u github.com/golang/lint/golint
-    go get -u golang.org/x/tools/cmd/cover
-    go get -u golang.org/x/tools/cmd/goimports
-    go get -u github.com/derekparker/delve/cmd/dlv
-    go get -u github.com/uber/go-torch
-    go get -u github.com/tsliwowicz/go-wrk
-    go get -u github.com/tockins/realize
-    go get -u github.com/uber-common/cpustat
-    go get -u github.com/google/gops
-    go get -u github.com/rakyll/hey
-    go get -u github.com/peterbourgon/stats
-    go get -u github.com/golang/dep/cmd/dep
+    go get -u github.com/magefile/mage \
+        github.com/google/codesearch/cmd/... \
+        github.com/mitchellh/gox \
+        github.com/dvyukov/go-fuzz/go-fuzz \
+        github.com/dvyukov/go-fuzz/go-fuzz-build \
+        github.com/nsf/gocode \
+        github.com/tpng/gopkgs \
+        github.com/fatih/gomodifytags \
+        github.com/lukehoban/go-outline \
+        github.com/newhook/go-symbols \
+        golang.org/x/tools/cmd/guru \
+        golang.org/x/tools/cmd/gorename \
+        github.com/rogpeppe/godef \
+        sourcegraph.com/sqs/goreturns \
+        github.com/alecthomas/gometalinter \
+        github.com/sourcegraph/go-langserver \
+        github.com/golang/lint/golint \
+        golang.org/x/tools/cmd/cover \
+        golang.org/x/tools/cmd/goimports \
+        github.com/derekparker/delve/cmd/dlv \
+        github.com/uber/go-torch \
+        github.com/tsliwowicz/go-wrk \
+        github.com/tockins/realize \
+        github.com/uber-common/cpustat \
+        github.com/google/gops \
+        github.com/rakyll/hey \
+        github.com/peterbourgon/stats \
+        github.com/golang/dep/cmd/dep
 
     gometalinter --install
 }
