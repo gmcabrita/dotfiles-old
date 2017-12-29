@@ -3,7 +3,8 @@ set -e
 
 cd "$(dirname "${BASH_SOURCE[@]}")";
 
-rsync --include "*.sublime-settings" \
+rsync --exclude "GoSublime-aux.sublime-settings" \
+    --include "*.sublime-settings" \
     --include "SublimeLinter/***" \
     --include "*/" \
     --exclude "*" \
