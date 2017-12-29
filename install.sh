@@ -51,6 +51,10 @@ setup_sources_base() {
     dist=$(lsb_release -cs)
     os=$(lsb_release -is | awk '{ print tolower($1) }')
 
+    # google cloud sdk
+    echo "deb http://packages.cloud.google.com/apt cloud-sdk-${dist} main"  > /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
+
     # docker
     curl -fsSL https://download.docker.com/linux/"${os}"/gpg | apt-key add -
     echo "deb [arch=amd64] https://download.docker.com/linux/${os} ${dist} edge" > /etc/apt/sources.list.d/docker.list
@@ -159,6 +163,7 @@ base() {
         tk-dev \
         git \
         docker-ce \
+        google-cloud-sdk \
         build-essential \
         dstat \
         automake \
