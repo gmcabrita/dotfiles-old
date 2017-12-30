@@ -115,6 +115,7 @@ base() {
     apt update
     apt -y install \
         software-properties-common \
+        wrk \
         bash-completion \
         shellcheck \
         readline-common \
