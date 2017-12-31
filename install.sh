@@ -116,6 +116,7 @@ base() {
     apt -y install \
         software-properties-common \
         wrk \
+        graphviz \
         bash-completion \
         shellcheck \
         readline-common \
