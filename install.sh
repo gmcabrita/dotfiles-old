@@ -326,7 +326,8 @@ install_golang() {
         github.com/rakyll/hey \
         github.com/peterbourgon/stats \
         github.com/golang/dep/cmd/dep \
-        github.com/google/pprof
+        github.com/google/pprof \
+        github.com/kintoandar/fwd
 
     gometalinter --install
 }
