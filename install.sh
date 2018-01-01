@@ -182,6 +182,14 @@ base() {
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
+
+    # gdrive fuse mountpoint folder
+    install -d -o "$TARGET_USER" -g "$TARGET_USER" "/home/$TARGET_USER/gdrive"
+
+    # tp files
+    touch "/home/$TARGET_USER/.tp_aliases"
+    touch "/home/$TARGET_USER/.tp_history"
+    chown "$TARGET_USER:$TARGET_USER" "/home/$TARGET_USER/.tp_aliases" "/home/$TARGET_USER/.tp_history"
 }
 
 # installs all the packages
