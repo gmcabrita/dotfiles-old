@@ -352,6 +352,7 @@ install_python() {
     pyenv global "$pythonv"
 
     pip install -U pipenv \
+        docker-compose \
         ipython \
         mypy \
         requests \
