@@ -22,6 +22,8 @@ alias g="git"
 alias h="history"
 alias j="jobs"
 alias :q="exit"
+alias venvnew="virtualenv .venv"
+alias venv="source .venv/bin/activate"
 
 # google drive fuse
 alias gd="google-drive-ocamlfuse"
