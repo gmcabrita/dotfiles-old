@@ -167,6 +167,7 @@ base() {
         xz-utils \
         tk-dev \
         git \
+        git-lfs \
         docker-ce \
         google-cloud-sdk \
         build-essential \
