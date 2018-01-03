@@ -351,7 +351,8 @@ install_python() {
     pyenv install -s "$pythonv"
     pyenv global "$pythonv"
 
-    pip install -U pipenv \
+    pip install -U \
+        pipenv \
         docker-compose \
         ipython \
         mypy \
@@ -372,7 +373,6 @@ install_python() {
         pydocstyle \
         awscli \
         aws-shell \
-        azure-cli \
         numpy \
         scipy \
         sympy \
