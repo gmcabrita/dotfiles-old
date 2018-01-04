@@ -168,6 +168,7 @@ base() {
         tk-dev \
         git \
         git-lfs \
+        inotify-tools \
         docker-ce \
         google-cloud-sdk \
         build-essential \
@@ -219,6 +220,7 @@ full() {
         google-chrome-stable \
         dropbox \
         slack-desktop \
+        postgresql \
         ubuntu-restricted-extras
 
     # install discord
@@ -420,6 +422,9 @@ install_elixir() {
     asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir || true
     asdf install elixir "$elixirv" || true
     asdf global elixir "$elixirv"
+
+    yes | mix local.hex
+    yes | mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
 }
 
 # installs nodejs and some nodejs packages
