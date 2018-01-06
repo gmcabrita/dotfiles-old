@@ -1,4 +1,4 @@
 #!/bin/bash
 
-git reset --hard @{upstream}
+git reset --hard "@{upstream}"
 git pull
