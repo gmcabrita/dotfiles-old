@@ -18,22 +18,22 @@ version() {
 main() {
     if [ "$#" -eq 0 ]; then
         puxaforte
+    else
+        case $1 in
+            "-v"|"--version")
+                version;
+                exit 0
+            ;;
+            "-h"|"--help")
+                usage;
+                exit 0
+            ;;
+            *)
+                usage;
+                exit 1
+            ;;
+        esac
     fi
-
-    case $1 in
-        "-v"|"--version")
-            version;
-            exit 0
-        ;;
-        "-h"|"--help")
-            usage;
-            exit 0
-        ;;
-        *)
-            usage;
-            exit 1
-        ;;
-    esac
 }
 
 main "$@"
