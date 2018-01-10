@@ -221,7 +221,9 @@ full() {
         dropbox \
         slack-desktop \
         postgresql \
-        ubuntu-restricted-extras
+        ubuntu-restricted-extras \
+        hollywood \
+        wallstreet
 
     # install discord
     curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
