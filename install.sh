@@ -243,15 +243,6 @@ full() {
 
     # set vscode as default editor
     update-alternatives --set editor /usr/bin/code
-
-    # install and setup powertop if we are a laptop
-    if [ -d "/sys/class/power_supply" ]; then
-        apt -y install powertop
-        cd "$(dirname "${BASH_SOURCE[0]}")"
-        cp systemd/powertop.service /etc/systemd/system/powertop.service
-        systemctl daemon-reload
-        systemctl enable powertop.service
-    fi
 }
 
 # installs some extra fonts
