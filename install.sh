@@ -241,6 +241,9 @@ full() {
     # set docker to autostart
     systemctl enable docker
 
+    # set vscode as default editor
+    update-alternatives --set editor /usr/bin/code
+
     # install and setup powertop if we are a laptop
     if [ -d "/sys/class/power_supply" ]; then
         apt -y install powertop
