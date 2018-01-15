@@ -426,6 +426,7 @@ install_elixir() {
 
     yes | mix local.hex
     yes | mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+    mix local.rebar --force
 }
 
 # installs nodejs and some nodejs packages
