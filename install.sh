@@ -243,6 +243,12 @@ full() {
 
     # set vscode as default editor
     update-alternatives --set editor /usr/bin/code
+
+    if [ -d "/sys/class/power_supply" ]; then
+        apt -y install tlp
+        tlp start
+    fi
+
 }
 
 # installs some extra fonts
