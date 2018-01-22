@@ -322,7 +322,7 @@ install_golang() {
 
     go get -u github.com/magefile/mage \
         github.com/google/codesearch/cmd/... \
-        github.com/mitchellh/gox \
+        github.com/goreleaser/goreleaser \
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
         github.com/nsf/gocode \
