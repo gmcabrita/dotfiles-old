@@ -87,6 +87,11 @@ setup_sources() {
     # zeal
     add-apt-repository -y ppa:zeal-developers/ppa
 
+    # keybase
+    curl -fsSL https://keybase.io/docs/server_security/code_signing_key.asc | apt-key add -
+    echo "deb http://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list
+
+
     # vscode
     curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
@@ -214,6 +219,7 @@ full() {
         slack-desktop \
         postgresql \
         ubuntu-restricted-extras \
+        keybase \
         hollywood \
         wallstreet
 
