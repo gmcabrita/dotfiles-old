@@ -14,14 +14,6 @@ get_user() {
     fi
 }
 
-# check that we aren't running on WSL
-check_isnt_wsl() {
-    if [[ $(cat /proc/version) =~ .*Microsoft.* ]]; then
-        echo "Don't run this inside WSL."
-        exit
-    fi
-}
-
 # checks if we are running as root
 check_is_sudo() {
     if [ "$(id -u)" -ne 0 ]; then
@@ -94,10 +86,6 @@ setup_sources() {
 
     # zeal
     add-apt-repository -y ppa:zeal-developers/ppa
-
-    # sublime-text 3
-    curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
-    echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list
 
     # vscode
     curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
@@ -219,7 +207,6 @@ full() {
         qemu-kvm \
         zeal \
         enpass \
-        sublime-text \
         code \
         spotify-client \
         google-chrome-stable \
@@ -473,11 +460,8 @@ get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
 
     rsync --exclude ".git/" \
-        --exclude "systemd/" \
         --exclude ".fonts/" \
-        --exclude "windows/" \
         --exclude "install.sh" \
-        --exclude "st3-fetch.sh" \
         --exclude "README.md" \
         --exclude ".travis.yml" \
         --exclude "test.sh" \
@@ -492,7 +476,6 @@ usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
     echo "  linux                               - setup sources & install base pkgs"
-    echo "  wsl                                 - setup sources & install base pkgs (wsl)"
     echo "  dotfiles                            - get dotfiles"
     echo "  asdf                                - install asdf and plugins"
     echo "  golang                              - install golang and packages"
@@ -512,7 +495,6 @@ main() {
     fi
 
     if [[ $cmd == "linux" ]]; then
-        check_isnt_wsl
         check_is_sudo
         get_user
         setup_sources
@@ -520,11 +502,6 @@ main() {
         install_gnome
         install_fonts
         fix_spotify
-    elif [[ $cmd == "wsl" ]]; then
-        check_is_sudo
-        get_user
-        setup_sources_base
-        base
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles

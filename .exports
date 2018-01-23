@@ -1,10 +1,5 @@
 #!/bin/bash
 
-# use windows' docker if we're in WSL
-if [[ $(cat /proc/version) =~ .*Microsoft.* ]]; then
-    export DOCKER_HOST=tcp://0.0.0.0:2375;
-fi
-
 # Make vim the default editor.
 export EDITOR='vim';
 
