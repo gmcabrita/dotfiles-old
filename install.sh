@@ -108,6 +108,17 @@ install_gnome() {
         elementary-icon-theme \
         gnome-shell-extensions \
         chrome-gnome-shell
+
+    # gnome-shell
+    dconf write /org/gnome/shell/enable-hot-corners false
+    dconf write /org/gnome/shell/window-switcher/app-icon-mode 'both'
+
+    # gnome-terminal
+    dconf write /org/gnome/terminal/legacy/default-show-menubar false
+    dconf write /org/gnome/terminal/legacy/theme-variant 'system'
+    dconf write /org/gnome/terminal/legacy/keybindings/close-tab "'<Primary>W'"
+    dconf write /org/gnome/terminal/legacy/keybindings/prev-tab "'<Primary><Shift>Tab'"
+    dconf write /org/gnome/terminal/legacy/keybindings/next-tab "'<Primary>Tab'"
 }
 
 # installs the base packages
