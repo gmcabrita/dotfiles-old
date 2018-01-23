@@ -148,6 +148,7 @@ base() {
         libgl1-mesa-dev \
         libglu1-mesa-dev \
         libpng-dev \
+        git-extras \
         python3 \
         python3-pip \
         libssh-dev \
