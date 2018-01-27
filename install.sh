@@ -180,6 +180,9 @@ base() {
         gdb \
         google-drive-ocamlfuse
 
+    # micro editor
+    snap install micro --classic
+
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
