@@ -193,9 +193,10 @@ function todo() {
 	grep \
 		--exclude-dir=vendor \
 		--exclude-dir=_build \
+		--exclude-dir=.venv \
 		--text \
 		--color \
-		-nRo 'TODO:.*' .;
+		-nRo 'TODO:.*\|FIXME:.*\|HACK:.*\|XXX:.*\|OPTIMIZE:.*' $@;
 }
 
 # Change to the directory of the specified Go package name.
