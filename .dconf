@@ -25,7 +25,7 @@ numlock-state='off'
 locate-pointer=false
 
 [shell]
-enabled-extensions=['dash-to-panel@jderose9.github.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'TopIcons@phocean.net']
+enabled-extensions=['dash-to-panel@jderose9.github.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'TopIcons@phocean.net', 'nohotcorner@azuri.free.fr']
 enable-hot-corners=false
 
 [shell/extensions/user-theme]
