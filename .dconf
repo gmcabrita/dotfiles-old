@@ -1,0 +1,128 @@
+[settings-daemon/plugins/power]
+power-button-action='nothing'
+sleep-inactive-battery-type='nothing'
+sleep-inactive-ac-timeout=3600
+sleep-inactive-ac-type='nothing'
+sleep-inactive-battery-timeout=1800
+
+[settings-daemon/plugins/color]
+night-light-schedule-automatic=true
+night-light-enabled=true
+night-light-last-coordinates=(38.716700000000003, -9.1333000000000002)
+
+[settings-daemon/plugins/media-keys]
+home='<Super>e'
+terminal='<Super>Return'
+
+[settings-daemon/plugins/xsettings]
+overrides={'Gtk/ShellShowsAppMenu': <1>}
+hinting='full'
+
+[settings-daemon/peripherals/keyboard]
+numlock-state='off'
+
+[settings-daemon/peripherals/mouse]
+locate-pointer=false
+
+[shell]
+enabled-extensions=['dash-to-panel@jderose9.github.com', 'alternate-tab@gnome-shell-extensions.gcampax.github.com', 'drive-menu@gnome-shell-extensions.gcampax.github.com', 'user-theme@gnome-shell-extensions.gcampax.github.com', 'TopIcons@phocean.net']
+enable-hot-corners=false
+
+[shell/extensions/user-theme]
+name=''
+
+[shell/extensions/dash-to-panel]
+animate-show-apps=false
+shift-click-action='LAUNCH'
+animate-window-launch=false
+shift-middle-click-action='LAUNCH'
+show-window-previews=false
+show-show-apps-button=false
+animate-app-switch=false
+hot-keys=true
+secondarymenu-contains-showdetails=true
+hotkeys-overlay-combo='ALWAYS'
+middle-click-action='LAUNCH'
+
+[shell/window-switcher]
+app-icon-mode='both'
+
+[nautilus/preferences]
+search-view='list-view'
+default-folder-viewer='icon-view'
+search-filter-time-type='last_modified'
+
+[nautilus/list-view]
+default-visible-columns=['name', 'size', 'date_modified']
+default-column-order=['name', 'size', 'type', 'owner', 'group', 'permissions', 'mime_type', 'where', 'date_modified', 'date_modified_with_time', 'date_accessed', 'recency']
+
+[system/location]
+enabled=true
+
+[desktop/interface]
+text-scaling-factor=1.25
+gtk-enable-primary-paste=false
+font-name='Roboto 11'
+gtk-im-module='gtk-im-context-simple'
+show-battery-percentage=true
+cursor-theme='DMZ-White'
+icon-theme='elementary-mono-dark'
+monospace-font-name='Fira Mono 13'
+enable-animations=false
+gtk-theme='Adwaita-dark'
+clock-show-date=true
+
+[desktop/peripherals/touchpad]
+natural-scroll=false
+speed=-0.2279411764705882
+edge-scrolling-enabled=false
+two-finger-scrolling-enabled=true
+tap-to-click=true
+
+[desktop/peripherals/mouse]
+accel-profile='adaptive'
+
+[desktop/privacy]
+report-technical-problems=true
+remove-old-temp-files=true
+old-files-age=uint32 5
+remove-old-trash-files=true
+
+[desktop/wm/preferences]
+mouse-button-modifier='<Super>'
+button-layout='appmenu:close'
+focus-mode='click'
+titlebar-font='Roboto 11'
+
+[desktop/datetime]
+automatic-timezone=true
+
+[desktop/background]
+show-desktop-icons=false
+
+[desktop/input-sources]
+current=uint32 0
+sources=[('xkb', 'us')]
+xkb-options=['caps:none', 'terminate:ctrl_alt_bksp', 'compose:ralt']
+
+[terminal/legacy]
+mnemonics-enabled=false
+schema-version=uint32 3
+default-show-menubar=false
+theme-variant='system'
+
+[terminal/legacy/keybindings]
+prev-tab='<Primary><Shift>Tab'
+close-tab='<Primary>w'
+next-tab='<Primary>Tab'
+
+[terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+foreground-color='rgb(131,148,150)'
+palette=['rgb(0,0,0)', 'rgb(204,0,0)', 'rgb(78,154,6)', 'rgb(196,160,0)', 'rgb(52,101,164)', 'rgb(117,80,123)', 'rgb(6,152,154)', 'rgb(211,215,207)', 'rgb(85,87,83)', 'rgb(239,41,41)', 'rgb(138,226,52)', 'rgb(252,233,79)', 'rgb(114,159,207)', 'rgb(173,127,168)', 'rgb(52,226,226)', 'rgb(238,238,236)']
+use-system-font=false
+use-transparent-background=false
+use-theme-colors=true
+font='Fira Mono 12'
+scrollback-unlimited=true
+background-color='rgb(0,43,54)'
+audible-bell=false
