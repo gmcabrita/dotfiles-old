@@ -47,6 +47,9 @@
 	# Quick commit
 	c = commit
 
+	# Quick push
+	p = push
+
 	# Quick status
 	s = status
 
