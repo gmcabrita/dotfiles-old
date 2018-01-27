@@ -1,0 +1,20 @@
+{
+    "ft:go": {
+        "tabstospaces": false
+    },
+    "ft:ruby": {
+        "tabsize": 2
+    },
+    "ft:elixir": {
+        "tabsize": 2
+    },
+    "tabstospaces": true,
+    "tabsize": 4,
+    "tabmovement": true,
+    "matchbrace": true,
+    "softwrap": true,
+    "savecursor": true,
+    "rmtrailingws": true,
+    "eofnewline": true,
+    "colorscheme": "monokai",
+}
