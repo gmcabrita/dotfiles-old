@@ -44,6 +44,9 @@
 	# Commit all changes
 	ca = !git add -A && git commit -av
 
+	# Quick commit
+	c = commit
+
 	# Quick status
 	s = status
 

@@ -1,12 +1,15 @@
 {
     "ft:go": {
-        "tabstospaces": false
+        "tabstospaces": false,
     },
     "ft:ruby": {
-        "tabsize": 2
+        "tabsize": 2,
     },
     "ft:elixir": {
-        "tabsize": 2
+        "tabsize": 2,
+    },
+    "ft:git-config": {
+        "tabstospaces": false,
     },
     "tabstospaces": true,
     "tabsize": 4,
