@@ -183,11 +183,6 @@ function gonew() {
 	sed -i "s/FIXME/$1/g" README.md;
 }
 
-# Build go release binaries for multiple platforms
-function gorelease() {
-	gox -os="linux darwin windows openbsd" ./...;
-}
-
 # Output TODOs for the current folder
 function todo() {
 	grep \
@@ -196,7 +191,7 @@ function todo() {
 		--exclude-dir=.venv \
 		--text \
 		--color \
-		-nRo 'TODO:.*\|FIXME:.*\|HACK:.*\|XXX:.*\|OPTIMIZE:.*' $@;
+		-nRo 'TODO:.*\|FIXME:.*\|HACK:.*\|XXX:.*\|OPTIMIZE:.*' "$@";
 }
 
 # Change to the directory of the specified Go package name.
