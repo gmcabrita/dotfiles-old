@@ -312,10 +312,8 @@ install_rustup() {
     # shellcheck disable=SC1090
     . ~/.bash_profile || true
     rustup install nightly
-    rustup component add rls-preview || true
-    rustup component add rustfmt-preview || true
-    rustup component add rust-analysis
-    rustup component add rust-src
+    rustup component add rls-preview rustfmt-preview rust-analysis rust-src
+    rustup component add --toolchain nightly rls-preview rustfmt-preview rust-analysis rust-src
 }
 
 # installs go and some go packages
