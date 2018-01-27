@@ -47,18 +47,24 @@
 	# Quick commit
 	c = commit
 
+    # Quick add
+    a = add
+
 	# Quick push
 	p = push
 
 	# Quick status
 	s = status
 
+    # Quick log
+    l = log
+
 	# Quick diff
 	d = diff
 	ds = diff --staged
 
 	# View history graph
-	l = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
 	# View abbreviated SHA, description, and history graph of the latest 20 commits
 	ll = log --pretty=oneline -n 20 --graph --abbrev-commit
@@ -96,9 +102,6 @@
 	followTags = true
 [pull]
 	rebase = true
-[help]
-	# Automatically correct and execute mistyped commands
-	autocorrect = 1
 
 # URL shorthands
 
