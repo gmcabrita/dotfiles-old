@@ -228,7 +228,7 @@ full() {
         wallstreet
 
     # install discord
-    curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.3/discord-0.0.3.deb
+    curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.4/discord-0.0.4.deb
     apt install -y ./discord.deb
     rm ./discord.deb
 
