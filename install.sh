@@ -54,9 +54,6 @@ setup_sources_base() {
     # pony-lang
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "D401AB61"
     echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" > /etc/apt/sources.list.d/pony-lang.list
-
-    # google-drive-ocamlfuse
-    add-apt-repository -y ppa:alessandro-strada/ppa
 }
 
 # sets up third-party software sources
@@ -177,17 +174,13 @@ base() {
         exuberant-ctags \
         libopenblas-base \
         libopenblas-dev \
-        gdb \
-        google-drive-ocamlfuse
+        gdb
 
     # micro editor
     snap install micro --classic
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
-
-    # gdrive fuse mountpoint folder
-    install -d -o "$TARGET_USER" -g "$TARGET_USER" "/home/$TARGET_USER/gdrive"
 
     # tp files
     touch "/home/$TARGET_USER/.tp_aliases"

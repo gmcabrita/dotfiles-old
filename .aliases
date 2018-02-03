@@ -19,11 +19,6 @@ alias :q="exit"
 alias venvnew="virtualenv .venv"
 alias venv="source .venv/bin/activate"
 
-# google drive fuse
-alias gd="google-drive-ocamlfuse"
-alias gdmount='google-drive-ocamlfuse /home/$USER/gdrive'
-alias gdunmount='fusermount -u /home/$USER/gdrive'
-
 # df should always print human readable units
 alias df='df -h'
 
