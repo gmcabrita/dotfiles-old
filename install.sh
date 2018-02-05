@@ -54,6 +54,10 @@ setup_sources_base() {
     # pony-lang
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "D401AB61"
     echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" > /etc/apt/sources.list.d/pony-lang.list
+
+    # bcc-tools
+    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D4284CDD
+    echo "deb https://repo.iovisor.org/apt/${dist} ${dist} main" > /etc/apt/sources.list.d/bcc.list
 }
 
 # sets up third-party software sources
@@ -174,7 +178,10 @@ base() {
         exuberant-ctags \
         libopenblas-base \
         libopenblas-dev \
-        gdb
+        gdb \
+        bcc-tools \
+        libbcc-examples \
+        "linux-headers-$(uname -r)"
 
     # micro editor
     snap install micro --classic
