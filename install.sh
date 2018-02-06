@@ -186,6 +186,9 @@ base() {
     # micro editor
     snap install micro --classic
 
+    # protobuf compiler
+    snap install protobuf --classic
+
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
