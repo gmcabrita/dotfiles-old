@@ -345,7 +345,11 @@ install_golang() {
         github.com/golang/dep/cmd/dep \
         github.com/google/pprof \
         github.com/kintoandar/fwd \
-        github.com/apex/static/cmd/static-docs
+        github.com/apex/static/cmd/static-docs \
+        github.com/ktr0731/evans \
+        github.com/golang/protobuf/proto \
+        github.com/golang/protobuf/protoc-gen-go \
+        google.golang.org/grpc
 
     gometalinter --install
 }
