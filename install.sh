@@ -353,7 +353,8 @@ install_golang() {
         github.com/ktr0731/evans \
         github.com/golang/protobuf/proto \
         github.com/golang/protobuf/protoc-gen-go \
-        google.golang.org/grpc
+        google.golang.org/grpc \
+        github.com/ajstarks/svgo/benchviz
 
     gometalinter --install
 }
