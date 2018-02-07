@@ -179,6 +179,7 @@ base() {
         libopenblas-base \
         libopenblas-dev \
         gdb \
+        rlwrap \
         bcc-tools \
         libbcc-examples \
         "linux-headers-$(uname -r)"
