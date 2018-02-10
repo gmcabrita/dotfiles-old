@@ -181,6 +181,7 @@ base() {
         gdb \
         rlwrap \
         bcc-tools \
+        libu2f-host-dev \
         libbcc-examples \
         "linux-headers-$(uname -r)"
 
