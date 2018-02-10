@@ -182,6 +182,9 @@ base() {
         rlwrap \
         bcc-tools \
         libu2f-host-dev \
+        gnupg2 \
+        pcscd \
+        scdaemon \
         libbcc-examples \
         "linux-headers-$(uname -r)"
 
