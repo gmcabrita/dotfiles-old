@@ -186,6 +186,7 @@ base() {
         pcscd \
         scdaemon \
         libbcc-examples \
+        gnuplot \
         "linux-headers-$(uname -r)"
 
     # micro editor
