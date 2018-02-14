@@ -79,9 +79,6 @@ edge-scrolling-enabled=false
 two-finger-scrolling-enabled=true
 tap-to-click=true
 
-[desktop/peripherals/mouse]
-accel-profile='adaptive'
-
 [desktop/privacy]
 report-technical-problems=true
 remove-old-temp-files=true
@@ -92,6 +89,7 @@ remove-old-trash-files=true
 mouse-button-modifier='<Super>'
 button-layout='appmenu:close'
 focus-mode='click'
+resize-with-right-button=true
 titlebar-font='Roboto 11'
 
 [desktop/datetime]
@@ -114,6 +112,7 @@ theme-variant='system'
 [terminal/legacy/keybindings]
 prev-tab='<Primary><Shift>Tab'
 close-tab='<Primary>w'
+new-tab='<Primary>t'
 next-tab='<Primary>Tab'
 
 [terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
