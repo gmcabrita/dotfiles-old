@@ -179,7 +179,7 @@ function gonew() {
 	curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/.travis.yml;
 	curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/README.md;
 	curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/LICENSE;
-	curl -So https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/.gitignore;
+	curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/.gitignore;
 	sed -i "s/FIXME/$1/g" README.md;
 }
 
