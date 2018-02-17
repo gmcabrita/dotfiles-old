@@ -324,7 +324,7 @@ install_golang() {
     asdf install go "$golangv" || true
     asdf global go "$golangv"
 
-    go get -u github.com/magefile/mage \
+    go get -u -v github.com/magefile/mage \
         github.com/google/codesearch/cmd/... \
         github.com/goreleaser/goreleaser \
         github.com/dvyukov/go-fuzz/go-fuzz \
