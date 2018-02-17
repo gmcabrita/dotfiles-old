@@ -330,7 +330,6 @@ install_golang() {
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
         github.com/nsf/gocode \
-        github.com/tpng/gopkgs \
         github.com/fatih/gomodifytags \
         github.com/lukehoban/go-outline \
         github.com/newhook/go-symbols \
@@ -359,7 +358,8 @@ install_golang() {
         github.com/golang/protobuf/proto \
         github.com/golang/protobuf/protoc-gen-go \
         google.golang.org/grpc \
-        github.com/ajstarks/svgo/benchviz
+        github.com/ajstarks/svgo/benchviz \
+        github.com/uudashr/gopkgs/cmd/gopkgs
 
     gometalinter --install
 }
