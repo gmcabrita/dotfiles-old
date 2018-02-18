@@ -212,7 +212,6 @@ full() {
     apt -y install \
         linux-image-extra-"$(uname -r)" \
         vlc \
-        deluge \
         alsa-tools-gui \
         fonts-hack-ttf \
         scrot \
