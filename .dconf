@@ -91,6 +91,9 @@ focus-mode='sloppy'
 resize-with-right-button=true
 titlebar-font='Roboto 11'
 
+[mutter]
+center-new-windows=true
+
 [desktop/datetime]
 automatic-timezone=true
 
