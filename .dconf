@@ -87,7 +87,7 @@ remove-old-trash-files=true
 [desktop/wm/preferences]
 mouse-button-modifier='<Super>'
 button-layout='appmenu:close'
-focus-mode='click'
+focus-mode='sloppy'
 resize-with-right-button=true
 titlebar-font='Roboto 11'
 
