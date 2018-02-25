@@ -70,12 +70,12 @@ fi
 echo "Fetching maps for all java processes..."
 for pid in $(pgrep -x java); do
 	mapfile=/tmp/perf-$pid.map
-	[[ -e $mapfile ]] && rm $mapfile
+	[[ -e $mapfile ]] && rm "$mapfile"
 
 	cmd="cd $AGENT_OUT; $JAVA_HOME/bin/java -Xms32m -Xmx128m -cp $AGENT_JAR:$JAVA_HOME/lib/tools.jar net.virtualvoid.perf.AttachOnce $pid $opts"
-	(( debug )) && echo $cmd
+	(( debug )) && echo "$cmd"
 
-	user=$(ps ho user -p $pid)
+	user=$(ps ho user -p "$pid")
 	if [[ "$user" != root ]]; then
 		if [[ "$user" == [0-9]* ]]; then
 			# UID only, run sudo with #UID:
@@ -87,17 +87,17 @@ for pid in $(pgrep -x java); do
 
 	echo "Mapping PID $pid (user $user):"
 	if (( debug )); then
-		time eval $cmd
+		time eval "$cmd"
 	else
-		eval $cmd
+		eval "$cmd"
 	fi
 	if [[ -e "$mapfile" ]]; then
-		chown root $mapfile
-		chmod 666 $mapfile
+		chown root "$mapfile"
+		chmod 666 "$mapfile"
 	else
 		echo "ERROR: $mapfile not created."
 	fi
 
-	echo "wc(1): $(wc $mapfile)"
+	echo "wc(1): $(wc "$mapfile")"
 	echo
 done
