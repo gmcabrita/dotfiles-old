@@ -190,6 +190,9 @@ base() {
         scdaemon \
         libbcc-examples \
         gnuplot \
+        valgrind \
+        heaptrack \
+        massif-visualizer \
         "linux-headers-$(uname -r)"
 
     # micro editor
