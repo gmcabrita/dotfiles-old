@@ -58,6 +58,9 @@ setup_sources_base() {
     # bcc-tools
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D4284CDD
     echo "deb https://repo.iovisor.org/apt/${dist} ${dist} main" > /etc/apt/sources.list.d/bcc.list
+
+    # yubico
+    add-apt-repository ppa:yubico/stable
 }
 
 # sets up third-party software sources
@@ -233,7 +236,8 @@ full() {
         ubuntu-restricted-extras \
         keybase \
         hollywood \
-        wallstreet
+        wallstreet \
+        yubikey-piv-manager
 
     # install discord
     curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.4/discord-0.0.4.deb
