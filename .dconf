@@ -92,6 +92,7 @@ resize-with-right-button=true
 titlebar-font='Roboto 11'
 
 [mutter]
+attach-modal-dialogs=false
 center-new-windows=true
 
 [desktop/datetime]
