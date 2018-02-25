@@ -1,6 +1,7 @@
 #!/usr/bin/perl -w
 #
-# stackcolllapse.pl	collapse multiline stacks into single lines.
+# stackcolllapse-stap.pl	collapse multiline SystemTap stacks
+#				into single lines.
 #
 # Parses a multiline stack followed by a number on a separate line, and
 # outputs a semicolon separated stack followed by a space and the number.
@@ -11,18 +12,18 @@
 #
 # Example input:
 #
-#  unix`i86_mwait+0xd
-#  unix`cpu_idle_mwait+0xf1
-#  unix`idle+0x114
-#  unix`thread_start+0x8
-#  1641
+#  0xffffffff8103ce3b : native_safe_halt+0xb/0x10 [kernel]
+#  0xffffffff8101c6a3 : default_idle+0x53/0x1d0 [kernel]
+#  0xffffffff81013236 : cpu_idle+0xd6/0x120 [kernel]
+#  0xffffffff815bf03e : rest_init+0x72/0x74 [kernel]
+#  0xffffffff81aebbfe : start_kernel+0x3ba/0x3c5 [kernel]
+#	2404
 #
 # Example output:
 #
-#  unix`thread_start;unix`idle;unix`cpu_idle_mwait;unix`i86_mwait 1641
+#  start_kernel;rest_init;cpu_idle;default_idle;native_safe_halt 2404
 #
-# Input may contain many stacks, and can be generated using DTrace.  The
-# first few lines of input are skipped (see $headerlines).
+# Input may contain many stacks as generated from SystemTap.
 #
 # Copyright 2011 Joyent, Inc.  All rights reserved.
 # Copyright 2011 Brendan Gregg.  All rights reserved.
@@ -46,12 +47,10 @@
 #
 # CDDL HEADER END
 #
-# 14-Aug-2011	Brendan Gregg	Created this.
+# 16-Feb-2012	Brendan Gregg	Created this.
 
 use strict;
 
-my $headerlines = 3;		# number of input lines to skip
-my $includeoffset = 0;		# include function offset (except leafs)
 my %collapsed;
 
 sub remember_stack {
@@ -59,21 +58,13 @@ sub remember_stack {
 	$collapsed{$stack} += $count;
 }
 
-my $nr = 0;
 my @stack;
 
 foreach (<>) {
-	next if $nr++ < $headerlines;
 	chomp;
 
 	if (m/^\s*(\d+)+$/) {
-		my $count = $1;
-		my $joined = join(";", @stack);
-
-		# trim leaf offset if these were retained:
-		$joined =~ s/\+[^+]*$// if $includeoffset;
-
-		remember_stack($joined, $count);
+		remember_stack(join(";", @stack), $1);
 		@stack = ();
 		next;
 	}
@@ -82,28 +73,12 @@ foreach (<>) {
 
 	my $frame = $_;
 	$frame =~ s/^\s*//;
-	$frame =~ s/\+[^+]*$// unless $includeoffset;
-
-	# Remove arguments from C++ function names:
-	$frame =~ s/(::.*)[(<].*/$1/;
-
+	$frame =~ s/\+[^+]*$//;
+	$frame =~ s/.* : //;
 	$frame = "-" if $frame eq "";
-
-        my @inline;
-        for (split /\->/, $frame) {
-            my $func = $_;
-
-            # Strip out L and ; included in java stacks
-            $func =~ tr/\;/:/;
-            $func =~ s/^L//;
-            $func .= "_[i]" if scalar(@inline) > 0; #inlined
-
-            push @inline, $func;
-        }
-
-	unshift @stack, @inline;
+	unshift @stack, $frame;
 }
 
 foreach my $k (sort { $a cmp $b } keys %collapsed) {
-	print "$k $collapsed{$k}\n";
+	printf "$k $collapsed{$k}\n";
 }
