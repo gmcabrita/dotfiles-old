@@ -491,6 +491,7 @@ get_dotfiles() {
 
     rsync --exclude ".git/" \
         --exclude ".fonts/" \
+        --exclude ".local/" \
         --exclude "install.sh" \
         --exclude "README.md" \
         --exclude ".travis.yml" \
@@ -499,7 +500,7 @@ get_dotfiles() {
         --exclude "Makefile" \
         -avh --no-perms . ~
 
-    dconf load /org/gnome/ < .dconf
+    # dconf load /org/gnome/ < .dconf
 
     # shellcheck disable=SC1090
     . ~/.bash_profile
@@ -532,7 +533,7 @@ main() {
         get_user
         setup_sources
         full
-        install_gnome
+        # install_gnome
         install_fonts
         fix_spotify
     elif [[ $cmd == "dotfiles" ]]; then
