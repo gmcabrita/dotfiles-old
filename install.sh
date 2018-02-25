@@ -388,7 +388,6 @@ install_python() {
         sqlalchemy \
         pylint \
         autopep8 \
-        yapf \
         pytest \
         nose \
         pycodestyle \
@@ -398,19 +397,9 @@ install_python() {
         pydocstyle \
         awscli \
         aws-shell \
-        numpy \
-        scipy \
-        sympy \
         matplotlib \
         pandas \
-        scikit-learn \
-        theano \
-        nltk \
-        statsmodels \
-        gensim \
-        jupyter \
         httpie \
-        howdoi \
         tablib \
         maya \
         records \
