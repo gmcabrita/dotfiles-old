@@ -201,6 +201,9 @@ base() {
     # protobuf compiler
     snap install protobuf --classic
 
+    # asciinema
+    snap install asciinema --classic
+
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
