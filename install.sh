@@ -418,13 +418,15 @@ install_python() {
 install_rust() {
     rustup self update
     rustup update
-    cargo install racer --force
-    cargo install rustsym --force
-    cargo install cargo-check --force
-    cargo install cargo-release --force
-    cargo install ripgrep --force
-    cargo install cargo-fuzz --force
-    cargo install afl --force
+    cargo install --force \
+        racer \
+        rustsym \
+        cargo-check \
+        cargo-release \
+        ripgrep \
+        cargo-fuzz \
+        afl
+
     rustup run nightly cargo install clippy --force
 }
 
