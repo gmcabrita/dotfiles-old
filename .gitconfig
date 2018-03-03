@@ -30,16 +30,9 @@
 	untracked = cyan
 [gist]
 	private = yes
-[diff]
-	renames = copies
-	tool = vim
 [diff "bin"]
 	# Use `hexdump` to diff binary files
 	textconv = hexdump -v -C
-[difftool "vim"]
-	cmd = "vim -d" "$LOCAL" "$REMOTE"
-[difftool]
-	prompt = false
 [alias]
 	# Commit all changes
 	ca = !git add -A && git commit -av
