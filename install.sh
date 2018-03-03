@@ -354,7 +354,7 @@ install_golang() {
         github.com/derekparker/delve/cmd/dlv \
         github.com/uber/go-torch \
         github.com/tsliwowicz/go-wrk \
-        github.com/tockins/realize \
+        github.com/oxequa/realize \
         github.com/uber-common/cpustat \
         github.com/google/gops \
         github.com/rakyll/hey \
