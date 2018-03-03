@@ -422,6 +422,7 @@ install_rust() {
         racer \
         rustsym \
         cargo-check \
+        cargo-watch \
         cargo-release \
         ripgrep \
         cargo-fuzz \
