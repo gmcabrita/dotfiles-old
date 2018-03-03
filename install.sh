@@ -369,7 +369,8 @@ install_golang() {
         github.com/ckaznocha/protoc-gen-lint \
         google.golang.org/grpc \
         github.com/ajstarks/svgo/benchviz \
-        github.com/uudashr/gopkgs/cmd/gopkgs
+        github.com/uudashr/gopkgs/cmd/gopkgs \
+        github.com/netlify/netlifyctl
 
     gometalinter --install
 }
@@ -455,7 +456,7 @@ install_nodejs() {
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
-    npm -g install dockerlint javascript-typescript-langserver diff2html-cli netlify-cli
+    npm -g install dockerlint javascript-typescript-langserver diff2html-cli
 }
 
 # installs terraform and some kubernetes utilities
