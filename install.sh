@@ -366,6 +366,8 @@ install_golang() {
         github.com/ktr0731/evans \
         github.com/golang/protobuf/proto \
         github.com/golang/protobuf/protoc-gen-go \
+        github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
+        github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
         github.com/ckaznocha/protoc-gen-lint \
         google.golang.org/grpc \
         github.com/ajstarks/svgo/benchviz \
