@@ -455,7 +455,7 @@ install_nodejs() {
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
-    npm -g install dockerlint javascript-typescript-langserver diff2html-cli
+    npm -g install dockerlint javascript-typescript-langserver diff2html-cli netlify-cli
 }
 
 # installs terraform and some kubernetes utilities
