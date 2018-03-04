@@ -372,7 +372,8 @@ install_golang() {
         google.golang.org/grpc \
         github.com/ajstarks/svgo/benchviz \
         github.com/uudashr/gopkgs/cmd/gopkgs \
-        github.com/netlify/netlifyctl
+        github.com/netlify/netlifyctl \
+        github.com/bettercap/bettercap
 
     gometalinter --install
 }
