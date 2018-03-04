@@ -119,6 +119,7 @@ base() {
     apt update
     apt -y install \
         software-properties-common \
+        libpcap-dev \
         wrk \
         graphviz \
         bash-completion \
