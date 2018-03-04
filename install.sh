@@ -95,7 +95,6 @@ setup_sources() {
     curl -fsSL https://keybase.io/docs/server_security/code_signing_key.asc | apt-key add -
     echo "deb http://prerelease.keybase.io/deb stable main" > /etc/apt/sources.list.d/keybase.list
 
-
     # vscode
     curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
@@ -260,6 +259,7 @@ full() {
     # set vscode as default editor
     update-alternatives --set editor /usr/bin/code
 
+    # install and start tlp if we are on a laptop
     if [ -d "/sys/class/power_supply" ]; then
         apt -y install tlp
         tlp start
@@ -511,15 +511,15 @@ usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
     echo "  linux                     - setup sources & install os pkgs"
-    echo "  base                      - dotfiles + asdf + python + golang + nodejs + kube"
+    echo "  all                       - does everything below"
     echo "  dotfiles                  - fetch dotfiles"
     echo "  asdf                      - install asdf and plugins"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
+    echo "  rust                      - install rust and packages"
     echo "  nodejs                    - install nodejs"
     echo "  kube                      - install minikube, kubectl, etc"
     echo "  elixir                    - install erlang and elixir"
-    echo "  rust                      - install rust and packages"
 }
 
 main() {
@@ -541,15 +541,18 @@ main() {
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles
-    elif [[ $cmd == "base" ]]; then
+    elif [[ $cmd == "all" ]]; then
         check_isnt_sudo
         get_dotfiles
         check_asdf_and_install
         check_pyenv_and_install
         install_python
         install_golang
+        check_rustup_and_install
+        install_rust
         install_nodejs
         install_kube
+        install_elixir
     elif [[ $cmd == "asdf" ]]; then
         check_isnt_sudo
         check_asdf_and_install
