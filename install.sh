@@ -510,15 +510,16 @@ get_dotfiles() {
 usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
-    echo "  linux                               - setup sources & install base pkgs"
-    echo "  dotfiles                            - get dotfiles"
-    echo "  asdf                                - install asdf and plugins"
-    echo "  golang                              - install golang and packages"
-    echo "  python                              - install python and packages"
-    echo "  rust                                - install rust and packages"
-    echo "  elixir                              - install erlang and elixir"
-    echo "  nodejs                              - install nodejs"
-    echo "  kube                                - install minikube, kubectl, etc"
+    echo "  linux                     - setup sources & install os pkgs"
+    echo "  base                      - dotfiles + asdf + python + golang + nodejs + kube"
+    echo "  dotfiles                  - fetch dotfiles"
+    echo "  asdf                      - install asdf and plugins"
+    echo "  python                    - install python and packages"
+    echo "  golang                    - install golang and packages"
+    echo "  nodejs                    - install nodejs"
+    echo "  kube                      - install minikube, kubectl, etc"
+    echo "  elixir                    - install erlang and elixir"
+    echo "  rust                      - install rust and packages"
 }
 
 main() {
@@ -540,6 +541,15 @@ main() {
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles
+    elif [[ $cmd == "base" ]]; then
+        check_isnt_sudo
+        get_dotfiles
+        check_asdf_and_install
+        check_pyenv_and_install
+        install_python
+        install_golang
+        install_nodejs
+        install_kube
     elif [[ $cmd == "asdf" ]]; then
         check_isnt_sudo
         check_asdf_and_install
