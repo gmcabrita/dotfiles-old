@@ -304,7 +304,7 @@ check_rustup_and_install() {
 
 # installs asdf
 install_asdf() {
-    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.0
+    git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.4.2
     # shellcheck disable=SC1090
     . ~/.asdf/asdf.sh || true
     asdf update
