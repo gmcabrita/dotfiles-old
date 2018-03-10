@@ -429,6 +429,7 @@ install_rust() {
         cargo-check \
         cargo-watch \
         cargo-release \
+        cargo-edit \
         ripgrep \
         cargo-fuzz \
         afl
