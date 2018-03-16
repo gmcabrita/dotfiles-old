@@ -493,7 +493,6 @@ get_dotfiles() {
 
     rsync --exclude ".git/" \
         --exclude ".fonts/" \
-        --exclude ".local/" \
         --exclude "install.sh" \
         --exclude "README.md" \
         --exclude ".travis.yml" \
