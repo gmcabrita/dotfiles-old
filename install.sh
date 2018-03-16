@@ -38,7 +38,8 @@ setup_sources_base() {
         curl \
         wget \
         apt-transport-https \
-        ca-certificates
+        ca-certificates \
+        software-properties-common
 
     dist=$(lsb_release -cs)
     os=$(lsb_release -is | awk '{ print tolower($1) }')
