@@ -193,6 +193,7 @@ base() {
         gnuplot \
         valgrind \
         heaptrack \
+        snapd-xdg-open \
         massif-visualizer \
         "linux-headers-$(uname -r)"
 
@@ -204,6 +205,9 @@ base() {
 
     # asciinema
     snap install asciinema --classic
+
+    # gitter
+    snap install gitter-desktop --classic
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
