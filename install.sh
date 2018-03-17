@@ -206,9 +206,6 @@ base() {
     # asciinema
     snap install asciinema --classic
 
-    # gitter
-    snap install gitter-desktop --classic
-
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
