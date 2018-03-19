@@ -163,6 +163,7 @@ base() {
         llvm \
         libncursesw5-dev \
         xz-utils \
+        systemtap \
         tk-dev \
         git \
         git-lfs \
