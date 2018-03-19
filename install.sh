@@ -52,10 +52,6 @@ setup_sources_base() {
     curl -fsSL https://download.docker.com/linux/"${os}"/gpg | apt-key add -
     echo "deb [arch=amd64] https://download.docker.com/linux/${os} ${dist} edge" > /etc/apt/sources.list.d/docker.list
 
-    # pony-lang
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys "D401AB61"
-    echo "deb https://dl.bintray.com/pony-language/ponyc-debian pony-language main" > /etc/apt/sources.list.d/pony-lang.list
-
     # bcc-tools
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D4284CDD
     echo "deb https://repo.iovisor.org/apt/${dist} ${dist} main" > /etc/apt/sources.list.d/bcc.list
@@ -166,7 +162,6 @@ base() {
         libsqlite3-dev \
         llvm \
         libncursesw5-dev \
-        ponyc \
         xz-utils \
         tk-dev \
         git \
