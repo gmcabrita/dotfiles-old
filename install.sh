@@ -372,7 +372,8 @@ install_golang() {
         github.com/ajstarks/svgo/benchviz \
         github.com/uudashr/gopkgs/cmd/gopkgs \
         github.com/netlify/netlifyctl \
-        github.com/bettercap/bettercap
+        github.com/bettercap/bettercap \
+        github.com/sgreben/jp/cmd/jp
 
     gometalinter --install
 }
