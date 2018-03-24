@@ -373,7 +373,8 @@ install_golang() {
         github.com/uudashr/gopkgs/cmd/gopkgs \
         github.com/netlify/netlifyctl \
         github.com/bettercap/bettercap \
-        github.com/sgreben/jp/cmd/jp
+        github.com/sgreben/jp/cmd/jp \
+        github.com/genuinetools/weather
 
     gometalinter --install
 }
