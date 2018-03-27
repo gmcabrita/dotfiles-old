@@ -375,7 +375,9 @@ install_golang() {
         github.com/bettercap/bettercap \
         github.com/sgreben/jp/cmd/jp \
         github.com/genuinetools/weather \
-        golang.org/x/vgo
+        golang.org/x/vgo \
+        github.com/genuinetools/audit \
+        github.com/genuinetools/pepper
 
     gometalinter --install
 }
