@@ -435,7 +435,8 @@ install_rust() {
         cargo-edit \
         ripgrep \
         cargo-fuzz \
-        afl
+        afl \
+        click
 
     rustup run nightly cargo install clippy --force
 }
