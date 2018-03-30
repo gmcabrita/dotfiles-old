@@ -341,15 +341,11 @@ install_golang() {
         github.com/fatih/gomodifytags \
         github.com/lukehoban/go-outline \
         github.com/newhook/go-symbols \
-        golang.org/x/tools/cmd/guru \
-        golang.org/x/tools/cmd/gorename \
         github.com/rogpeppe/godef \
         sourcegraph.com/sqs/goreturns \
         github.com/alecthomas/gometalinter \
         github.com/sourcegraph/go-langserver \
         github.com/golang/lint/golint \
-        golang.org/x/tools/cmd/cover \
-        golang.org/x/tools/cmd/goimports \
         github.com/derekparker/delve/cmd/dlv \
         github.com/uber/go-torch \
         github.com/tsliwowicz/go-wrk \
@@ -377,7 +373,8 @@ install_golang() {
         github.com/genuinetools/weather \
         golang.org/x/vgo \
         github.com/genuinetools/audit \
-        github.com/genuinetools/pepper
+        github.com/genuinetools/pepper \
+        golang.org/x/tools/...
 
     gometalinter --install
 }
