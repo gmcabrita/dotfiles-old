@@ -70,9 +70,6 @@
 	uncommit = reset --soft HEAD^
 	undo = reset HEAD~
 
-	# Prune local branches
-	prune = "git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d"
-
 	# Find branches containing commit
 	fb = "!f() { git branch -a --contains $1; }; f"
 
@@ -95,8 +92,6 @@
 	followTags = true
 [pull]
 	rebase = true
-[fetch]
-	prune = true
 
 # URL shorthands
 [url "git@github.com:"]
