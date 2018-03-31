@@ -191,6 +191,8 @@ base() {
         heaptrack \
         snapd-xdg-open \
         massif-visualizer \
+        ncdu \
+        ranger \
         "linux-headers-$(uname -r)"
 
     # micro editor
