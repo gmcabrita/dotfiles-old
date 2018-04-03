@@ -376,6 +376,7 @@ install_golang() {
         golang.org/x/vgo \
         github.com/genuinetools/audit \
         github.com/genuinetools/pepper \
+        github.com/spf13/cobra/cobra \
         github.com/gobuffalo/pop/... \
         golang.org/x/tools/...
 
