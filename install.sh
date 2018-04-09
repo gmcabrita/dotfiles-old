@@ -378,7 +378,8 @@ install_golang() {
         github.com/genuinetools/pepper \
         github.com/spf13/cobra/cobra \
         github.com/gobuffalo/pop/... \
-        golang.org/x/tools/...
+        golang.org/x/tools/... \
+        github.com/dinedal/textql/...
 
     gometalinter --install
 }
