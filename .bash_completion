@@ -1,10 +1,7 @@
 #!/bin/bash
 # Bash completions
 
-
-
 # teleport: tp
-
 _teleport-command()
 {
 	local opts
@@ -37,7 +34,6 @@ _teleport-command()
 }
 
 # teleport: tpa
-
 _teleportalias-command()
 {
 	local opts
@@ -57,7 +53,6 @@ _teleportalias-command()
 }
 
 # gg/ggg
-
 _gg_complete-command()
 {
     COMPREPLY=()
@@ -70,5 +65,8 @@ _gg_complete-command()
 
 complete -o default -F _teleport-command tp
 complete -o default -F _teleportalias-command tpa
-complete -o default -F _gg_complete-command gg 
-complete -o default -F _gg_complete-command ggg 
+complete -o default -F _gg_complete-command gg
+complete -o default -F _gg_complete-command ggg
+
+# others
+source <(kubectl completion bash)
