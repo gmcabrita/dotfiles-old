@@ -226,3 +226,7 @@ function ggg() {
 function xopen() {
 	xdg-open "$@" 2>/dev/null
 }
+
+function logbook() {
+    micro "$HOME/Dropbox/logbook/$(date '+%Y-%m-%d').md"
+}
