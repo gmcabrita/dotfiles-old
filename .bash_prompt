@@ -12,13 +12,16 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 fi;
 
 prompt_kubectl() {
-    local hasContext=$(kubectl config current-context &>/dev/null; echo "${?}")
+    local hasContext;
+    local namespace;
+    local context;
+    hasContext=$(kubectl config current-context &>/dev/null; echo "${?}");
 
     if [[ "$hasContext" == "0" ]]; then
-        local namespace="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"
-        local context="$(kubectl config current-context)"
+        namespace="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)";
+        context="$(kubectl config current-context)";
         if [[ -z "$namespace" ]]; then
-            namespace="default"
+            namespace="default";
         fi
 
         echo -e "${1}${cyan}${namespace}${white}:${cyan}${context}";
