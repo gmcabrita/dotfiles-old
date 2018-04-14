@@ -11,6 +11,20 @@ elif infocmp xterm-256color >/dev/null 2>&1; then
 	export TERM='xterm-256color';
 fi;
 
+prompt_kubectl() {
+    local hasContext=$(kubectl config current-context &>/dev/null; echo "${?}")
+
+    if [[ "$hasContext" == "0" ]]; then
+        local namespace="$(kubectl config view --minify --output 'jsonpath={..namespace}' 2>/dev/null)"
+        local context="$(kubectl config current-context)"
+        if [[ -z "$namespace" ]]; then
+            namespace="default"
+        fi
+
+        echo -e "${1}${cyan}${namespace}${white}:${cyan}${context}";
+    fi
+}
+
 prompt_git() {
 	local s='';
 	local branchName='';
@@ -117,6 +131,7 @@ PS1+="\[${hostStyle}\]\h"; # host
 PS1+="\[${white}\] in ";
 PS1+="\[${green}\]\w"; # working directory full path
 PS1+="\$(prompt_git \"\[${white}\] on \[${violet}\]\" \"\[${blue}\]\")"; # Git repository details
+PS1+="\$(prompt_kubectl \"\[${white}\] with \[${violet}\]\")"; # Kubernetes context details
 PS1+="\n";
 PS1+="\[${white}\]\$ \[${reset}\]"; # `$` (and reset color)
 export PS1;
