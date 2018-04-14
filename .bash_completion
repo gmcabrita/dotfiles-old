@@ -1,73 +1,11 @@
 #!/bin/bash
 # Bash completions
 
-# teleport: tp
-_teleport-command()
-{
-	local opts
-	local cur
-	COMPREPLY=()
-	cur=${COMP_WORDS[COMP_CWORD]}
-
-	opts=""
-
-	# HISTORY COMPLETION
-	while read -r i; do
-		opts="$opts $(basename "$i")"
-	done < ~/.tp_history
-
-	# CURRENT DIR COMPLETION
-	if [ -z "$cur" ]; then
-		cdir="."
-	elif [[ "${cur:${#cur} - 1}" == '/' ]]; then
-		cdir="$cur"
-	else
-		cdir=$(command dirname "${cur}")
-	fi
-
-	for i in $(command ls "$cdir" 2>/dev/null);  do
-		opts="$opts $(basename "$i")"
-	done
-
-	COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-	return 0
-}
-
-# teleport: tpa
-_teleportalias-command()
-{
-	local opts
-	local cur
-	COMPREPLY=()
-	cur=${COMP_WORDS[COMP_CWORD]}
-
-	opts=""
-
-	# ALIAS COMPLETION
-	while read -r i; do
-		opts="$opts ${i//:*/}"
-	done < ~/.tp_aliases
-
-	COMPREPLY=( $(compgen -W "${opts}" -- "${cur}") )
-	return 0
-}
-
-# gg/ggg
-_gg_complete-command()
-{
-    COMPREPLY=()
-    local cur
-    cur="${COMP_WORDS[COMP_CWORD]}"
-		# shellcheck disable=SC2044
-    COMPREPLY=( $(compgen -W "$(for f in $(find "$GOPATH/src" -mindepth 1 -maxdepth 5 -type d -name "${cur}*" ! -name '.*' ! -path '*/.git/*' ! -path '*/test/*' ! -path '*/Godeps/*' ! -path '*/examples/*'); do echo "${f##*/}"; done)" --  "$cur") )
-    return 0
-}
-
-complete -o default -F _teleport-command tp
-complete -o default -F _teleportalias-command tpa
-complete -o default -F _gg_complete-command gg
-complete -o default -F _gg_complete-command ggg
-
-# others
 # shellcheck disable=SC1090
 source <(kubectl completion bash)
+
+for file in ~/.bash_completions/*; do
+	# shellcheck disable=SC1090
+	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+done;
+unset file;
