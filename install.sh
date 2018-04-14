@@ -416,7 +416,8 @@ install_python() {
         maya \
         records \
         pgcli \
-        isort
+        isort \
+        thefuck
 }
 
 # updates rustup and rust, also installs some rust packages
