@@ -69,4 +69,5 @@ complete -o default -F _gg_complete-command gg
 complete -o default -F _gg_complete-command ggg
 
 # others
+# shellcheck disable=SC1090
 source <(kubectl completion bash)
