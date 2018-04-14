@@ -405,9 +405,7 @@ install_python() {
         pytest \
         nose \
         pycodestyle \
-        prospector \
         flake8 \
-        pylama \
         pydocstyle \
         awscli \
         aws-shell \
@@ -418,10 +416,7 @@ install_python() {
         maya \
         records \
         pgcli \
-        python-language-server \
-        pyls-mypy \
-        isort \
-        pyls-isort
+        isort
 }
 
 # updates rustup and rust, also installs some rust packages
