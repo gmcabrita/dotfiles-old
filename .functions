@@ -228,5 +228,5 @@ function xopen() {
 }
 
 function logbook() {
-    micro "$HOME/Dropbox/logbook/$(date '+%Y-%m-%d').md"
+    $EDITOR "$HOME/Dropbox/logbook/$(date '+%Y-%m-%d').md"
 }
