@@ -1,18 +1,11 @@
-language: bash
 sudo: false
-os:
-  - linux
-matrix:
-  - fast_finish: true
+os: linux
+services:
+  - docker
 install:
-  # Install a custom version of shellcheck instead of Travis CI's default
-  - scversion="stable"
-  - wget "https://storage.googleapis.com/shellcheck/shellcheck-$scversion.linux.x86_64.tar.xz"
-  - tar --xz -xvf "shellcheck-$scversion.linux.x86_64.tar.xz"
-  - shellcheck() { "shellcheck-$scversion/shellcheck" "$@"; }
-  - shellcheck --version
+  - docker pull koalaman/shellcheck:stable
 script:
- - make test
+  - make test
 after_success:
   - wget https://raw.githubusercontent.com/k3rn31p4nic/travis-ci-discord-webhook/master/send.sh
   - chmod +x send.sh
