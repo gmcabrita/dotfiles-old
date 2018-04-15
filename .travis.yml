@@ -1,11 +1,16 @@
 language: bash
 sudo: false
-addons:
-  apt:
-    packages:
-    - shellcheck
-script:
- - make test
+os:
+  - linux
 matrix:
   - fast_finish: true
+install:
+  # Install a custom version of shellcheck instead of Travis CI's default
+  - scversion="stable"
+  - wget "https://storage.googleapis.com/shellcheck/shellcheck-$scversion.linux.x86_64.tar.xz"
+  - tar --xz -xvf "shellcheck-$scversion.linux.x86_64.tar.xz"
+  - shellcheck() { "shellcheck-$scversion/shellcheck" "$@"; }
+  - shellcheck --version
+script:
+ - make test
 
