@@ -75,14 +75,10 @@ alias update='sudo apt update && sudo apt upgrade'
 
 # IP addresses
 alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
-alias ips="ifconfig -a | grep -o 'inet6\? \(addr:\)\?\s\?\(\(\([0-9]\+\.\)\{3\}[0-9]\+\)\|[a-fA-F0-9:]\+\)' | awk '{ sub(/inet6? (addr:)? ?/, \"\"); print }'"
-
-# Show active network interfaces
-alias ifactive="ifconfig | pcregrep -M -o '^[^\t:]+:([^\n]|\n\t)*status: active'"
 
 # View HTTP traffic
 alias sniff="sudo ngrep -t '^(GET|POST) ' 'tcp and port 80'"
-alias httpdump="sudo tcpdump -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\""
+alias httpdump="sudo tcpdump -n -s 0 -w - | grep -a -o -E \"Host\\: .*|GET \\/.*\""
 
 # Canonical hex dump; some systems have this symlinked
 command -v hd > /dev/null || alias hd="hexdump -C"
@@ -94,7 +90,7 @@ command -v md5sum > /dev/null || alias md5sum="md5"
 command -v sha1sum > /dev/null || alias sha1sum="shasum"
 
 # Trim new lines and copy to clipboard
-alias c="tr -d '\n' | xclip"
+alias c="tr -d '\\n' | xclip"
 
 # URL-encode strings
 alias urlencode='python -c "import sys, urllib as ul; print ul.quote_plus(sys.argv[1]);"'
