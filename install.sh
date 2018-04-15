@@ -119,7 +119,6 @@ base() {
         wrk \
         graphviz \
         bash-completion \
-        shellcheck \
         readline-common \
         ncurses-base \
         openssl \
@@ -203,6 +202,9 @@ base() {
 
     # asciinema
     snap install asciinema --classic
+
+    # edge shellcheck
+    snap install --channel=edge shellcheck
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
