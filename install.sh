@@ -400,21 +400,12 @@ install_python() {
         flask \
         django \
         sqlalchemy \
-        pylint \
         autopep8 \
-        pytest \
-        nose \
-        pycodestyle \
         flake8 \
-        pydocstyle \
         awscli \
         aws-shell \
         matplotlib \
-        pandas \
         httpie \
-        tablib \
-        maya \
-        records \
         pgcli \
         isort \
         thefuck
