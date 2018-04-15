@@ -478,6 +478,11 @@ install_kube() {
     asdf plugin-add kubecfg https://github.com/Banno/asdf-ksonnet.git || true
     asdf install kubecfg "$kubecfgv" || true
     asdf global kubecfg "$kubecfgv"
+
+    conduitv=$(curl -s https://api.github.com/repos/runconduit/conduit/releases/latest | jq -r ".tag_name" | sed -e "s/v//")
+    asdf plugin-add conduit https://github.com/gmcabrita/asdf-conduit.git || true
+    asdf install conduit "$conduitv" || true
+    asdf global conduit "$conduitv"
 }
 
 # updates the local dotfiles with the ones in the repository
