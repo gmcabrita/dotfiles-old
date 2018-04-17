@@ -490,6 +490,11 @@ install_kube() {
     asdf plugin-add tflint  https://github.com/RykHawthorn/asdf-tflint.git || true
     asdf install tflint "$tflintv" || true
     asdf global tflint "$tflintv"
+
+    kubevalv=$(curl -s https://api.github.com/repos/garethr/kubeval/releases/latest | jq -r ".tag_name")
+    asdf plugin-add kubeval  https://github.com/gmcabrita/asdf-kubeval.git || true
+    asdf install kubeval "$kubevalv" || true
+    asdf global kubeval "$kubevalv"
 }
 
 # updates the local dotfiles with the ones in the repository
