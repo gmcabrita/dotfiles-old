@@ -485,6 +485,11 @@ install_kube() {
     asdf plugin-add conduit https://github.com/gmcabrita/asdf-conduit.git || true
     asdf install conduit "$conduitv" || true
     asdf global conduit "$conduitv"
+
+    tflintv=$(curl -s https://api.github.com/repos/wata727/tflint/releases/latest | jq -r ".tag_name" | sed -e "s/v//")
+    asdf plugin-add tflint  https://github.com/RykHawthorn/asdf-tflint.git || true
+    asdf install tflint "$tflintv" || true
+    asdf global tflint "$tflintv"
 }
 
 # updates the local dotfiles with the ones in the repository
