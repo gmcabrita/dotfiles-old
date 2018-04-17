@@ -381,7 +381,8 @@ install_golang() {
         github.com/spf13/cobra/cobra \
         github.com/gobuffalo/pop/... \
         golang.org/x/tools/... \
-        github.com/dinedal/textql/...
+        github.com/dinedal/textql/... \
+        github.com/mauve/terraform-index
 
     gometalinter --install
 }
