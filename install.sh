@@ -466,6 +466,8 @@ install_kube() {
     asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git || true
     asdf install terraform "$terraformv" || true
     asdf global terraform "$terraformv"
+    terraform -uninstall-autocomplete || true
+    terraform -install-autocomplete || true
 
     minikubev=$(curl -s https://storage.googleapis.com/minikube/releases.json | jq -r ".[0].name" | sed -e "s/v//")
     asdf plugin-add minikube https://github.com/alvarobp/asdf-minikube.git || true
