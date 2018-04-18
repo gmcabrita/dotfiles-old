@@ -192,6 +192,7 @@ base() {
         massif-visualizer \
         ncdu \
         ranger \
+        xdot \
         "linux-headers-$(uname -r)"
 
     # micro editor
