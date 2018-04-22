@@ -85,19 +85,6 @@ setup_sources() {
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
 }
 
-# installs the vanilla gnome desktop and a nice shell and icon theme
-install_gnome() {
-    apt update
-    apt install -y \
-        vanilla-gnome-desktop \
-        dconf-tools \
-        gnome-tweak-tool \
-        arc-theme \
-        elementary-icon-theme \
-        gnome-shell-extensions \
-        chrome-gnome-shell
-}
-
 # installs the base packages
 base() {
     apt update
@@ -183,6 +170,9 @@ base() {
         xdot \
         "linux-headers-$(uname -r)"
 
+    # locally install git-lfs
+    sudo su -c "$TARGET_USER" -c git lfs install
+
     # micro editor
     snap install micro --classic
 
@@ -194,15 +184,6 @@ base() {
 
     # edge shellcheck
     snap install --channel=edge shellcheck --classic
-
-    # slack
-    snap install slack --classic
-
-    # discord
-    snap install discord --classic
-
-    # spotify
-    snap install spotify --classic
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
@@ -223,24 +204,27 @@ full() {
         vlc \
         alsa-tools-gui \
         fonts-hack-ttf \
-        scrot \
         ttf-ubuntu-font-family \
         arandr \
         xclip \
-        texlive-full \
-        pandoc \
         libvirt-bin \
         qemu-kvm \
         enpass \
         code \
         google-chrome-stable \
         dropbox \
-        postgresql \
         ubuntu-restricted-extras \
         keybase \
-        hollywood \
-        wallstreet \
         yubikey-piv-manager
+
+    # slack
+    snap install slack --classic
+
+    # discord
+    snap install discord --classic
+
+    # spotify
+    snap install spotify --classic
 
     # setup kvm for non-root
     usermod -aG libvirt "$TARGET_USER"
@@ -263,14 +247,6 @@ full() {
 install_fonts() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
     cp -r .fonts/* /usr/share/fonts
-}
-
-# fixes spotify so it can play local files
-fix_spotify() {
-    wget -N https://github.com/ramedeiros/spotify_libraries/raw/master/libavcodec.so.54.71.100 -O /usr/lib/x86_64-linux-gnu/libavcodec.so.54
-    wget -N https://github.com/ramedeiros/spotify_libraries/raw/master/libavformat.so.54.36.100 -O /usr/lib/x86_64-linux-gnu/libavformat.so.54
-    wget -N https://github.com/ramedeiros/spotify_libraries/raw/master/libavutil.so.52.6.100 -O /usr/lib/x86_64-linux-gnu/libavutil.so.52
-    ldconfig
 }
 
 # checks if asdf is installed and installs it
@@ -400,8 +376,7 @@ install_python() {
         matplotlib \
         httpie \
         pgcli \
-        isort \
-        thefuck
+        isort
 }
 
 # updates rustup and rust, also installs some rust packages
@@ -417,8 +392,7 @@ install_rust() {
         cargo-edit \
         ripgrep \
         cargo-fuzz \
-        afl \
-        click
+        afl
 
     rustup run nightly cargo install clippy --force
 }
@@ -447,7 +421,6 @@ install_nodejs() {
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
-    npm -g install dockerlint javascript-typescript-langserver diff2html-cli
 }
 
 # installs terraform and some kubernetes utilities
@@ -479,11 +452,6 @@ install_kube() {
     asdf install conduit "$conduitv" || true
     asdf global conduit "$conduitv"
 
-    tflintv=$(curl -s https://api.github.com/repos/wata727/tflint/releases/latest | jq -r ".tag_name" | sed -e "s/v//")
-    asdf plugin-add tflint  https://github.com/RykHawthorn/asdf-tflint.git || true
-    asdf install tflint "$tflintv" || true
-    asdf global tflint "$tflintv"
-
     kubevalv=$(curl -s https://api.github.com/repos/garethr/kubeval/releases/latest | jq -r ".tag_name")
     asdf plugin-add kubeval  https://github.com/gmcabrita/asdf-kubeval.git || true
     asdf install kubeval "$kubevalv" || true
@@ -504,8 +472,6 @@ get_dotfiles() {
         --exclude "Makefile" \
         -avh --no-perms . ~
 
-    # dconf load /org/gnome/ < .dconf
-
     # shellcheck disable=SC1090
     . ~/.bash_profile
 }
@@ -514,7 +480,7 @@ usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
     echo "  linux                     - setup sources & install os pkgs"
-    echo "  all                       - does everything below"
+    echo "  all                       - dotfiles + asdf + python + go + rust + nodejs + kube"
     echo "  dotfiles                  - fetch dotfiles"
     echo "  asdf                      - install asdf and plugins"
     echo "  python                    - install python and packages"
@@ -522,7 +488,6 @@ usage() {
     echo "  rust                      - install rust and packages"
     echo "  nodejs                    - install nodejs"
     echo "  kube                      - install minikube, kubectl, etc"
-    echo "  elixir                    - install erlang and elixir"
 }
 
 main() {
@@ -538,9 +503,7 @@ main() {
         get_user
         setup_sources
         full
-        # install_gnome
         install_fonts
-        # fix_spotify
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles
@@ -555,7 +518,6 @@ main() {
         install_rust
         install_nodejs
         install_kube
-        install_elixir
     elif [[ $cmd == "asdf" ]]; then
         check_isnt_sudo
         check_asdf_and_install
@@ -571,10 +533,10 @@ main() {
         check_isnt_sudo
         check_rustup_and_install
         install_rust
-    elif [[ $cmd == "elixir" ]]; then
-        check_isnt_sudo
-        check_asdf_and_install
-        install_elixir
+    # elif [[ $cmd == "elixir" ]]; then
+    #     check_isnt_sudo
+    #     check_asdf_and_install
+    #     install_elixir
     elif [[ $cmd == "nodejs" ]]; then
         check_isnt_sudo
         check_asdf_and_install
