@@ -14,6 +14,10 @@ dotfiles:
 go:
 	./install.sh golang
 
+# rust
+rust:
+	./install.sh rust
+
 # python
 python:
 	./install.sh python
