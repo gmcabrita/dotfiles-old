@@ -193,7 +193,7 @@ base() {
     snap install asciinema --classic
 
     # edge shellcheck
-    snap install --channel=edge shellcheck
+    snap install --channel=edge shellcheck --classic
 
     # slack
     snap install slack --classic
