@@ -480,9 +480,7 @@ usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
     echo "  linux                     - setup sources & install os pkgs"
-    echo "  all                       - dotfiles + asdf + python + go + rust + nodejs + kube"
     echo "  dotfiles                  - fetch dotfiles"
-    echo "  asdf                      - install asdf and plugins"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
     echo "  nodejs                    - install nodejs"
@@ -506,20 +504,6 @@ main() {
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles
-    elif [[ $cmd == "all" ]]; then
-        check_isnt_sudo
-        get_dotfiles
-        check_asdf_and_install
-        check_pyenv_and_install
-        install_python
-        install_golang
-        check_rustup_and_install
-        install_rust
-        install_nodejs
-        install_kube
-    elif [[ $cmd == "asdf" ]]; then
-        check_isnt_sudo
-        check_asdf_and_install
     elif [[ $cmd == "golang" ]]; then
         check_isnt_sudo
         check_asdf_and_install
@@ -528,10 +512,10 @@ main() {
         check_isnt_sudo
         check_pyenv_and_install
         install_python
-    elif [[ $cmd == "rust" ]]; then
-        check_isnt_sudo
-        check_rustup_and_install
-        install_rust
+    # elif [[ $cmd == "rust" ]]; then
+    #     check_isnt_sudo
+    #     check_rustup_and_install
+    #     install_rust
     # elif [[ $cmd == "elixir" ]]; then
     #     check_isnt_sudo
     #     check_asdf_and_install

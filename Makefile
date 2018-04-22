@@ -1,32 +1,28 @@
 .PHONY: update test
 
-all: base dotfiles go python elixir rust nodejs kube
+all: linux dotfiles go python nodejs kube
 
-# installs the base system
-base:
-	sudo ./install.sh base
+# installs the base linux system
+linux:
+	sudo ./install.sh linux
 
-# pulls the latest changes and updates the dotfiles
+# updates the dotfiles
 dotfiles:
 	./install.sh dotfiles
 
-# go
+# installs go
 go:
 	./install.sh golang
 
-# rust
-rust:
-	./install.sh rust
-
-# python
+# installs python
 python:
 	./install.sh python
 
-# nodejs
+# installs nodejs
 nodejs:
 	./install.sh nodejs
 
-# kube
+# installs kubernetes related utils
 kube:
 	./install.sh kube
 
