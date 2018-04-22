@@ -7,7 +7,7 @@ source <(kubectl completion bash)
 source <(conduit completion bash)
 
 for file in ~/.bash_completions/*; do
-	# shellcheck disable=SC1090
-	[ -r "$file" ] && [ -f "$file" ] && source "$file";
+    # shellcheck disable=SC1090
+    [ -r "$file" ] && [ -f "$file" ] && source "$file";
 done;
 unset file;

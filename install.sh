@@ -480,12 +480,11 @@ usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
     echo "  linux                     - setup sources & install os pkgs"
-    echo "  all                       - dotfiles + asdf + python + go + rust + nodejs + kube"
+    echo "  all                       - dotfiles + asdf + python + go + nodejs + kube"
     echo "  dotfiles                  - fetch dotfiles"
     echo "  asdf                      - install asdf and plugins"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
-    echo "  rust                      - install rust and packages"
     echo "  nodejs                    - install nodejs"
     echo "  kube                      - install minikube, kubectl, etc"
 }
@@ -529,10 +528,10 @@ main() {
         check_isnt_sudo
         check_pyenv_and_install
         install_python
-    elif [[ $cmd == "rust" ]]; then
-        check_isnt_sudo
-        check_rustup_and_install
-        install_rust
+    # elif [[ $cmd == "rust" ]]; then
+    #     check_isnt_sudo
+    #     check_rustup_and_install
+    #     install_rust
     # elif [[ $cmd == "elixir" ]]; then
     #     check_isnt_sudo
     #     check_asdf_and_install

@@ -2,5 +2,5 @@
 # Bash wrappers for docker commands
 
 dcleanup(){
-	docker system prune --all --volumes
+    docker system prune --all --volumes
 }

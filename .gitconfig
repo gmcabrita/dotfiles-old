@@ -1,110 +1,110 @@
 [user]
-	email = _@gmcabrita.com
-	name = Gonçalo Cabrita
+    email = _@gmcabrita.com
+    name = Gonçalo Cabrita
 [credential]
-	helper = cache --timeout 3600
+    helper = cache --timeout 3600
 [core]
-	editor = micro
-	fscache = true
-	autocrlf = false
-	excludesfile = ~/.gitignore_global
+    editor = micro
+    fscache = true
+    autocrlf = false
+    excludesfile = ~/.gitignore_global
 [color]
-	ui = auto
+    ui = auto
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold # line info
-	old = red # deletions
-	new = green # additions
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
 [gist]
-	private = yes
+    private = yes
 [diff "bin"]
-	# Use `hexdump` to diff binary files
-	textconv = hexdump -v -C
+    # Use `hexdump` to diff binary files
+    textconv = hexdump -v -C
 [alias]
-	# Commit all changes
-	ca = !git add -A && git commit -av
+    # Commit all changes
+    ca = !git add -A && git commit -av
 
-	# Quick commit
-	c = commit
+    # Quick commit
+    c = commit
 
-	# Quick add
-	a = add
+    # Quick add
+    a = add
 
-	# Quick push
-	p = push
+    # Quick push
+    p = push
 
-	# Quick status
-	s = status
+    # Quick status
+    s = status
 
-	# Quick log
-	l = log
+    # Quick log
+    l = log
 
-	# Quick diff
-	d = diff
-	ds = diff --staged
+    # Quick diff
+    d = diff
+    ds = diff --staged
 
-	# View history graph
-	graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+    # View history graph
+    graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
-	# View abbreviated SHA, description, and history graph of the latest 20 commits
-	ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    ll = log --pretty=oneline -n 20 --graph --abbrev-commit
 
-	# Show verbose output about tags, branches or remotes
-	tags = tag -l
-	branches = branch -a
-	remotes = remote -v
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
 
-	# Quick commit ammend
-	amend = commit --amend
+    # Quick commit ammend
+    amend = commit --amend
 
-	delete = branch -D
-	unstage = reset HEAD --
-	uncommit = reset --soft HEAD^
-	undo = reset HEAD~
+    delete = branch -D
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD^
+    undo = reset HEAD~
 
-	cleanup = "!f() { git remote prune origin; git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d; }; f"
+    cleanup = "!f() { git remote prune origin; git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d; }; f"
 
-	# Find branches containing commit
-	fb = "!f() { git branch -a --contains $1; }; f"
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
 
-	# Find tags containing commit
-	ft = "!f() { git describe --always --contains $1; }; f"
+    # Find tags containing commit
+    ft = "!f() { git describe --always --contains $1; }; f"
 
-	# Find commits by commit message
-	fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
 
-	# Word-based diff
-	wdiff = diff --color-words
+    # Word-based diff
+    wdiff = diff --color-words
 
-	# List contributors with number of commits
-	contributors = shortlog --summary --numbered
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered
 [apply]
-	# Detect whitespace errors when applying a patch
-	whitespace = fix
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
 [push]
-	default = simple
-	followTags = true
+    default = simple
+    followTags = true
 [pull]
-	rebase = true
+    rebase = true
 
 # URL shorthands
 [url "git@github.com:"]
-	insteadOf = "gh:"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
 [url "git://github.com/"]
-	insteadOf = "github:"
+    insteadOf = "github:"
 [url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
 [url "git://gist.github.com/"]
-	insteadOf = "gist:"
+    insteadOf = "gist:"

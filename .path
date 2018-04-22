@@ -7,8 +7,12 @@ export ERL_AFLAGS="-kernel shell_history enabled"
 . $HOME/.asdf/asdf.sh
 . $HOME/.tp_command
 
-export GOROOT=$(go env GOROOT)
+if command -v go &> /dev/null; then
+    export GOROOT=$(go env GOROOT)
+fi
 
-export PATH="/home/gmc/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+if command -v pyenv &> /dev/null; then
+    export PATH="/home/gmc/.pyenv/bin:$PATH"
+    eval "$(pyenv init -)"
+    eval "$(pyenv virtualenv-init -)"
+fi

@@ -18,14 +18,6 @@ go:
 python:
 	./install.sh python
 
-# elixir + erlang
-elixir:
-	./install.sh elixir
-
-# rust
-rust:
-	./install.sh rust
-
 # nodejs
 nodejs:
 	./install.sh nodejs
