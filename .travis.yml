@@ -1,9 +1,16 @@
 sudo: false
 os: linux
-services:
-  - docker
 install:
-  - docker pull koalaman/shellcheck:stable
+  - | # setup ~/.local/bin
+    mkdir -p ~/.local/bin;
+    export PATH=$HOME/.local/bin:$PATH;
+  - | # download shellcheck
+    shellcheck_tarball="shellcheck-stable.linux.x86_64.tar.xz";
+    wget "https://storage.googleapis.com/shellcheck/${shellcheck_tarball}";
+    tar --xz -xvf "${shellcheck_tarball}";
+    mv shellcheck-stable/shellcheck ~/.local/bin/shellcheck;
+    rm -r shellcheck-stable;
+    rm "${shellcheck_tarball}";
 script:
   - make test
 after_success:

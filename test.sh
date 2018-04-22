@@ -8,7 +8,7 @@ ERRORS=()
 for f in $(find . -type f -not -iwholename '*.git*' -not -name 'pomf' -not -path './.local/**' | sort -u); do
 	if file "$f" | grep --quiet shell; then
 		{
-			docker run -v "$PWD:/mnt" koalaman/shellcheck "$f" && echo "[OK]: sucessfully linted $f"
+			shellcheck "$f" && echo "[OK]: sucessfully linted $f"
 		} || {
 			# add to errors
 			ERRORS+=("$f")
