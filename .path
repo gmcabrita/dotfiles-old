@@ -1,16 +1,20 @@
+#!/bin/bash
+
 export GOPATH=$HOME/Projects/go
 export PATH=/usr/local/bin:/usr/local/sbin:$GOPATH/bin:$HOME/.cargo/bin:~/.bin:$PATH
 export RUST_SRC_PATH=$HOME/.multirust/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/src
 export ERL_AFLAGS="-kernel shell_history enabled"
 
-
-. $HOME/.tp_command
+# shellcheck source=/dev/null
+. "$HOME/.tp_command"
 
 if [ -f "$HOME/.asdf/asdf.sh" ]; then
+    # shellcheck source=/dev/null
     . "$HOME/.asdf/asdf.sh"
 fi
 
 if command -v go &> /dev/null; then
+    # shellcheck disable=SC2155
     export GOROOT=$(go env GOROOT)
 fi
 
