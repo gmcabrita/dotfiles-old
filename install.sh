@@ -72,21 +72,9 @@ setup_sources() {
     apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
     echo "deb http://linux.dropbox.com/${os} xenial main" > /etc/apt/sources.list.d/dropbox.list
 
-    # slack
-    curl -fsSL https://packagecloud.io/slacktechnologies/slack/gpgkey | apt-key add -
-    echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list
-    echo "deb-src https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" >> /etc/apt/sources.list.d/slack.list
-
-    # spotify
-    apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0DF731E45CE24F27EEEB1450EFDC8610341D9410
-    echo "deb http://repository.spotify.com stable non-free" > /etc/apt/sources.list.d/spotify.list
-
     # enpass
     curl -fsSL https://dl.sinew.in/keys/enpass-linux.key | apt-key add -
     echo "deb http://repo.sinew.in/ stable main" > /etc/apt/sources.list.d/enpass.list
-
-    # zeal
-    add-apt-repository -y ppa:zeal-developers/ppa
 
     # keybase
     curl -fsSL https://keybase.io/docs/server_security/code_signing_key.asc | apt-key add -
@@ -207,6 +195,15 @@ base() {
     # edge shellcheck
     snap install --channel=edge shellcheck
 
+    # slack
+    snap install slack --classic
+
+    # discord
+    snap install discord --classic
+
+    # spotify
+    snap install spotify --classic
+
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
@@ -234,24 +231,16 @@ full() {
         pandoc \
         libvirt-bin \
         qemu-kvm \
-        zeal \
         enpass \
         code \
-        spotify-client \
         google-chrome-stable \
         dropbox \
-        slack-desktop \
         postgresql \
         ubuntu-restricted-extras \
         keybase \
         hollywood \
         wallstreet \
         yubikey-piv-manager
-
-    # install discord
-    curl -so discord.deb https://dl.discordapp.net/apps/linux/0.0.4/discord-0.0.4.deb
-    apt install -y ./discord.deb
-    rm ./discord.deb
 
     # setup kvm for non-root
     usermod -aG libvirt "$TARGET_USER"
@@ -551,7 +540,7 @@ main() {
         full
         # install_gnome
         install_fonts
-        fix_spotify
+        # fix_spotify
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles
