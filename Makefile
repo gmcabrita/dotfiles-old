@@ -1,6 +1,6 @@
 .PHONY: update test
 
-all: linux dotfiles go python nodejs kube
+all: linux dotfiles go rust python nodejs kube
 
 # installs the base linux system
 linux:
