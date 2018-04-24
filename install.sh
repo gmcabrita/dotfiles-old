@@ -457,6 +457,11 @@ install_kube() {
     asdf plugin-add kubeval  https://github.com/gmcabrita/asdf-kubeval.git || true
     asdf install kubeval "$kubevalv" || true
     asdf global kubeval "$kubevalv"
+
+    helmv=$(curl -s https://api.github.com/repos/kubernetes/helm/releases/latest | jq -r ".tag_name" | sed -e "s/v//")
+    asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git || true
+    asdf install helm "$helmv" || true
+    asdf global helm "$helmv"
 }
 
 # updates the local dotfiles with the ones in the repository
