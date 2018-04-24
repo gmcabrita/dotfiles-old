@@ -165,6 +165,7 @@ base() {
         heaptrack \
         snapd-xdg-open \
         massif-visualizer \
+        lldb \
         ncdu \
         ranger \
         xdot \
