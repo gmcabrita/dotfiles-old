@@ -360,6 +360,7 @@ install_python() {
     pyenv global "$pythonv"
 
     pip install -U \
+        pip \
         pipenv \
         docker-compose \
         ipython \
