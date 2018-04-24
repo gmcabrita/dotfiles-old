@@ -18,7 +18,7 @@ if command -v go &> /dev/null; then
     export GOROOT=$(go env GOROOT)
 fi
 
-if command -v pyenv &> /dev/null; then
+if [ -d "$HOME/.pyenv" ]; then
     export PATH="$HOME/.pyenv/bin:$PATH"
     eval "$(pyenv init -)"
     eval "$(pyenv virtualenv-init -)"
