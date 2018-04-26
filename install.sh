@@ -348,6 +348,7 @@ install_golang() {
         github.com/gobuffalo/pop/... \
         golang.org/x/tools/... \
         github.com/dinedal/textql/... \
+        github.com/kevinburke/tss \
         github.com/mauve/terraform-index
 
     gometalinter --install
