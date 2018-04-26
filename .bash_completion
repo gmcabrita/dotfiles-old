@@ -5,6 +5,8 @@
 source <(kubectl completion bash)
 # shellcheck disable=SC1090
 source <(conduit completion bash)
+# shellcheck disable=SC1090
+source <(helm completion bash)
 
 for file in ~/.bash_completions/*; do
     # shellcheck disable=SC1090
