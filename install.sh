@@ -350,7 +350,6 @@ install_golang() {
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
         github.com/ckaznocha/protoc-gen-lint \
         google.golang.org/grpc \
-        github.com/ajstarks/svgo/benchviz \
         github.com/uudashr/gopkgs/cmd/gopkgs \
         github.com/netlify/netlifyctl \
         github.com/sgreben/jp/cmd/jp \
@@ -363,6 +362,7 @@ install_golang() {
         golang.org/x/tools/... \
         github.com/dinedal/textql/... \
         github.com/kevinburke/tss \
+        golang.org/x/perf/... \
         github.com/mauve/terraform-index
 
     gometalinter --install
