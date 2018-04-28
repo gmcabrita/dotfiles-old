@@ -232,9 +232,6 @@ full() {
     # spotify
     snap install spotify --classic
 
-    # setup kvm for non-root
-    usermod -aG libvirt "$TARGET_USER"
-
     # set docker to autostart
     systemctl enable docker
 
