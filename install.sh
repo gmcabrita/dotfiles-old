@@ -227,7 +227,8 @@ full() {
         dropbox \
         ubuntu-restricted-extras \
         keybase \
-        yubikey-piv-manager
+        yubikey-piv-manager \
+        albert
 
     # slack
     snap install slack --classic
