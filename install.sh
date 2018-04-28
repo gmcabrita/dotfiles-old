@@ -102,6 +102,7 @@ base() {
         software-properties-common \
         libssh2-1-dev \
         libgit2-dev \
+        cmake \
         libcurl3 \
         liblttng-ust0 \
         libpcap-dev \
