@@ -88,6 +88,10 @@ setup_sources() {
     # vscode
     curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
+
+    # albert
+    curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_16.10/Release.key | apt-key add -
+    echo "deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_16.04/ /" > /etc/apt/sources.list.d/albert.list
 }
 
 # installs the base packages
@@ -231,8 +235,8 @@ full() {
 
     # discord
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
-    apt install -y discord.deb
-    rm discord.db
+    apt install -y ./discord.deb
+    rm discord.deb
 
     # set docker to autostart
     systemctl enable docker
