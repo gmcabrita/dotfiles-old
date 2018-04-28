@@ -1,12 +1,20 @@
 #!/bin/bash
 # Bash completions
 
-# shellcheck disable=SC1090
-source <(kubectl completion bash)
-# shellcheck disable=SC1090
-source <(conduit completion bash)
-# shellcheck disable=SC1090
-source <(helm completion bash)
+if command -v kubectl >/dev/null; then
+    # shellcheck disable=SC1090
+    source <(kubectl completion bash)
+fi
+
+if command -v conduit >/dev/null; then
+    # shellcheck disable=SC1090
+    source <(conduit completion bash)
+fi
+
+if command -v helm >/dev/null; then
+    # shellcheck disable=SC1090
+    source <(helm completion bash)
+fi
 
 for file in ~/.bash_completions/*; do
     # shellcheck disable=SC1090
