@@ -8,7 +8,7 @@ linux:
 
 # updates the dotfiles
 dotfiles:
-	./install.sh dotfiles
+	./install.sh dotfiles || true
 
 # installs go
 go:
