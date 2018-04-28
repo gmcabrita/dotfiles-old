@@ -41,20 +41,17 @@ setup_sources_base() {
         ca-certificates \
         software-properties-common
 
-    dist=$(lsb_release -cs)
-    os=$(lsb_release -is | awk '{ print tolower($1) }')
-
     # google cloud sdk
-    echo "deb http://packages.cloud.google.com/apt cloud-sdk-${dist} main"  > /etc/apt/sources.list.d/google-cloud-sdk.list
+    echo "deb http://packages.cloud.google.com/apt cloud-sdk-xenial main"  > /etc/apt/sources.list.d/google-cloud-sdk.list
     curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key add -
 
     # docker
-    curl -fsSL https://download.docker.com/linux/"${os}"/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/${os} ${dist} edge" > /etc/apt/sources.list.d/docker.list
+    curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial edge" > /etc/apt/sources.list.d/docker.list
 
     # bcc-tools
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys D4284CDD
-    echo "deb https://repo.iovisor.org/apt/${dist} ${dist} main" > /etc/apt/sources.list.d/bcc.list
+    echo "deb https://repo.iovisor.org/apt/xenial xenial main" > /etc/apt/sources.list.d/bcc.list
 
     # yubico
     add-apt-repository ppa:yubico/stable
@@ -70,7 +67,7 @@ setup_sources() {
 
     # dropbox
     apt-key adv --keyserver pgp.mit.edu --recv-keys 1C61A2656FB57B7E4DE0F4C1FC918B335044912E
-    echo "deb http://linux.dropbox.com/${os} xenial main" > /etc/apt/sources.list.d/dropbox.list
+    echo "deb http://linux.dropbox.com/ubuntu xenial main" > /etc/apt/sources.list.d/dropbox.list
 
     # enpass
     curl -fsSL https://dl.sinew.in/keys/enpass-linux.key | apt-key add -
