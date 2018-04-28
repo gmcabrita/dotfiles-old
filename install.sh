@@ -56,6 +56,13 @@ setup_sources_base() {
 
     # yubico
     add-apt-repository ppa:yubico/stable
+
+    # git
+    add-apt-repository ppa:git-core/ppa
+
+    # git-lfs
+    curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
+    echo "deb https://packagecloud.io/github/git-lfs/ubuntu/ xenial main" > /etc/apt/sources.list.d/git-lfs.list
 }
 
 # sets up third-party software sources
