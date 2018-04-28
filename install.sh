@@ -226,11 +226,13 @@ full() {
     # slack
     snap install slack --classic
 
-    # discord
-    snap install discord --classic
-
     # spotify
     snap install spotify --classic
+
+    # discord
+    wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+    apt install -y discord.deb
+    rm discord.db
 
     # set docker to autostart
     systemctl enable docker
