@@ -90,7 +90,7 @@ setup_sources() {
     echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
 
     # albert
-    curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_16.10/Release.key | apt-key add -
+    curl -fsSL https://download.opensuse.org/repositories/home:manuelschneid3r/xUbuntu_16.04/Release.key | apt-key add -
     echo "deb http://download.opensuse.org/repositories/home:/manuelschneid3r/xUbuntu_16.04/ /" > /etc/apt/sources.list.d/albert.list
 }
 
