@@ -33,7 +33,7 @@ check_isnt_sudo() {
 # sets up the base third-party software sources
 setup_sources_base() {
     apt update
-    apt upgrade --yes
+    apt upgrade -y
     apt install -y \
         curl \
         wget \
@@ -86,7 +86,7 @@ setup_sources() {
 # installs the base packages
 base() {
     apt update
-    apt -y install \
+    apt install -y \
         software-properties-common \
         libpcap-dev \
         wrk \
@@ -198,7 +198,7 @@ full() {
     base;
 
     apt update
-    apt -y install \
+    apt install -y \
         linux-image-extra-"$(uname -r)" \
         vlc \
         alsa-tools-gui \
@@ -236,7 +236,7 @@ full() {
 
     # install and start tlp if we are on a laptop
     if [ -d "/sys/class/power_supply" ]; then
-        apt -y install tlp
+        apt install -y tlp
         tlp start
     fi
 
