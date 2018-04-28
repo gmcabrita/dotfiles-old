@@ -33,7 +33,7 @@ check_isnt_sudo() {
 # sets up the base third-party software sources
 setup_sources_base() {
     apt update
-    apt -y upgrade
+    apt upgrade --yes
     apt install -y \
         curl \
         wget \
