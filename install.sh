@@ -37,6 +37,7 @@ setup_sources_base() {
     apt install -y \
         curl \
         wget \
+        snapd \
         apt-transport-https \
         ca-certificates \
         software-properties-common
