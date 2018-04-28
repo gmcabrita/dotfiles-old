@@ -100,6 +100,7 @@ base() {
     apt upgrade -y
     apt install -y \
         software-properties-common \
+        libssh2-1-dev \
         libcurl3 \
         liblttng-ust0 \
         libpcap-dev \
