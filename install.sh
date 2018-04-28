@@ -93,6 +93,7 @@ setup_sources() {
 # installs the base packages
 base() {
     apt update
+    apt upgrade -y
     apt install -y \
         software-properties-common \
         libpcap-dev \
@@ -167,7 +168,6 @@ base() {
         libbcc-examples \
         gnuplot \
         valgrind \
-        heaptrack \
         snapd-xdg-open \
         massif-visualizer \
         lldb \
