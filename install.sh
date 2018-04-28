@@ -177,7 +177,7 @@ base() {
         "linux-headers-$(uname -r)"
 
     # locally install git-lfs
-    sudo su -c "$TARGET_USER" -c git lfs install
+    sudo su "$TARGET_USER" -c "git lfs install"
 
     # micro editor
     snap install micro --classic
