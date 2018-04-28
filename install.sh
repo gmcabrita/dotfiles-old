@@ -55,10 +55,10 @@ setup_sources_base() {
     echo "deb https://repo.iovisor.org/apt/xenial xenial main" > /etc/apt/sources.list.d/bcc.list
 
     # yubico
-    add-apt-repository ppa:yubico/stable
+    add-apt-repository ppa:yubico/stable -y
 
     # git
-    add-apt-repository ppa:git-core/ppa
+    add-apt-repository ppa:git-core/ppa -y
 
     # git-lfs
     curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
