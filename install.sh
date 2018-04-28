@@ -489,6 +489,7 @@ get_dotfiles() {
         --exclude "test.sh" \
         --exclude ".dconf" \
         --exclude "Makefile" \
+        --exclude "LICENSE" \
         -avh --no-perms . ~
 
     # shellcheck disable=SC1090
