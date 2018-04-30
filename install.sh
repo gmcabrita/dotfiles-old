@@ -233,7 +233,8 @@ full() {
         yubikey-piv-manager \
         albert \
         mpv \
-        shotwell
+        shotwell \
+        krita
 
     # slack
     snap install slack --classic
