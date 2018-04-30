@@ -239,6 +239,11 @@ full() {
     apt install -y ./discord.deb
     rm discord.deb
 
+    # mailspring
+    wget -O mailspring.deb https://updates.getmailspring.com/download?platform=linuxDeb
+    apt install -y ./mailspring.deb
+    rm mailspring.deb
+
     # set docker to autostart
     systemctl enable docker
 
