@@ -209,7 +209,6 @@ base() {
 full() {
     base;
 
-    apt update
     apt install -y \
         linux-image-extra-"$(uname -r)" \
         vlc \
