@@ -226,7 +226,8 @@ full() {
         ubuntu-restricted-extras \
         keybase \
         yubikey-piv-manager \
-        krita
+        krita \
+        transmission
 
     # slack
     snap install slack --classic
