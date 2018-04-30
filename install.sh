@@ -119,6 +119,7 @@ base() {
         zlib1g-dev \
         zlibc \
         libncurses5-dev \
+        libsecret-1-dev \
         libwxgtk3.0-dev \
         libgl1-mesa-dev \
         libglu1-mesa-dev \
