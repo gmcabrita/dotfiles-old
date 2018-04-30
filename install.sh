@@ -102,7 +102,6 @@ base() {
         libcurl3 \
         liblttng-ust0 \
         libpcap-dev \
-        wrk \
         graphviz \
         bash-completion \
         readline-common \
