@@ -248,7 +248,9 @@ full() {
     update-alternatives --set editor /usr/bin/code
 
     # install and start tlp if we are on a laptop
-    if [ -d "/sys/class/power_supply" ]; then
+    read -rp "Do you want to install TLP? (y/n) " -n 1
+    echo ""
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
         apt install -y tlp
         tlp start
     fi
