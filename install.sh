@@ -231,7 +231,9 @@ full() {
         ubuntu-restricted-extras \
         keybase \
         yubikey-piv-manager \
-        albert
+        albert \
+        mpv \
+        shotwell
 
     # slack
     snap install slack --classic
