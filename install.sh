@@ -226,8 +226,6 @@ full() {
         ubuntu-restricted-extras \
         keybase \
         yubikey-piv-manager \
-        mpv \
-        shotwell \
         krita
 
     # slack
