@@ -404,7 +404,6 @@ install_rust() {
         cargo-release \
         cargo-edit \
         cargo-license \
-        ripgrep \
         cargo-fuzz \
         afl
 
