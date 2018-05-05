@@ -413,8 +413,20 @@ install_golang() {
 # installs swift
 install_swift() {
     swiftv=$(swiftenv install --list | grep -v "[a-Z]" | tail -1)
-    swiftenv install "$swiftv"
+    swiftenv install -s "$swiftv"
     swiftenv global "$swiftv"
+
+    # install vapor's toolbox
+    (
+        set -e
+        if [ ! -d "$HOME/Projects/vapor-toolbox" ]; then
+            git clone https://github.com/vapor/toolbox "$HOME/Projects/vapor-toolbox"
+        fi
+        cd "$HOME/Projects/vapor-toolbox"
+        git pull
+        swift build -c release
+        cp .build/release/Executable "$HOME/.bin/vapor"
+    )
 }
 
 # installs python and some python packages
