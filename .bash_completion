@@ -16,6 +16,16 @@ if command -v helm >/dev/null; then
     source <(helm completion bash)
 fi
 
+if command -v swiftenv >/dev/null; then
+    # shellcheck disable=SC1090
+    source "$HOME/.swiftenv/completions/swiftenv.bash"
+fi
+
+if command -v swift >/dev/null; then
+    # shellcheck disable=SC1090
+    source <(swift package completion-tool generate-bash-script)
+fi
+
 for file in ~/.bash_completions/*; do
     # shellcheck disable=SC1090
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
