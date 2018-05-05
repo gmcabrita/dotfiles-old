@@ -31,6 +31,13 @@ if command -v swift >/dev/null; then
     source <(swift package completion-tool generate-bash-script)
 fi
 
+if command -v rustup >/dev/null; then
+    # shellcheck disable=SC1090
+    source <(rustup completions bash)
+    # shellcheck disable=SC1090
+    source ~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo
+fi
+
 for file in ~/.bash_completions/*; do
     # shellcheck disable=SC1090
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
