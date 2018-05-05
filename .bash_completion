@@ -16,6 +16,11 @@ if command -v helm >/dev/null; then
     source <(helm completion bash)
 fi
 
+if command -v pyenv >/dev/null; then
+    # shellcheck disable=SC1090
+    source "$HOME/.pyenv/completions/pyenv.bash"
+fi
+
 if command -v swiftenv >/dev/null; then
     # shellcheck disable=SC1090
     source "$HOME/.swiftenv/completions/swiftenv.bash"
