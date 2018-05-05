@@ -323,7 +323,7 @@ install_pyenv() {
 update_pyenv() {
     (
         set -e
-        cd $(pyenv root)
+        cd "$(pyenv root)"
         git pull
     )
 }
