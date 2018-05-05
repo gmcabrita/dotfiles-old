@@ -95,6 +95,18 @@ base() {
     apt update
     apt upgrade -y
     apt install -y \
+        uuid-dev \
+        icu-devtools \
+        libbsd-dev \
+        libedit-dev \
+        libxml2-dev \
+        swig \
+        pkg-config \
+        ninja-build  \
+        python \
+        libpython-dev \
+        clang \
+        libicu-dev \
         software-properties-common \
         libssh2-1-dev \
         libgit2-dev \
@@ -268,10 +280,21 @@ check_asdf_and_install() {
     fi
 }
 
-# checks if pyenv is installed and installs it
+# checks if pyenv is installed and installs/updates it
 check_pyenv_and_install() {
     if [ ! -d "$HOME/.pyenv" ]; then
         install_pyenv
+    else
+        update_pyenv
+    fi
+}
+
+# checks if swiftenv is installed and installs/updates it
+check_swiftenv_and_install() {
+    if [ ! -d "$HOME/.swiftenv" ]; then
+        install_swiftenv
+    else
+        update_swiftenv
     fi
 }
 
@@ -295,6 +318,28 @@ install_pyenv() {
     curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
     # shellcheck disable=SC1090
     . ~/.bash_profile || true
+}
+
+update_pyenv() {
+    (
+        set -e
+        cd $(pyenv root)
+        git pull
+    )
+}
+
+install_swiftenv() {
+    git clone https://github.com/kylef/swiftenv.git "$HOME/.swiftenv"
+    # shellcheck disable=SC1090
+    . ~/.bash_profile || true
+}
+
+update_swiftenv() {
+    (
+        set -e
+        cd "$HOME/.swiftenv"
+        git pull
+    )
 }
 
 # installs rustup
@@ -363,6 +408,13 @@ install_golang() {
         github.com/mauve/terraform-index
 
     gometalinter --install
+}
+
+# installs swift
+install_swift() {
+    swiftv=$(swiftenv install --list | grep -v "[a-Z]" | tail -1)
+    swiftenv install "$swiftv"
+    swiftenv global "$swiftv"
 }
 
 # installs python and some python packages
@@ -540,6 +592,10 @@ main() {
     #     check_isnt_sudo
     #     check_asdf_and_install
     #     install_elixir
+    elif [[ $cmd == "swift" ]]; then
+        check_isnt_sudo
+        check_swiftenv_and_install
+        install_swift
     elif [[ $cmd == "nodejs" ]]; then
         check_isnt_sudo
         check_asdf_and_install

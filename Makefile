@@ -18,6 +18,10 @@ go:
 rust:
 	./install.sh rust
 
+# installs swift
+swift:
+	./install.sh swift
+
 # installs python
 python:
 	./install.sh python
