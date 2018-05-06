@@ -360,6 +360,7 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -u -v github.com/goreleaser/goreleaser \
+        github.com/alexkohler/prealloc \
         github.com/ramya-rao-a/go-outline \
         github.com/google/codesearch/cmd/... \
         github.com/dvyukov/go-fuzz/go-fuzz \
