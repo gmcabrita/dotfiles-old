@@ -97,6 +97,8 @@ base() {
     apt install -y \
         uuid-dev \
         icu-devtools \
+        libunwind8 \
+        libunwind-dev \
         libbsd-dev \
         libedit-dev \
         libxml2-dev \
