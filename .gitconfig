@@ -72,6 +72,8 @@
 
     cleanup = "!f() { git remote prune origin; git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d; }; f"
 
+    cleantags = !git tag -l | xargs git tag -d && git fetch -t
+
     # Find branches containing commit
     fb = "!f() { git branch -a --contains $1; }; f"
 
