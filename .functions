@@ -157,8 +157,8 @@ function gonew() {
     curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/README.md;
     curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/LICENSE;
     curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/.gitignore;
+    curl -sO https://gist.githubusercontent.com/gmcabrita/8edafe7ecb4874a58f84d35d0bc11bb8/raw/.gometalinter.json;
     sed -i "s/FIXME/$1/g" README.md;
-    dep init;
 }
 
 # Output TODOs for the current folder
