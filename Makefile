@@ -6,6 +6,10 @@ all: linux dotfiles go python nodejs kube
 linux:
 	sudo ./install.sh linux
 
+# sets up fonts
+fonts:
+	sudo ./install.sh fonts
+
 # updates the dotfiles
 dotfiles:
 	./install.sh dotfiles || true

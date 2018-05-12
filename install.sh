@@ -273,6 +273,7 @@ full() {
 install_fonts() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
     cp -r .fonts/* /usr/share/fonts
+    fc-cache -f -v
 }
 
 # checks if asdf is installed and installs it
@@ -564,6 +565,7 @@ usage() {
     echo -e "install.sh\\n"
     echo "Usage:"
     echo "  linux                     - setup sources & install os pkgs"
+    echo "  fonts                     - setup fonts"
     echo "  dotfiles                  - fetch dotfiles"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
@@ -585,6 +587,9 @@ main() {
         get_user
         setup_sources
         full
+        install_fonts
+    elif [[ $cmd == "fonts" ]]; then
+        check_is_sudo
         install_fonts
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
