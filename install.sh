@@ -465,8 +465,6 @@ install_rust() {
     rustup update
     cargo install --force \
         racer \
-        rustsym \
-        cargo-check \
         cargo-watch \
         cargo-release \
         cargo-edit \
