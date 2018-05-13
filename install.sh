@@ -95,6 +95,9 @@ base() {
     apt update
     apt upgrade -y
     apt install -y \
+        linux-tools-common \
+        linux-tools-generic \
+        "linux-tools-$(uname -r)" \
         uuid-dev \
         icu-devtools \
         libunwind8 \
@@ -194,6 +197,11 @@ base() {
         ranger \
         xdot \
         "linux-headers-$(uname -r)"
+
+    # run perf without root
+    echo "kernel.perf_event_paranoid = -1" >> /etc/sysctl.conf
+    echo "kernel.kptr_restrict=0" >> /etc/sysctl.conf
+    sysctl -p
 
     # locally install git-lfs
     sudo su "$TARGET_USER" -c "git lfs install"
