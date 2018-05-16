@@ -63,6 +63,10 @@ setup_sources_base() {
     # git-lfs
     curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
     echo "deb https://packagecloud.io/github/git-lfs/ubuntu/ xenial main" > /etc/apt/sources.list.d/git-lfs.list
+
+    # bazel
+    curl -fsSL https://bazel.build/bazel-release.pub.gpg | apt-key add -
+    echo "deb [arch=amd64] http://storage.googleapis.com/bazel-apt stable jdk1.8" > /etc/apt/sources.list.d/bazel.list
 }
 
 # sets up third-party software sources
@@ -95,6 +99,9 @@ base() {
     apt update
     apt upgrade -y
     apt install -y \
+        libelf-dev \
+        libcap-dev \
+        bazel \
         linux-tools-common \
         linux-tools-generic \
         "linux-tools-$(uname -r)" \
