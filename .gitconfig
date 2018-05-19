@@ -51,6 +51,10 @@
     d = diff
     ds = diff --staged
 
+    # Word-based diff
+    wd = diff --color-words
+    wdiff = diff --color-words
+
     # View history graph
     graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
@@ -82,9 +86,6 @@
 
     # Find commits by commit message
     fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
-
-    # Word-based diff
-    wdiff = diff --color-words
 
     # List contributors with number of commits
     contributors = shortlog --summary --numbered
