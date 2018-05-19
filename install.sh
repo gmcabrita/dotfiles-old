@@ -378,46 +378,36 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -u -v github.com/goreleaser/goreleaser \
+        github.com/alecthomas/gometalinter \
         github.com/alexkohler/prealloc \
         github.com/ramya-rao-a/go-outline \
-        github.com/google/codesearch/cmd/... \
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
         github.com/nsf/gocode \
         github.com/fatih/gomodifytags \
-        github.com/lukehoban/go-outline \
         github.com/newhook/go-symbols \
         github.com/rogpeppe/godef \
         sourcegraph.com/sqs/goreturns \
-        github.com/alecthomas/gometalinter \
         github.com/sourcegraph/go-langserver \
         github.com/golang/lint/golint \
         github.com/derekparker/delve/cmd/dlv \
         github.com/uber/go-torch \
-        github.com/tsliwowicz/go-wrk \
         github.com/oxequa/realize \
         github.com/uber-common/cpustat \
         github.com/google/gops \
-        github.com/rakyll/hey \
-        github.com/peterbourgon/stats \
         github.com/golang/dep/cmd/dep \
         github.com/google/pprof \
         github.com/kintoandar/fwd \
         github.com/apex/static/cmd/static-docs \
-        github.com/ktr0731/evans \
         github.com/golang/protobuf/proto \
         github.com/golang/protobuf/protoc-gen-go \
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-grpc-gateway \
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
         github.com/ckaznocha/protoc-gen-lint \
         google.golang.org/grpc \
-        github.com/uudashr/gopkgs/cmd/gopkgs \
         github.com/netlify/netlifyctl \
         github.com/sgreben/jp/cmd/jp \
-        github.com/genuinetools/weather \
         golang.org/x/vgo \
-        github.com/genuinetools/audit \
-        github.com/genuinetools/pepper \
         github.com/spf13/cobra/cobra \
         github.com/gobuffalo/pop/... \
         golang.org/x/tools/... \
