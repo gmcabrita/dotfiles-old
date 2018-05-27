@@ -477,6 +477,7 @@ install_rust() {
         cargo-license \
         cargo-fuzz \
         cargo-count \
+        cargo-bloat \
         racer \
         tokei \
         afl
