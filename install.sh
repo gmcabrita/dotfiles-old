@@ -470,12 +470,15 @@ install_rust() {
     rustup self update
     rustup update
     cargo install --force \
-        racer \
+        cargo-fix \
         cargo-watch \
         cargo-release \
         cargo-edit \
         cargo-license \
         cargo-fuzz \
+        cargo-count \
+        racer \
+        tokei \
         afl
 
     rustup run nightly cargo install clippy --force
