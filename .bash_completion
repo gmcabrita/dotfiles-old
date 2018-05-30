@@ -38,6 +38,11 @@ if command -v rustup >/dev/null; then
     source "$HOME/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/etc/bash_completion.d/cargo"
 fi
 
+if command -v stern >/dev/null; then
+    # shellcheck disable=SC1090
+    source <(stern --completion bash)
+fi
+
 for file in ~/.bash_completions/*; do
     # shellcheck disable=SC1090
     [ -r "$file" ] && [ -f "$file" ] && source "$file";
