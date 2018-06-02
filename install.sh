@@ -499,8 +499,8 @@ install_elixir() {
     asdf install elixir "$elixirv" || true
     asdf global elixir "$elixirv"
 
-    yes | mix local.hex
-    yes | mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez
+    mix local.hex --force
+    mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force
     mix local.rebar --force
 }
 
