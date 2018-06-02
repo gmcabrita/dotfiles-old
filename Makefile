@@ -14,6 +14,10 @@ fonts:
 dotfiles:
 	./install.sh dotfiles || true
 
+# installs elixir
+elixir:
+	./install.sh elixir
+
 # installs go
 go:
 	./install.sh golang

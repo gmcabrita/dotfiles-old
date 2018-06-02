@@ -615,10 +615,10 @@ main() {
         check_isnt_sudo
         check_rustup_and_install
         install_rust
-    # elif [[ $cmd == "elixir" ]]; then
-    #     check_isnt_sudo
-    #     check_asdf_and_install
-    #     install_elixir
+    elif [[ $cmd == "elixir" ]]; then
+        check_isnt_sudo
+        check_asdf_and_install
+        install_elixir
     elif [[ $cmd == "swift" ]]; then
         check_isnt_sudo
         check_swiftenv_and_install
