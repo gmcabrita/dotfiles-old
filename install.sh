@@ -99,6 +99,8 @@ base() {
     apt update
     apt upgrade -y
     apt install -y \
+        xsltproc \
+        fop \
         libelf-dev \
         libcap-dev \
         bazel \
