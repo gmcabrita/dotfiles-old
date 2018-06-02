@@ -19,6 +19,9 @@ alias j="jobs"
 alias :q="exit"
 alias venvnew="virtualenv .venv"
 alias venv="source .venv/bin/activate"
+alias k="kubectl"
+alias kctx="kubectx"
+alias kns="kubens"
 
 # df should always print human readable units
 alias df='df -h'
