@@ -500,8 +500,10 @@ install_elixir() {
     asdf global elixir "$elixirv"
 
     mix local.hex --force
-    mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force
     mix local.rebar --force
+    mix archive.install https://github.com/phoenixframework/archives/raw/master/phx_new.ez --force
+    mix local.phoenix --force
+    mix local.phx --force
 }
 
 # installs nodejs and some nodejs packages
