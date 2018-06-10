@@ -380,8 +380,7 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -u -v github.com/goreleaser/goreleaser \
-        github.com/alecthomas/gometalinter \
-        github.com/alexkohler/prealloc \
+        github.com/mgechev/revive \
         github.com/ramya-rao-a/go-outline \
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
@@ -417,8 +416,6 @@ install_golang() {
         github.com/kevinburke/tss \
         golang.org/x/perf/... \
         github.com/mauve/terraform-index
-
-    gometalinter --install
 }
 
 # installs swift
