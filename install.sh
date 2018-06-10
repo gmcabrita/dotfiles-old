@@ -381,15 +381,9 @@ install_golang() {
 
     go get -u -v github.com/goreleaser/goreleaser \
         github.com/mgechev/revive \
-        github.com/ramya-rao-a/go-outline \
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
         github.com/nsf/gocode \
-        github.com/fatih/gomodifytags \
-        github.com/newhook/go-symbols \
-        github.com/rogpeppe/godef \
-        sourcegraph.com/sqs/goreturns \
-        github.com/sourcegraph/go-langserver \
         github.com/golang/lint/golint \
         github.com/derekparker/delve/cmd/dlv \
         github.com/uber/go-torch \
@@ -410,7 +404,6 @@ install_golang() {
         github.com/sgreben/jp/cmd/jp \
         golang.org/x/vgo \
         github.com/spf13/cobra/cobra \
-        github.com/gobuffalo/pop/... \
         golang.org/x/tools/... \
         github.com/dinedal/textql/... \
         github.com/kevinburke/tss \
