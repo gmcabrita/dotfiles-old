@@ -380,6 +380,7 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -u -v github.com/goreleaser/goreleaser \
+        github.com/xo/usql \
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
         github.com/nsf/gocode \
