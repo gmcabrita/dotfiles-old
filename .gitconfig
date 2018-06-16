@@ -53,6 +53,9 @@
     # Quick log
     l = log
 
+    # Quick log with patch
+    lp = log --patch
+
     # Quick diff
     d = diff
     ds = diff --staged
