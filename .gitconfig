@@ -38,6 +38,9 @@
     # Quick add
     a = add
 
+    # Quick add hunks
+    ap = add --patch
+
     # Quick push
     p = push
 
