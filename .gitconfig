@@ -41,6 +41,9 @@
     # Quick add hunks
     ap = add --patch
 
+    # Quick checkout
+    co = checkout
+
     # Quick push
     p = push
 
