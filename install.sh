@@ -473,7 +473,6 @@ install_rust() {
         cargo-count \
         cargo-bloat \
         racer \
-        tokei \
         afl
 
     rustup run nightly cargo install clippy --force
