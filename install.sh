@@ -383,7 +383,6 @@ install_golang() {
         github.com/dvyukov/go-fuzz/go-fuzz \
         github.com/dvyukov/go-fuzz/go-fuzz-build \
         github.com/nsf/gocode \
-        github.com/josharian/impl \
         github.com/go-kit/kit/cmd/kitgen \
         github.com/golang/lint/golint \
         github.com/derekparker/delve/cmd/dlv \
