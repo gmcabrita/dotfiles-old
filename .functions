@@ -162,6 +162,11 @@ function gonew() {
     sed -i "s/FIXME/$1/g" README.md;
 }
 
+function imports ()
+{
+    go list -f "$(printf '{{.ImportPath}}:\n{{range .Imports}}  {{.}}\n{{end}}')" ${1+"$@"};
+}
+
 # Output TODOs for the current folder
 function todo() {
     grep \
