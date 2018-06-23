@@ -1,6 +1,0 @@
-{
-	"Ctrl-Left": "WordLeft",
-	"Ctrl-Right": "WordRight",
-	"Ctrl-Shift-Left": "SelectWordLeft",
-	"Ctrl-Shift-Right": "SelectWordRight",
-}

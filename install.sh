@@ -215,9 +215,6 @@ base() {
     # locally install git-lfs
     sudo su "$TARGET_USER" -c "git lfs install"
 
-    # micro editor
-    snap install micro --classic
-
     # protobuf compiler
     snap install protobuf --classic
 
