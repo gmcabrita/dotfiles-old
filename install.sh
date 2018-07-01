@@ -383,12 +383,12 @@ install_golang() {
         github.com/mailru/easyjson/... \
         github.com/go-kit/kit/cmd/kitgen \
         github.com/golang/lint/golint \
+        github.com/kisielk/errcheck \
         github.com/derekparker/delve/cmd/dlv \
         github.com/uber/go-torch \
         github.com/oxequa/realize \
         github.com/uber-common/cpustat \
         github.com/google/gops \
-        github.com/golang/dep/cmd/dep \
         github.com/google/pprof \
         github.com/kintoandar/fwd \
         github.com/apex/static/cmd/static-docs \
