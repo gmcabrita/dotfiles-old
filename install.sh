@@ -462,6 +462,7 @@ install_rust() {
     rustup self update
     rustup update
     cargo install --force \
+        cargo-binutils \
         cargo-fix \
         cargo-watch \
         cargo-release \
