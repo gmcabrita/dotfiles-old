@@ -367,7 +367,7 @@ install_rustup() {
     . ~/.bash_profile || true
     rustup install nightly
     rustup component add rls-preview rustfmt-preview rust-analysis rust-src
-    rustup component add --toolchain nightly rls-preview rustfmt-preview rust-analysis rust-src
+    rustup component add --toolchain nightly rls-preview rustfmt-preview rust-analysis rust-src llvm-tools
 }
 
 # installs go and some go packages
