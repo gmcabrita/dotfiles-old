@@ -107,6 +107,7 @@ base() {
         linux-tools-common \
         linux-tools-generic \
         "linux-tools-$(uname -r)" \
+        binutils-multiarch \
         uuid-dev \
         icu-devtools \
         libunwind8 \
