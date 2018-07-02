@@ -398,7 +398,6 @@ install_golang() {
         github.com/grpc-ecosystem/grpc-gateway/protoc-gen-swagger \
         github.com/ckaznocha/protoc-gen-lint \
         google.golang.org/grpc \
-        github.com/netlify/netlifyctl \
         github.com/sgreben/jp/cmd/jp \
         golang.org/x/vgo \
         github.com/spf13/cobra/cobra \
