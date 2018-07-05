@@ -454,7 +454,8 @@ install_python() {
         matplotlib \
         httpie \
         pgcli \
-        isort
+        isort \
+        seashells
 }
 
 # updates rustup and rust, also installs some rust packages
