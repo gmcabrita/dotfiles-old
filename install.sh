@@ -104,6 +104,8 @@ base() {
         libelf-dev \
         libcap-dev \
         bazel \
+        libcurl4-openssl-dev \
+        r-base \
         linux-tools-common \
         linux-tools-generic \
         "linux-tools-$(uname -r)" \
