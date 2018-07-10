@@ -104,8 +104,6 @@
 [push]
     default = simple
     followTags = true
-[pull]
-    rebase = true
 
 # URL shorthands
 [url "git@github.com:"]
