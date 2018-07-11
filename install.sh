@@ -386,6 +386,7 @@ install_golang() {
         github.com/mailru/easyjson/... \
         github.com/go-kit/kit/cmd/kitgen \
         github.com/golang/lint/golint \
+        github.com/cosmos72/gomacro \
         github.com/kisielk/errcheck \
         github.com/derekparker/delve/cmd/dlv \
         github.com/uber/go-torch \
