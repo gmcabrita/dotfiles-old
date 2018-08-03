@@ -57,8 +57,8 @@
     lp = log --patch
 
     # Quick diff
-    d = diff
-    ds = diff --staged
+    d = diff -R
+    ds = diff --staged -R
 
     # Word-based diff
     wd = diff --color-words
