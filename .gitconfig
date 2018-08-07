@@ -8,6 +8,7 @@
     fscache = true
     autocrlf = false
     excludesfile = ~/.gitignore_global
+    pager = "less -r"
 [color]
     ui = auto
 [color "branch"]
@@ -19,6 +20,7 @@
     frag = magenta bold # line info
     old = red # deletions
     new = green # additions
+    whitespace = red reverse
 [color "status"]
     added = yellow
     changed = green
