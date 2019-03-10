@@ -1,0 +1,11 @@
+rails
+rubocop
+rbtrace
+rspec
+concurrent-ruby
+concurrent-ruby-ext
+parallel
+pry
+pry-doc
+fasterer
+faraday

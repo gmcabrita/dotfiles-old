@@ -1,0 +1,5 @@
+{
+  "override": false,
+  "append_front": true,
+  "PATH":"/home/gmc/.asdf/shims:/home/gmc/.rbenv/shims:/home/gmc/.pyenv/shims"
+}

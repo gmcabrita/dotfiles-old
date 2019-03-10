@@ -1,0 +1,21 @@
+{
+  "lint_mode": "background",
+  "linters": {
+    "ruby": {
+      "selector": "source.ruby",
+      "excludes": [
+        "*.haml",
+        "*.html",
+      ],
+    },
+    "haml": {
+      "executable": "~/.rbenv/shims/haml",
+    },
+  },
+  "show_panel_on_save": "window",
+  "paths": {
+    "linux": ["~/.rbenv/shims", "~/.asdf/shims", "~/.pyenv/shims"],
+    "osx": [],
+    "windows": [],
+  },
+}

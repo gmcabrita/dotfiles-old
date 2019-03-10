@@ -1,0 +1,22 @@
+{
+  "patterns": {
+    "TODO": "TODO[\\s]*?:[\\s]*(?P<todo>.*)$",
+    "FIXME": "FIXME[\\s]*?:[\\s]*(?P<fixme>.*)$",
+  },
+  "patterns_weight": {
+    "FIXME": 1,
+    "TODO": 2,
+  },
+  "exclude_folders": [
+    "*.git*",
+    "*node_modules*",
+    "*bower_components*",
+    "*tmp*",
+    "*log*",
+    "*public/packs*"
+  ],
+  "exclude_files": [
+    "*.sublime-workspace",
+    "*.sublime-project"
+  ],
+}

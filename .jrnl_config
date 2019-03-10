@@ -1,0 +1,14 @@
+{
+  "journals": {
+    "default": "/home/gmc/gdrive/journal-personal.txt",
+    "work": "/home/gmc/gdrive/journal-work.txt"
+  },
+  "editor": "subl -n -w",
+  "encrypt": false,
+  "default_hour": 9,
+  "default_minute": 0,
+  "timeformat": "%Y-%m-%d %H:%M",
+  "tagsymbols": "@",
+  "highlight": true,
+  "linewrap": 79
+}

@@ -1,0 +1,8 @@
+.mypy_cache/**
+__pycache__/**
+.ropeproject/**
+.tool-versions
+.venv/**
+.vscode/**
+.solargraph.yml
+Procfile

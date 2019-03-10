@@ -1,0 +1,121 @@
+[user]
+    email = _@gmcabrita.com
+    name = Gonçalo Cabrita
+[credential]
+    helper = cache --timeout 3600
+[core]
+    editor = subl -n -w
+    fscache = true
+    autocrlf = false
+    excludesfile = ~/.gitignore_global
+    pager = "less -r"
+[color]
+    ui = auto
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "diff"]
+    meta = yellow bold
+    frag = magenta bold # line info
+    old = red # deletions
+    new = green # additions
+    whitespace = red reverse
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
+[gist]
+    private = yes
+[diff "bin"]
+    # Use `hexdump` to diff binary files
+    textconv = hexdump -v -C
+[alias]
+    # Quick commit
+    c = commit
+
+    # Quick add
+    a = add
+
+    # Quick add hunks
+    ap = add --patch
+
+    # Quick checkout
+    co = checkout
+
+    # Quick push
+    p = push
+
+    # Quick status
+    s = status
+
+    # Quick log
+    l = log
+
+    # Quick log with patch
+    lp = log --patch
+
+    # Quick diff
+    d = diff
+    ds = diff --staged
+
+    # Word-based diff
+    wd = diff --color-words
+
+    # View history graph
+    graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
+
+    # View abbreviated SHA, description, and history graph of the latest 20 commits
+    ll = log --pretty=oneline -n 20 --graph --abbrev-commit
+
+    # Show verbose output about tags, branches or remotes
+    tags = tag -l
+    branches = branch -a
+    remotes = remote -v
+
+    # Quick commit ammend
+    amend = commit --amend
+
+    puxaforte = !git reset --hard "@{upstream}" && git clean -d -f && git pull
+    rip = !git reset --hard HEAD && git clean -d -f
+
+    delete = branch -D
+    unstage = reset HEAD --
+    uncommit = reset --soft HEAD^
+    undo = reset HEAD~
+
+    cleanup = "!f() { git remote prune origin; git branch -vv | grep 'origin/.*: gone]' | awk '{print $1}' | xargs git branch -d; }; f"
+
+    cleantags = !git tag -l | xargs git tag -d && git fetch -t
+
+    # Find branches containing commit
+    fb = "!f() { git branch -a --contains $1; }; f"
+
+    # Find tags containing commit
+    ft = "!f() { git describe --always --contains $1; }; f"
+
+    # Find commits by commit message
+    fm = "!f() { git log --pretty=format:'%C(yellow)%h  %Cblue%ad  %Creset%s%Cgreen  [%cn] %Cred%d' --decorate --date=short --grep=$1; }; f"
+
+    # List contributors with number of commits
+    contributors = shortlog --summary --numbered
+[apply]
+    # Detect whitespace errors when applying a patch
+    whitespace = fix
+[push]
+    default = simple
+    followTags = true
+
+# URL shorthands
+[url "git@github.com:"]
+    insteadOf = "gh:"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+[url "git://github.com/"]
+    insteadOf = "github:"
+[url "git@gist.github.com:"]
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+[url "git://gist.github.com/"]
+    insteadOf = "gist:"

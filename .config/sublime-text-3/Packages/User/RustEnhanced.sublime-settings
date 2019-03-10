@@ -1,0 +1,10 @@
+{
+  "rust_syntax_checking_method": "clippy",
+  "cargo_build": {
+    "variants": {
+      "clippy": {
+        "toolchain": "stable"
+      }
+    }
+  }
+}

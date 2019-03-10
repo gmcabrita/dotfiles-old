@@ -1,0 +1,45 @@
+{
+  "bootstrapped": true,
+  "in_process_packages":
+  [
+  ],
+  "installed_packages":
+  [
+    "Babel",
+    "BracketHighlighter",
+    "Color Highlighter",
+    "CustomPATH",
+    "EditorConfig",
+    "Elixir",
+    "Emmet",
+    "FileIcons",
+    "fish",
+    "GitGutter",
+    "Gofmt",
+    "Golang Build",
+    "Hide Menu",
+    "Ledger syntax highlighting",
+    "MarkdownEditing",
+    "MoveTab",
+    "Package Control",
+    "Pony Language",
+    "ProjectManager",
+    "rainbow_csv",
+    "RSpec",
+    "Rust Enhanced",
+    "RustFmt",
+    "Sass",
+    "SideBarEnhancements",
+    "SublimeGit",
+    "SublimeLinter",
+    "SublimeLinter-contrib-elixirc",
+    "SublimeLinter-haml",
+    "SublimeLinter-ruby",
+    "SublimeLinter-shellcheck",
+    "Terminal",
+    "Themr",
+    "TodoReview",
+    "TOML",
+    "Tomorrow Color Schemes"
+  ]
+}

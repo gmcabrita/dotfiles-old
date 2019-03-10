@@ -1,0 +1,63 @@
+{
+  "auto_complete": true,
+  "auto_complete_triggers": [
+    {"selector": "text.html", "characters": "<"},
+    {"selector": "source.go", "characters": "."}
+  ],
+  "close_windows_when_empty": true,
+  "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+  "default_line_ending": "unix",
+  "draw_white_space": "all",
+  "find_selected_text": true,
+  "fold_buttons": false,
+  "folder_exclude_patterns":
+  [
+    ".svn",
+    ".git",
+    ".hg",
+    "CVS",
+    "_build",
+    "dist",
+    "build",
+    "site",
+    "deps",
+  ],
+  "font_face": "Meslo LG S DZ",
+  "font_options":
+  [
+    "subpixel_antialias"
+  ],
+  "font_size": 12.0,
+  "highlight_line": true,
+  "hot_exit": false,
+  "ignored_packages":
+  [
+    "Rust",
+    "Vintage"
+  ],
+  "rulers":
+  [
+    72,
+    79,
+    100
+  ],
+  "theme": "Adaptive.sublime-theme",
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": true,
+  "caret_extra_width": 12,
+  "caret_style": "blink",
+  "wide_caret": true,
+  "caret_blink_interval": 1,
+  "tab_size": 2,
+  "detect_identation": true,
+  "word_wrap": true,
+  "show_tab_close_buttons": false,
+  "highlight_modified_tabs": true,
+  "bold_folder_labels": true,
+  "indent_guide_options":
+  [
+    "draw_normal",
+    "draw_active"
+  ],
+  "binary_file_patterns": ["*.jpg", "*.jpeg", "*.png", "*.gif", "*.ttf", "*.tga", "*.dds", "*.ico", "*.eot", "*.pdf", "*.swf", "*.jar", "*.zip", "node_modules/", "bower_components/", "tmp/", "log/", "public/packs/"],
+}
