@@ -235,6 +235,9 @@ base() {
     # heroku
     snap install heroku --classic
 
+    # firefox send
+    snap install ffsend
+
     # asciinema
     snap install asciinema --classic
 
