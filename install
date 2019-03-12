@@ -97,6 +97,7 @@ base() {
     apt install -y \
         xsltproc \
         ledger \
+        earlyoom \
         fop \
         pv \
         libelf-dev \
