@@ -1,5 +1,0 @@
---strict
---sort date
---effective
---price-db ~/gdrive/pricedb.txt
---file ~/gdrive/ledger.txt
