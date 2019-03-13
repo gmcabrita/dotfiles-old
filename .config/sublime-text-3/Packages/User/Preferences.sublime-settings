@@ -79,7 +79,7 @@
     79,
     100
   ],
-  "show_git_status": false,
+  "show_git_status": true,
   "show_tab_close_buttons": false,
   "tab_size": 2,
   "theme": "Adaptive.sublime-theme",
