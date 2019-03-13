@@ -10,4 +10,6 @@
   { "keys": ["ctrl+shift+t"], "command": "reopen_last_file" },
   { "keys": ["ctrl+shift+alt+t"], "command": "open_terminal_project_folder" },
   { "keys": ["ctrl+alt+o"], "command": "project_manager", "args": {"action": "new"} },
+  { "keys": ["ctrl+."], "command": "next_modification" },
+  { "keys": ["ctrl+,"], "command": "prev_modification" },
 ]
