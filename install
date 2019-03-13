@@ -438,7 +438,7 @@ install_rustup() {
 
 # installs ruby
 install_ruby() {
-    rubyv="2.6.1"
+    rubyv="2.6.2"
     RUBY_CONFIGURE_OPTS="--with-jemalloc" rbenv install "$rubyv" --skip-existing || true
     rbenv global "$rubyv"
 }
