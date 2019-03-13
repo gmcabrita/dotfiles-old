@@ -33,11 +33,10 @@
     "public/packs/"
   ],
   "bold_folder_labels": true,
-  "block_caret": false,
-  "caret_extra_width": 12,
+  "block_caret": true,
   "caret_style": "smooth",
   "close_windows_when_empty": true,
-  "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+  "color_scheme": "Packages/User/Tomorrow-Night.tmTheme",
   "default_line_ending": "unix",
   "detect_identation": true,
   "draw_white_space": "all",
@@ -85,6 +84,6 @@
   "theme": "Adaptive.sublime-theme",
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": true,
-  "wide_caret": true,
+  "wide_caret": false,
   "word_wrap": true
 }

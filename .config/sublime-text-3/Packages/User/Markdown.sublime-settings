@@ -5,7 +5,7 @@
     "mdown",
     "markdown"
   ],
-  "color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+  "color_scheme": "Packages/User/Tomorrow-Night.tmTheme",
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
   "trim_trailing_white_space_on_save": false,
