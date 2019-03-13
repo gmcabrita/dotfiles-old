@@ -571,13 +571,11 @@ get_dotfiles() {
         -avh --no-perms . ~
 
     if [ ! -f ~/.bin/standard-notes.AppImage ]; then
-        echo "Downloading Standard Notes"
         wget -O ~/.bin/standard-notes.AppImage "$(curl -s https://api.github.com/repos/standardnotes/desktop/releases/latest | grep -oP "browser_download_url.*\K(https://.*-x86_64.AppImage)")"
         chmod a+x+r ~/.bin/standard-notes.AppImage
     fi
 
     if [ ! -f ~/.bin/ngrok ]; then
-        echo "Downloading ngrok"
         wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
         unzip ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
         chmod a+x+r ~/.bin/ngrok
@@ -585,21 +583,31 @@ get_dotfiles() {
     fi
 
     if [ ! -f ~/.bin/ctop ]; then
-        echo "Downloading ctop"
         wget -O ~/.bin/ctop "$(curl -s https://api.github.com/repos/bcicen/ctop/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux-amd64)")"
         chmod a+x+r ~/.bin/ctop
     fi
 
     if [ ! -f ~/.bin/rbspy ]; then
-        echo "Downloading rbspy"
         curl -L "$(curl -s https://api.github.com/repos/rbspy/rbspy/releases/latest | grep -oP "browser_download_url.*\K(https://.*unknown-linux-musl.tar.gz)")" | tar -xzf - -C ~/.bin
         chmod a+x+r ~/.bin/rbspy
     fi
 
     if [ ! -f ~/.bin/stern ]; then
-        echo "Downloading stern"
         wget -O ~/.bin/stern "$(curl -s https://api.github.com/repos/wercker/stern/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux_amd64)")"
         chmod a+x+r ~/.bin/stern
+    fi
+
+    if [ ! -f ~/.bin/wrk2 ]; then
+        (
+            cd ~/code
+            if [ ! -d wrk ]; then
+                git clone https://github.com/wg/wrk.git wrk
+            fi
+            cd wrk
+            git pull
+            make
+            cp wrk ~/.bin/wrk
+        )
     fi
 }
 
