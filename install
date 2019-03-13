@@ -507,7 +507,7 @@ install_rust() {
 
 # installs elixir and erlang
 install_elixir() {
-    erlangv="21.2.6"
+    erlangv="21.3"
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
     asdf install erlang "$erlangv" || true
     asdf global erlang "$erlangv"
