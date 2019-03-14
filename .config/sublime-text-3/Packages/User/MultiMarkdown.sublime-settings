@@ -10,15 +10,17 @@
   "wrap_width": 80,
   "rulers": [],
 
-  "caret_extra_width": 12,
-  "caret_style": "blink",
-  "wide_caret": true,
-  "caret_blink_interval": 1,
+  "block_caret": true,
+  "caret_style": "smooth",
+  "wide_caret": false,
+
 
   "line_numbers": false,
   "highlight_line": false,
   "line_padding_top": 2,
   "line_padding_bottom": 2,
+
+  "spell_check": true,
 
   // add trailing #'s to headlines
   "mde.match_header_hashes": false,
