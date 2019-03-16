@@ -12,4 +12,6 @@
   { "keys": ["ctrl+alt+o"], "command": "project_manager", "args": {"action": "new"} },
   { "keys": ["ctrl+."], "command": "next_modification" },
   { "keys": ["ctrl+,"], "command": "prev_modification" },
+  { "keys": ["ctrl+v"], "command": "paste_and_indent" },
+  { "keys": ["ctrl+shift+v"], "command": "paste" },
 ]
