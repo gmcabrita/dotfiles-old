@@ -454,7 +454,7 @@ install_golang() {
 
 # installs python and some python packages
 install_python() {
-    pythonv="3.7.2"
+    pythonv="3.7.3"
     pyenv install -s "$pythonv"
     pyenv global "$pythonv"
 
@@ -498,7 +498,7 @@ install_rust() {
 
 # installs elixir and erlang
 install_elixir() {
-    erlangv="21.3"
+    erlangv="21.3.2"
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
     asdf install erlang "$erlangv" || true
     asdf global erlang "$erlangv"
@@ -516,7 +516,7 @@ install_elixir() {
 
 # installs nodejs and some nodejs packages
 install_nodejs() {
-    nodejsv="11.10.1"
+    nodejsv="11.13.0"
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
@@ -527,24 +527,24 @@ install_nodejs() {
 
 # installs terraform and some kubernetes utilities
 install_kube() {
-    terraformv="0.11.11"
+    terraformv="0.11.13"
     asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git || true
     asdf install terraform "$terraformv" || true
     asdf global terraform "$terraformv"
     terraform -uninstall-autocomplete || true
     terraform -install-autocomplete || true
 
-    minikubev="0.34.1"
+    minikubev="1.0.0"
     asdf plugin-add minikube https://github.com/alvarobp/asdf-minikube.git || true
     asdf install minikube "$minikubev" || true
     asdf global minikube "$minikubev"
 
-    kubectlv="1.13.4"
+    kubectlv="1.13.5"
     asdf plugin-add kubectl https://github.com/Banno/asdf-kubectl.git || true
     asdf install kubectl "$kubectlv" || true
     asdf global kubectl "$kubectlv"
 
-    helmv="2.13.0"
+    helmv="2.13.1"
     asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git || true
     asdf install helm "$helmv" || true
     asdf global helm "$helmv"
