@@ -441,12 +441,10 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -u -v \
-        honnef.co/go/tools/cmd/staticcheck \
-        github.com/golangci/golangci-lint/cmd/golangci-lint \
+        honnef.co/go/tools/cmd/... \
         github.com/oxequa/realize \
         github.com/nektos/act \
         golang.org/x/tools/cmd/goimports \
-        github.com/stamblerre/gocode \
         github.com/DarthSim/hivemind \
         github.com/DarthSim/overmind \
         github.com/go-delve/delve/cmd/dlv
