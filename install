@@ -446,6 +446,7 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -u -v \
+        github.com/rakyll/hey \
         honnef.co/go/tools/cmd/... \
         github.com/oxequa/realize \
         github.com/nektos/act \
@@ -584,19 +585,6 @@ get_dotfiles() {
     if [ ! -f ~/.bin/stern ]; then
         wget -O ~/.bin/stern "$(curl -s https://api.github.com/repos/wercker/stern/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux_amd64)")"
         chmod a+x+r ~/.bin/stern
-    fi
-
-    if [ ! -f ~/.bin/wrk2 ]; then
-        (
-            cd ~/code
-            if [ ! -d wrk ]; then
-                git clone https://github.com/wg/wrk.git wrk
-            fi
-            cd wrk
-            git pull
-            make
-            cp wrk ~/.bin/wrk
-        )
     fi
 }
 
