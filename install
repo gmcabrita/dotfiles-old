@@ -459,22 +459,23 @@ install_python() {
 
     pip install -U \
         pip \
-        pipenv \
         py-spy \
         docker-compose \
         ipython \
-        mypy \
-        autopep8 \
         flake8 \
-        awscli \
-        aws-shell \
+        flake8-bugbear \
+        mypy \
+        black \
+        isort \
         matplotlib \
         httpie \
-        isort \
         seashells \
         pgcli \
         litecli \
+        pre-commit \
         wpm
+
+    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
 }
 
 # updates rustup and rust, also installs some rust packages
