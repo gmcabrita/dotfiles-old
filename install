@@ -78,10 +78,6 @@ setup_sources() {
     curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
     echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list
 
-    # vscode
-    curl -fsSL https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor | apt-key add -
-    echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list
-
     # insync
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
     echo "deb http://apt.insynchq.com/ubuntu artful non-free contrib" > /etc/apt/sources.list.d/insync.list
@@ -226,7 +222,7 @@ base() {
     sysctl -p
 
     # config earlyoom
-    echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text|code)$' --prefer '(^|/)(java|chrome)$'\"" > /etc/default/earlyoom
+    echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text)$' --prefer '(^|/)(java|chrome)$'\"" > /etc/default/earlyoom
 
     # locally install git-lfs
     sudo su "$TARGET_USER" -c "git lfs install"
@@ -283,8 +279,7 @@ full() {
         ofono \
         ofono-phonesim \
         sublime-text \
-        sublime-merge \
-        code
+        sublime-merge
 
     # setup keyboard
     sed -i 's/XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
@@ -310,8 +305,8 @@ Port=12345" > /etc/ofono/phonesim.conf
     systemctl enable docker
 
     # set sublime text as default editor
-    update-alternatives --install /usr/bin/editor editor /usr/bin/code 90
-    update-alternatives --set editor /usr/bin/code
+    update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
+    update-alternatives --set editor /usr/bin/subl
 
     # disable gnome dock
     apt remove gnome-shell-extension-ubuntu-dock
