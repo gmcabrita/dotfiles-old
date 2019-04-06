@@ -24,6 +24,7 @@
     "ProjectManager",
     "rainbow_csv",
     "RSpec",
+    "JsPrettier",
     "Rust Enhanced",
     "RustFmt",
     "Sass",
