@@ -48,6 +48,7 @@
     ".git",
     ".hg",
     ".mypy_cache",
+    ".pyre",
     ".tox",
     ".venv",
     "CVS",
