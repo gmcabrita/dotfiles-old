@@ -473,7 +473,8 @@ install_python() {
         pgcli \
         litecli \
         pre-commit \
-        wpm
+        wpm \
+        python-language-server
 
     curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
 }
