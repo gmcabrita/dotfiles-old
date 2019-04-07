@@ -472,6 +472,7 @@ install_python() {
         pandas \
         sklearn \
         scipy \
+        keras \
         matplotlib \
         seaborn \
         flake8 \
