@@ -16,4 +16,6 @@ function update
   cd (pyenv root)
   git pull
   cd -
+
+  poetry self:update
 end
