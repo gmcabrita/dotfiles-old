@@ -480,7 +480,9 @@ install_python() {
         wpm \
         python-language-server
 
-    curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    if [ ! -f ~/.poetry/bin/poetry ]; then
+        curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
+    fi
 }
 
 # updates rustup and rust, also installs some rust packages

@@ -6,16 +6,22 @@ function update
   asdf update --head
   asdf plugin-update --all
 
-  cd (rbenv root)
-  git pull
-  cd -
-  cd (rbenv root)/plugins/ruby-build
-  git pull
-  cd -
+  if test -d $HOME/.rbenv/bin
+    cd (rbenv root)
+    git pull
+    cd -
+    cd (rbenv root)/plugins/ruby-build
+    git pull
+    cd -
+  end
 
-  cd (pyenv root)
-  git pull
-  cd -
+  if test -d $HOME/.pyenv/bin
+    cd (pyenv root)
+    git pull
+    cd -
+  end
 
-  poetry self:update
+  if type -q poetry
+    poetry self:update
+  end
 end
