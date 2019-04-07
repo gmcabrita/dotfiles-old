@@ -466,6 +466,7 @@ install_python() {
         py-spy \
         docker-compose \
         ipython \
+        ptpython \
         notebook \
         tensorflow \
         pandas \
