@@ -44,6 +44,9 @@ setup_sources_base() {
         ca-certificates \
         software-properties-common
 
+    # apt-fast
+    add-apt-repository ppa:apt-fast/stable -y -n
+
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu cosmic edge" > /etc/apt/sources.list.d/docker.list
@@ -87,7 +90,8 @@ setup_sources() {
 base() {
     apt update
     apt upgrade -y
-    apt install -y \
+    apt install -y apt-fast
+    apt-fast install -y \
         xsltproc \
         earlyoom \
         fop \
@@ -254,7 +258,7 @@ base() {
 full() {
     base;
 
-    apt install -y \
+    apt-fast install -y \
         mpv \
         alsa-tools-gui \
         pavucontrol \
@@ -329,7 +333,7 @@ Port=12345" > /etc/ofono/phonesim.conf
     read -rp "Do you want to install TLP? (y/n) " -n 1
     echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        apt install -y tlp
+        apt-fast install -y tlp
         tlp start
     fi
 

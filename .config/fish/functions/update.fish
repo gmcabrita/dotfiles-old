@@ -1,7 +1,7 @@
 function update
-  sudo apt update
-  sudo apt upgrade
-  sudo apt autoremove
+  sudo apt-fast update
+  sudo apt-fast upgrade
+  sudo apt-fast autoremove
   sudo snap refresh
   asdf update --head
   asdf plugin-update --all
