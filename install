@@ -466,12 +466,18 @@ install_python() {
         py-spy \
         docker-compose \
         ipython \
+        notebook \
+        tensorflow \
+        pandas \
+        sklearn \
+        scipy \
+        matplotlib \
+        seaborn \
         flake8 \
         flake8-bugbear \
         mypy \
         black \
         isort \
-        matplotlib \
         httpie \
         seashells \
         pgcli \
