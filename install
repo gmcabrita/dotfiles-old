@@ -569,8 +569,8 @@ install_kube() {
 get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
 
-    rm ~/.config/fish/env/*
-    rm ~/.config/fish/functions/*
+    rm ~/.config/fish/env/* || true
+    rm ~/.config/fish/functions/* || true
 
     rsync --exclude ".git/" \
         --exclude ".fonts/" \
