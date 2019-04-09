@@ -569,7 +569,6 @@ install_kube() {
 get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
 
-    rm ~/.config/fish/completions/*
     rm ~/.config/fish/env/*
     rm ~/.config/fish/functions/*
 
