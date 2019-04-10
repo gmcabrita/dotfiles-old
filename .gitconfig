@@ -34,6 +34,9 @@
     # Quick commit
     c = commit
 
+    # Quick branch
+    b = branch
+
     # Quick add
     a = add
 
