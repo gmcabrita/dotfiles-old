@@ -1,10 +1,16 @@
 {
-  "clients":
-  {
-    "pyls":
-    {
+  "clients": {
+    "pyls": {
       "enabled": true
-    }
+    },
+    "gopls": {
+      "enabled": true,
+      "command": ["gopls"],
+      "scopes": ["source.go"],
+      "syntaxes": ["Packages/Go/Go.sublime-syntax"],
+      "languageId": "go"
+    },
+
   },
   "auto_show_diagnostics_panel": false
 }
