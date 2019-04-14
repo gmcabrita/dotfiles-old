@@ -452,9 +452,9 @@ install_golang() {
     go get -u -v \
         github.com/rakyll/hey \
         honnef.co/go/tools/cmd/... \
+        golang.org/x/tools/cmd/... \
         github.com/oxequa/realize \
         github.com/nektos/act \
-        golang.org/x/tools/cmd/goimports \
         github.com/DarthSim/hivemind \
         github.com/DarthSim/overmind \
         github.com/go-delve/delve/cmd/dlv
