@@ -34,7 +34,7 @@ check_isnt_sudo() {
 
 # sets up the base third-party software sources
 setup_sources_base() {
-    apt update
+    apt update || true
     apt upgrade -y
     apt install -y \
         curl \
@@ -88,10 +88,11 @@ setup_sources() {
 
 # installs the base packages
 base() {
-    apt update
+    apt update || true
     apt upgrade -y
     apt install -y apt-fast
     apt-fast install -y \
+        blueman \
         fonts-noto-color-emoji \
         xsltproc \
         earlyoom \
@@ -228,8 +229,11 @@ base() {
 
     # disable encrypted swap
     swapoff -a
-    cryptsetup -v luksClose /dev/mapper/ubuntu--vg-swap_1
-    sed -i 's/^\/dev\/mapper\/ubuntu--vg-swap_1/#\/dev\/mapper\/ubuntu--vg-swap_1/g' /etc/fstab
+
+    if [ -d /dev/mapper/ubuntu--vg-swap_1 ]; then
+        cryptsetup -v luksClose /dev/mapper/ubuntu--vg-swap_1
+        sed -i 's/^\/dev\/mapper\/ubuntu--vg-swap_1/#\/dev\/mapper\/ubuntu--vg-swap_1/g' /etc/fstab
+    fi
 
     # config earlyoom
     echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text)$' --prefer '(^|/)(java|chrome)$'\"" > /etc/default/earlyoom
