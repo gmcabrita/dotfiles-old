@@ -49,10 +49,13 @@ setup_sources_base() {
 
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu cosmic edge" > /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco edge" > /etc/apt/sources.list.d/docker.list
 
     # git
     add-apt-repository ppa:git-core/ppa -y -n
+
+    # fish
+    apt-add-repository ppa:fish-shell/release-3 -y -n
 
     # git-lfs
     curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
@@ -80,7 +83,7 @@ setup_sources() {
 
     # insync
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-    echo "deb http://apt.insynchq.com/ubuntu artful non-free contrib" > /etc/apt/sources.list.d/insync.list
+    echo "deb http://apt.insynchq.com/ubuntu cosmic non-free contrib" > /etc/apt/sources.list.d/insync.list
 }
 
 # installs the base packages
