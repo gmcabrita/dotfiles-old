@@ -223,6 +223,11 @@ base() {
     } >> /etc/sysctl.conf
     sysctl -p
 
+    # disable encrypted swap
+    swapoff -a
+    cryptsetup -v luksClose /dev/mapper/ubuntu--vg-swap_1
+    sed -i 's/^\/dev\/mapper\/ubuntu--vg-swap_1/#\/dev\/mapper\/ubuntu--vg-swap_1/g' /etc/fstab
+
     # config earlyoom
     echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text)$' --prefer '(^|/)(java|chrome)$'\"" > /etc/default/earlyoom
 
@@ -286,8 +291,8 @@ full() {
     apt remove -y firefox
 
     # setup keyboard
-    sed -i 's/XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
-    sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
+    sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
+    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
     dpkg-reconfigure keyboard-configuration -f noninteractive
 
     # spotify
@@ -303,7 +308,7 @@ full() {
     apt install -y ./zoom.deb
     rm zoom.deb
 
-    sed -i 's/Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
+    sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
 
     # set docker to autostart
     systemctl enable docker
@@ -319,15 +324,17 @@ full() {
     update-alternatives --set gdm3.css /usr/share/gnome-shell/theme/gnome-shell.css
 
     # show nothing on grub boot
-    sed -i 's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/g' /etc/default/grub
-    update-grub
-
+    sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/g' /etc/default/grub
     # change plymouth background to black
-    sed -i 's/black=.*/black=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/white=.*/white=0xffffff/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/brown=.*/brown=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/blue=.*/blue=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^black=.*/black=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^white=.*/white=0xffffff/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^brown=.*/brown=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^blue=.*/blue=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    # change default plymouth grub background
+    sed -i 's/44,0,30,0/0,0,0,0/g' /etc/alternatives/default.plymouth.grub
+    sed -i 's/44,0,30,0/0,0,0,0/g' /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
     update-initramfs -u
+    update-grub
 
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
