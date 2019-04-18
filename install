@@ -54,9 +54,6 @@ setup_sources_base() {
     # git
     add-apt-repository ppa:git-core/ppa -y -n
 
-    # fish
-    apt-add-repository ppa:fish-shell/release-3 -y -n
-
     # git-lfs
     curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
     echo "deb https://packagecloud.io/github/git-lfs/ubuntu/ cosmic main" > /etc/apt/sources.list.d/git-lfs.list
@@ -92,6 +89,7 @@ base() {
     apt upgrade -y
     apt install -y apt-fast
     apt-fast install -y \
+        fonts-noto-color-emoji \
         xsltproc \
         earlyoom \
         fop \
@@ -159,8 +157,8 @@ base() {
         jq \
         tmux \
         imagemagick \
-        openjdk-8-jdk \
-        openjdk-8-jre \
+        openjdk-13-jdk \
+        openjdk-13-jre \
         ffmpeg \
         tree \
         dos2unix \
@@ -203,7 +201,7 @@ base() {
         yarn \
         libpq-dev \
         postgresql-client-common \
-        postgresql-client-10 \
+        postgresql-client-11 \
         squashfs-tools \
         opensc \
         mosh \
@@ -285,15 +283,12 @@ full() {
         sublime-text \
         sublime-merge
 
+    apt remove -y firefox
+
     # setup keyboard
     sed -i 's/XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
     sed -i 's/XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
     dpkg-reconfigure keyboard-configuration -f noninteractive
-
-    echo "[phonesim]
-Driver=phonesim
-Address=127.0.0.1
-Port=12345" > /etc/ofono/phonesim.conf
 
     # spotify
     snap install spotify --classic
@@ -318,7 +313,7 @@ Port=12345" > /etc/ofono/phonesim.conf
     update-alternatives --set editor /usr/bin/subl
 
     # disable gnome dock
-    apt remove gnome-shell-extension-ubuntu-dock
+    apt remove -y gnome-shell-extension-ubuntu-dock
 
     # set login and lock screen to the gnome default
     update-alternatives --set gdm3.css /usr/share/gnome-shell/theme/gnome-shell.css
@@ -342,6 +337,7 @@ Port=12345" > /etc/ofono/phonesim.conf
         tlp start
     fi
 
+    apt autoremove -y
 }
 
 # installs some extra fonts
@@ -437,7 +433,7 @@ install_rustup() {
 
 # installs ruby
 install_ruby() {
-    rubyv="2.6.2"
+    rubyv="2.6.3"
     RUBY_CONFIGURE_OPTS="--with-jemalloc" rbenv install "$rubyv" --skip-existing || true
     rbenv global "$rubyv"
 }
