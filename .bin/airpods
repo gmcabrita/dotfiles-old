@@ -31,7 +31,7 @@ start_phonesim() {
   ofono-phonesim -p 12345 /usr/share/phonesim/default.xml &
   sleep 0.5
 
-  dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:"Powered" variant:boolean:"true"
+  dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:Powered variant:boolean:true || true
 
   echo "ofono-phonesim has successfully started"
 

@@ -272,6 +272,8 @@ full() {
         mpv \
         alsa-tools-gui \
         pavucontrol \
+        libcanberra-gtk-module \
+        libcanberra-gtk3-module \
         fonts-hack-ttf \
         ttf-ubuntu-font-family \
         snapd-xdg-open \
@@ -301,6 +303,12 @@ full() {
     sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
     sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
     dpkg-reconfigure keyboard-configuration -f noninteractive
+
+    # AirPods hacks to get HFP working
+    echo "[phonesim]
+Driver=phonesim
+Address=127.0.0.1
+Port=12345" | sudo tee /etc/ofono/phonesim.conf
 
     # spotify
     snap install spotify --classic
