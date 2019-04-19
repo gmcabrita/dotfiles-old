@@ -34,7 +34,7 @@ ExecStartPost=dbus-send --print-reply --system --dest=org.ofono /phonesim org.of
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/user/ofono-phonesim.service
   systemctl --user daemon-reload
-  systemctl --user enable ofono-phonesim.service
+  systemctl --user enable ofono-phonesim
 }
 
 start_phonesim() {
@@ -43,9 +43,7 @@ start_phonesim() {
     exit 1
   fi
 
-  pkill ofono-phonesim || true
-  ofono-phonesim -p 12345 /usr/share/phonesim/default.xml &
-  sleep 0.5
+  systemctl --user restart ofono-phonesim
 
   dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:Powered variant:boolean:true || true
 
