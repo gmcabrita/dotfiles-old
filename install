@@ -531,7 +531,9 @@ install_rust() {
         cargo-fuzz \
         cargo-with \
         cargo-bloat \
-        systemfd
+        systemfd \
+        ripgrep \
+        hyperfine
 }
 
 # installs elixir and erlang
