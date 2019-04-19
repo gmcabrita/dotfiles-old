@@ -5,6 +5,8 @@ MAC_ADDRESS="10:94:BB:97:9F:6A"
 BLUEZ_CARD="bluez_card.${MAC_ADDRESS//:/_}"
 BLUEZ_SINK="bluez_sink.${MAC_ADDRESS//:/_}.a2dp_sink"
 
+
+
 setup_phonesim() {
   if ! command -v ofono-phonesim >/dev/null 2>&1; then
     sudo apt update
@@ -17,8 +19,22 @@ Port=12345" | sudo tee /etc/ofono/phonesim.conf
     echo "ofono-phonesim has been setup, please restart your machine"
   else
     echo "ofono-phonesim has already been setup"
-    exit 1
   fi
+
+  echo "[Unit]
+Description=ofono-phonesim
+After=ofono.service
+
+[Service]
+ExecStartPre=-pkill ofono-phonesim
+ExecStart=ofono-phonesim -p 12345 /usr/share/phonesim/default.xml
+ExecStartPost=/bin/sleep 2
+ExecStartPost=dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:Powered variant:boolean:true
+
+[Install]
+WantedBy=multi-user.target" | sudo tee /etc/systemd/user/ofono-phonesim.service
+  systemctl --user daemon-reload ofono-phonesim
+  systemctl --user enable ofono-phonesim.service
 }
 
 start_phonesim() {
