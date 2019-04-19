@@ -16,7 +16,7 @@ Driver=phonesim
 Address=127.0.0.1
 Port=12345" | sudo tee /etc/ofono/phonesim.conf
 
-    echo "ofono-phonesim has been setup, please restart your machine"
+    echo "ofono-phonesim has been installed, please restart your machine"
   else
     echo "ofono-phonesim has already been setup"
   fi
@@ -33,7 +33,7 @@ ExecStartPost=dbus-send --print-reply --system --dest=org.ofono /phonesim org.of
 
 [Install]
 WantedBy=multi-user.target" | sudo tee /etc/systemd/user/ofono-phonesim.service
-  systemctl --user daemon-reload ofono-phonesim
+  systemctl --user daemon-reload
   systemctl --user enable ofono-phonesim.service
 }
 
