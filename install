@@ -595,32 +595,33 @@ get_dotfiles() {
     rm ~/.config/fish/env/* || true
     rm ~/.config/fish/functions/* || true
 
-    rsync --exclude ".git/" \
+    rsync --quiet \
+        --exclude ".git/" \
         --exclude ".fonts/" \
         --exclude "install" \
         --exclude "README.md" \
         --exclude "LICENSE" \
         -avh --no-perms . ~
 
-    if [ ! -f ~/.bin/ngrok ]; then
-        wget https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
-        unzip ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
+    if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
+        wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+        unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
         chmod a+x+r ~/.bin/ngrok
         rm ngrok-stable-linux-amd64.zip
     fi
 
-    if [ ! -f ~/.bin/ctop ]; then
-        wget -O ~/.bin/ctop "$(curl -s https://api.github.com/repos/bcicen/ctop/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux-amd64)")"
+    if [ ! -f ~/.bin/ctop ] || [ "$1" == "-f" ]; then
+        wget -qO ~/.bin/ctop "$(curl -s https://api.github.com/repos/bcicen/ctop/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux-amd64)")"
         chmod a+x+r ~/.bin/ctop
     fi
 
-    if [ ! -f ~/.bin/rbspy ]; then
-        curl -L "$(curl -s https://api.github.com/repos/rbspy/rbspy/releases/latest | grep -oP "browser_download_url.*\K(https://.*unknown-linux-musl.tar.gz)")" | tar -xzf - -C ~/.bin
+    if [ ! -f ~/.bin/rbspy ] || [ "$1" == "-f" ]; then
+        curl -sL "$(curl -s https://api.github.com/repos/rbspy/rbspy/releases/latest | grep -oP "browser_download_url.*\K(https://.*unknown-linux-musl.tar.gz)")" | tar -xzf - -C ~/.bin
         chmod a+x+r ~/.bin/rbspy
     fi
 
-    if [ ! -f ~/.bin/stern ]; then
-        wget -O ~/.bin/stern "$(curl -s https://api.github.com/repos/wercker/stern/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux_amd64)")"
+    if [ ! -f ~/.bin/stern ] || [ "$1" == "-f" ]; then
+        wget -qO ~/.bin/stern "$(curl -s https://api.github.com/repos/wercker/stern/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux_amd64)")"
         chmod a+x+r ~/.bin/stern
     fi
 }
@@ -659,7 +660,7 @@ main() {
         install_fonts
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
-        get_dotfiles
+        get_dotfiles "$2"
     elif [[ $cmd == "ruby" ]]; then
         check_isnt_sudo
         check_rbenv_and_install
