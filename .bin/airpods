@@ -8,33 +8,28 @@ BLUEZ_SINK="bluez_sink.${MAC_ADDRESS//:/_}.a2dp_sink"
 
 
 setup_phonesim() {
-  if ! command -v ofono-phonesim >/dev/null 2>&1; then
-    sudo apt update
-    sudo apt install ofono ofono-phonesim
-    echo "[phonesim]
+  sudo apt update || true
+  sudo apt install ofono ofono-phonesim
+  echo "[phonesim]
 Driver=phonesim
 Address=127.0.0.1
 Port=12345" | sudo tee /etc/ofono/phonesim.conf
 
-    echo "ofono-phonesim has been setup, please restart your machine"
-  else
-    echo "ofono-phonesim has already been setup"
-  fi
-
   echo "[Unit]
 Description=ofono-phonesim
-After=ofono.service
+After=ofono.service dbus.service bluetooth.service graphical.target multi-user.target
 
 [Service]
+ExecStartPre=/bin/sleep 2
 ExecStartPre=-pkill ofono-phonesim
 ExecStart=ofono-phonesim -p 12345 /usr/share/phonesim/default.xml
 ExecStartPost=/bin/sleep 2
 ExecStartPost=dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:Powered variant:boolean:true
 
 [Install]
-WantedBy=multi-user.target" | sudo tee /etc/systemd/user/ofono-phonesim.service
-  systemctl --user daemon-reload ofono-phonesim
-  systemctl --user enable ofono-phonesim.service
+WantedBy=default.target" | sudo tee /etc/systemd/user/ofono-phonesim.service
+  systemctl --user daemon-reload
+  systemctl --user enable ofono-phonesim
 }
 
 start_phonesim() {
@@ -43,9 +38,7 @@ start_phonesim() {
     exit 1
   fi
 
-  pkill ofono-phonesim || true
-  ofono-phonesim -p 12345 /usr/share/phonesim/default.xml &
-  sleep 0.5
+  systemctl --user restart ofono-phonesim
 
   dbus-send --print-reply --system --dest=org.ofono /phonesim org.ofono.Modem.SetProperty string:Powered variant:boolean:true || true
 
