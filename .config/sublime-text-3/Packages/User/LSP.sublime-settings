@@ -29,5 +29,5 @@
       "tcp_port": 7658
     }
   },
-  "auto_show_diagnostics_panel": false
+  "auto_show_diagnostics_panel": true
 }
