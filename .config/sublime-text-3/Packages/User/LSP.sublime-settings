@@ -1,5 +1,4 @@
 {
-  "log_debug": true,
   "clients": {
     "pyls": {
       "enabled": true
