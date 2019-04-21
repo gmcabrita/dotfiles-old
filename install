@@ -563,7 +563,7 @@ install_nodejs() {
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
 
-    npm install -g @marp-team/marp-cli typescript
+    npm install -g @marp-team/marp-cli typescript prettier
 }
 
 # installs terraform and some kubernetes utilities
