@@ -540,7 +540,7 @@ install_rust() {
 
 # installs elixir and erlang
 install_elixir() {
-    erlangv="21.3.4"
+    erlangv="21.3.6"
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
     asdf install erlang "$erlangv" || true
     asdf global erlang "$erlangv"
@@ -558,7 +558,7 @@ install_elixir() {
 
 # installs nodejs and some nodejs packages
 install_nodejs() {
-    nodejsv="11.14.0"
+    nodejsv="12.0.0"
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
