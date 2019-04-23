@@ -298,7 +298,8 @@ full() {
         ofono-phonesim \
         sublime-text \
         sublime-merge \
-        shotwell
+        shotwell \
+        openshot
 
     apt remove -y firefox
 
