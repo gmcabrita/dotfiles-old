@@ -98,6 +98,8 @@ base() {
         earlyoom \
         fop \
         pv \
+        fzf \
+        ripgrep \
         libelf-dev \
         libcap-dev \
         libcurl4-openssl-dev \
@@ -533,7 +535,6 @@ install_rust() {
         cargo-with \
         cargo-bloat \
         systemfd \
-        ripgrep \
         hyperfine
 }
 
