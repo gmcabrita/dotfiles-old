@@ -247,7 +247,7 @@ base() {
     snap install heroku --classic
 
     # firefox send
-    snap install ffsend --classic
+    snap install ffsend
 
     # microk8s
     sudo snap install microk8s --classic
