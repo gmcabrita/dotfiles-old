@@ -251,6 +251,8 @@ base() {
 
     # microk8s
     sudo snap install microk8s --classic
+    # don't leave microk8s running
+    microk8s.stop
 
     # asciinema
     snap install asciinema --classic
