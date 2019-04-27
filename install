@@ -84,6 +84,10 @@ setup_sources() {
     # insync
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
     echo "deb http://apt.insynchq.com/ubuntu cosmic non-free contrib" > /etc/apt/sources.list.d/insync.list
+
+    # slack
+    curl -fsSL https://packagecloud.io/slacktechnologies/slack/gpgkey | apt-key add -
+    echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list
 }
 
 # installs the base packages
@@ -304,7 +308,8 @@ full() {
         sublime-text \
         sublime-merge \
         shotwell \
-        openshot
+        openshot \
+        slack-desktop
 
     apt remove -y firefox
 
