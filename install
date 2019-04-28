@@ -489,7 +489,8 @@ install_golang() {
         github.com/nektos/act \
         github.com/DarthSim/hivemind \
         github.com/DarthSim/overmind \
-        github.com/go-delve/delve/cmd/dlv
+        github.com/go-delve/delve/cmd/dlv \
+        github.com/davecheney/httpstat
 }
 
 # installs python and some python packages
