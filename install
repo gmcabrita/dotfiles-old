@@ -242,7 +242,7 @@ base() {
     fi
 
     # config earlyoom
-    echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text)$' --prefer '(^|/)(java|chrome)$'\"" > /etc/default/earlyoom
+    echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text)$' --prefer '(^|/)(slack|java|chrome)$'\"" > /etc/default/earlyoom
 
     # locally install git-lfs
     sudo su "$TARGET_USER" -c "git lfs install"
