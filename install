@@ -216,6 +216,8 @@ base() {
         opensc \
         mosh \
         lnav \
+        lldb \
+        liblldb-dev \
         libjemalloc-dev \
         "linux-headers-$(uname -r)"
 
