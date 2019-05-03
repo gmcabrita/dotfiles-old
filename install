@@ -578,7 +578,7 @@ install_nodejs() {
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
 
-    npm install -g @marp-team/marp-cli typescript prettier
+    npm install -g prettier llnode
 }
 
 # installs terraform and some kubernetes utilities
