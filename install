@@ -161,6 +161,7 @@ base() {
         python3-pip \
         libssh-dev \
         htop \
+        iotop \
         aspell \
         aspell-pt-pt \
         p7zip-full \
