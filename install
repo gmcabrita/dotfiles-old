@@ -162,6 +162,7 @@ base() {
         libssh-dev \
         htop \
         iotop \
+        nethogs \
         aspell \
         aspell-pt-pt \
         p7zip-full \
