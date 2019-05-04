@@ -1,16 +1,15 @@
-# set -g __fish_git_prompt_show_informative_status 'yes'
-# set -g __fish_git_prompt_char_stateseparator ''
-# set -g __fish_git_prompt_char_cleanstate ''
-# set -g __fish_git_prompt_char_upstream_ahead ' ⬈'
-# set -g __fish_git_prompt_char_upstream_behind ' ⬋'
-# set -g __fish_git_prompt_char_dirtystate ' *'
-# set -g __fish_git_prompt_char_stagedstate ' ·'
-# set -g __fish_git_prompt_char_untrackedfiles ' :'
+set -g __fish_git_prompt_show_informative_status 'yes'
+set -g __fish_git_prompt_char_stateseparator ''
+set -g __fish_git_prompt_char_cleanstate ''
+set -g __fish_git_prompt_char_upstream_ahead ' ↑'
+set -g __fish_git_prompt_char_upstream_behind ' ↓'
+set -g __fish_git_prompt_char_dirtystate ' *'
+set -g __fish_git_prompt_char_stagedstate ' ·'
+set -g __fish_git_prompt_char_untrackedfiles ' :'
 
 function fish_prompt
   set_color $fish_color_cwd
   printf '%s' (prompt_pwd)
   set_color normal
-  printf ' '
-  # printf '%s ' (__fish_git_prompt)
+  printf '%s ' (__fish_git_prompt)
 end
