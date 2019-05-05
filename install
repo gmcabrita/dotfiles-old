@@ -54,9 +54,6 @@ setup_sources_base() {
     # git
     add-apt-repository ppa:git-core/ppa -y -n
 
-    # fish
-    apt-add-repository ppa:fish-shell/release-3 -y -n
-
     # git-lfs
     curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
     echo "deb https://packagecloud.io/github/git-lfs/ubuntu/ cosmic main" > /etc/apt/sources.list.d/git-lfs.list
