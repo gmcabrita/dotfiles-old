@@ -32,11 +32,11 @@
     "log/",
     "public/packs/"
   ],
-  "bold_folder_labels": true,
   "block_caret": true,
+  "bold_folder_labels": true,
   "caret_style": "smooth",
-  "close_windows_when_empty": true,
-  "color_scheme": "Packages/User/Tomorrow-Night.tmTheme",
+  "close_windows_when_empty": false,
+  "color_scheme": "Packages/gruvbox/gruvbox (Light) (Medium).sublime-color-scheme",
   "default_line_ending": "unix",
   "detect_identation": true,
   "draw_white_space": "all",
@@ -64,10 +64,10 @@
   [
     "subpixel_antialias"
   ],
-  "font_size": 12.0,
+  "font_size": 13.0,
   "highlight_line": true,
   "highlight_modified_tabs": true,
-  "hot_exit": false,
+  "hot_exit": true,
   "ignored_packages":
   [
     "Rust",

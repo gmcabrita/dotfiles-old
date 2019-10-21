@@ -1,46 +1,32 @@
 {
-  "bootstrapped": true,
-  "in_process_packages":
-  [
-  ],
-  "installed_packages":
-  [
-    "Babel",
-    "BracketHighlighter",
-    "Color Highlighter",
-    "CustomPATH",
-    "EditorConfig",
-    "Elixir",
-    "Emmet",
-    "FileIcons",
-    "fish",
-    "Gofmt",
-    "Golang Build",
-    "Hide Menu",
-    "Jinja2",
-    "JsPrettier",
-    "LSP",
-    "MarkdownEditing",
-    "MDX Syntax Highlighting",
-    "MoveTab",
-    "Package Control",
-    "Pony Language",
-    "ProjectManager",
-    "Python 3",
-    "rainbow_csv",
-    "RSpec",
-    "Rust Enhanced",
-    "RustFmt",
-    "Sass",
-    "SideBarEnhancements",
-    "sublack",
-    "SublimeLinter",
-    "SublimeLinter-contrib-elixirc",
-    "SublimeLinter-haml",
-    "SublimeLinter-ruby",
-    "SublimeLinter-shellcheck",
-    "Terminal",
-    "Themr",
-    "TOML"
-  ]
+    "bootstrapped": true,
+    "in_process_packages":
+    [
+    ],
+    "installed_packages":
+    [
+        "Babel",
+        "CustomPATH",
+        "EditorConfig",
+        "Emmet",
+        "FileIcons",
+        "fish",
+        "gruvbox",
+        "Hide Menu",
+        "Jinja2",
+        "MarkdownEditing",
+        "MoveTab",
+        "Package Control",
+        "ProjectManager",
+        "Python 3",
+        "rainbow_csv",
+        "RSpec",
+        "Sass",
+        "SideBarEnhancements",
+        "SublimeLinter",
+        "SublimeLinter-haml",
+        "SublimeLinter-ruby",
+        "SublimeLinter-shellcheck",
+        "TOML"
+    ]
 }
