@@ -36,7 +36,7 @@
   "bold_folder_labels": true,
   "caret_style": "smooth",
   "close_windows_when_empty": false,
-  "color_scheme": "Packages/gruvbox/gruvbox (Light) (Medium).sublime-color-scheme",
+  "color_scheme": "Packages/Solarized Color Scheme/Solarized (light).sublime-color-scheme",
   "default_line_ending": "unix",
   "detect_identation": true,
   "draw_white_space": "all",
@@ -59,7 +59,7 @@
     "site",
     "deps"
   ],
-  "font_face": "Hack",
+  "font_face": "Roboto Mono",
   "font_options":
   [
     "subpixel_antialias"
