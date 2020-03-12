@@ -20,8 +20,4 @@ function update
     git pull
     cd -
   end
-
-  if type -q poetry
-    poetry self:update
-  end
 end

@@ -32,8 +32,7 @@ check_isnt_sudo() {
     fi
 }
 
-# sets up the base third-party software sources
-setup_sources_base() {
+setup_linux() {
     apt update || true
     apt upgrade -y
     apt install -y \
@@ -49,23 +48,18 @@ setup_sources_base() {
 
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu disco edge" > /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan edge" > /etc/apt/sources.list.d/docker.list
 
     # git
     add-apt-repository ppa:git-core/ppa -y -n
 
-    # git-lfs
-    curl -fsSL https://packagecloud.io/github/git-lfs/gpgkey | apt-key add -
-    echo "deb https://packagecloud.io/github/git-lfs/ubuntu/ cosmic main" > /etc/apt/sources.list.d/git-lfs.list
-
     # yarn
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
     echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
-}
 
-# sets up third-party software sources
-setup_sources() {
-    setup_sources_base;
+    # spotify
+    curl -sS https://download.spotify.com/debian/pubkey.gpg | apt-key add -
+    echo "deb http://repository.spotify.com stable non-free" | tee /etc/apt/sources.list.d/spotify.list
 
     # chrome
     curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
@@ -78,147 +72,160 @@ setup_sources() {
     curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
     echo "deb https://download.sublimetext.com/ apt/stable/" > /etc/apt/sources.list.d/sublime-text.list
 
-    # insync
-    apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
-    echo "deb http://apt.insynchq.com/ubuntu cosmic non-free contrib" > /etc/apt/sources.list.d/insync.list
-
     # slack
     curl -fsSL https://packagecloud.io/slacktechnologies/slack/gpgkey | apt-key add -
     echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list
-}
 
-# installs the base packages
-base() {
     apt update || true
     apt upgrade -y
     apt install -y apt-fast
     apt-fast install -y \
-        blueman \
-        fonts-noto-color-emoji \
-        xsltproc \
-        earlyoom \
-        fop \
-        pv \
-        fzf \
-        ripgrep \
-        libelf-dev \
-        libcap-dev \
-        libcurl4-openssl-dev \
-        r-base \
-        linux-tools-common \
-        linux-tools-generic \
+        "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
-        binutils-multiarch \
-        uuid-dev \
-        icu-devtools \
-        libunwind8 \
-        libunwind-dev \
-        libbsd-dev \
-        libedit-dev \
-        libxml2-dev \
-        libxml2-utils \
-        swig \
-        pkg-config \
-        ninja-build  \
-        python \
-        libpython-dev \
-        clang \
-        libicu-dev \
-        software-properties-common \
-        libssh2-1-dev \
-        libgit2-dev \
-        cmake \
-        libcurl4 \
-        liblttng-ust0 \
-        libpcap-dev \
-        graphviz \
-        readline-common \
-        ncurses-base \
-        openssl \
-        libyaml-dev \
-        libgmp-dev \
-        libxslt1-dev \
-        libxslt1-dev \
-        libffi-dev \
-        libtool \
-        unixodbc \
-        unixodbc-dev \
-        m4 \
-        zlib1g-dev \
-        zlibc \
-        libncurses5-dev \
-        libsecret-1-dev \
-        libwxgtk3.0-dev \
-        libgl1-mesa-dev \
-        libglu1-mesa-dev \
-        libpng-dev \
-        git-extras \
-        python3 \
-        fish \
-        python3-pip \
-        libssh-dev \
-        htop \
-        iotop \
-        nethogs \
+        alsa-tools-gui \
+        arandr \
         aspell \
         aspell-pt-pt \
-        p7zip-full \
-        jq \
-        tmux \
-        imagemagick \
-        openjdk-13-jdk \
-        openjdk-13-jre \
-        ffmpeg \
-        tree \
-        dos2unix \
-        pcregrep \
-        linux-image-extra-virtual \
-        libssl-dev \
-        libbz2-dev \
-        libreadline-dev \
-        libsqlite3-dev \
-        llvm \
-        libncursesw5-dev \
-        xz-utils \
-        systemtap \
-        tk-dev \
-        git \
-        git-lfs \
-        inotify-tools \
-        docker-ce \
-        build-essential \
-        dstat \
-        automake \
         autoconf \
-        vim \
+        automake \
+        binutils-multiarch \
+        blueman \
+        build-essential \
+        clang \
+        cmake \
+        docker-ce \
+        dos2unix \
+        dstat \
+        earlyoom \
         exuberant-ctags \
+        ffmpeg \
+        fish \
+        fonts-hack-ttf \
+        fonts-noto-color-emoji \
+        fop \
+        fzf \
+        gdb \
+        git \
+        git-extras \
+        gnupg2 \
+        gnuplot \
+        google-chrome-stable \
+        graphviz \
+        htop \
+        icu-devtools \
+        imagemagick \
+        inotify-tools \
+        iotop \
+        jq \
+        libbsd-dev \
+        libbz2-dev \
+        libcanberra-gtk-module \
+        libcanberra-gtk3-module \
+        libcap-dev \
+        libcurl4 \
+        libcurl4-openssl-dev \
+        libedit-dev \
+        libelf-dev \
+        libffi-dev \
+        libgit2-dev \
+        libgl1-mesa-dev \
+        libglu1-mesa-dev \
+        libgmp-dev \
+        libicu-dev \
+        libjemalloc-dev \
+        liblldb-dev \
+        liblttng-ust0 \
+        libncurses5-dev \
+        libncursesw5-dev \
         libopenblas-base \
         libopenblas-dev \
-        gdb \
-        rlwrap \
-        libu2f-host-dev \
-        gnupg2 \
-        pcscd \
-        pcsc-tools \
-        scdaemon \
-        gnuplot \
-        valgrind \
-        lldb \
-        ncdu \
-        ranger \
-        xdot \
-        yarn \
+        libpcap-dev \
+        libpng-dev \
         libpq-dev \
-        postgresql-client-common \
-        postgresql-client-11 \
-        squashfs-tools \
-        opensc \
-        mosh \
-        lnav \
+        libpython-dev \
+        libreadline-dev \
+        libsecret-1-dev \
+        libsqlite3-dev \
+        libssh-dev \
+        libssh2-1-dev \
+        libssl-dev \
+        libtool \
+        libu2f-host-dev \
+        libunwind-dev \
+        libunwind8 \
+        libwxgtk3.0-dev \
+        libxml2-dev \
+        libxml2-utils \
+        libxslt1-dev \
+        libxslt1-dev \
+        libyaml-dev \
+        linux-image-extra-virtual \
+        linux-tools-common \
+        linux-tools-generic \
         lldb \
-        liblldb-dev \
-        libjemalloc-dev \
-        "linux-headers-$(uname -r)"
+        lldb \
+        llvm \
+        lnav \
+        m4 \
+        mosh \
+        mpv \
+        ncdu \
+        ncurses-base \
+        nethogs \
+        ninja-build  \
+        obs-studio \
+        openjdk-13-jdk \
+        openjdk-13-jre \
+        opensc \
+        openshot \
+        openssl \
+        p7zip-full \
+        pavucontrol \
+        pcregrep \
+        pcsc-tools \
+        pcscd \
+        pkg-config \
+        postgresql-client-11 \
+        postgresql-client-common \
+        pv \
+        python \
+        python3 \
+        python3-pip \
+        qemu-kvm \
+        r-base \
+        ranger \
+        readline-common \
+        ripgrep \
+        rlwrap \
+        scdaemon \
+        shotwell \
+        slack-desktop \
+        snapd-xdg-open \
+        software-properties-common \
+        spotify-client \
+        squashfs-tools \
+        sublime-merge \
+        sublime-text \
+        swig \
+        systemtap \
+        tk-dev \
+        tmux \
+        transmission \
+        tree \
+        ttf-ubuntu-font-family \
+        ubuntu-restricted-extras \
+        unixodbc \
+        unixodbc-dev \
+        uuid-dev \
+        valgrind \
+        vim \
+        xclip \
+        xdot \
+        xsltproc \
+        xz-utils \
+        yarn \
+        zlib1g-dev \
+        zlibc
 
     truncate -s 0 /etc/sysctl.conf
     {
@@ -234,30 +241,8 @@ base() {
     } >> /etc/sysctl.conf
     sysctl -p
 
-    # disable encrypted swap
-    swapoff -a
-
-    if [ -d /dev/mapper/ubuntu--vg-swap_1 ]; then
-        cryptsetup -v luksClose /dev/mapper/ubuntu--vg-swap_1
-        sed -i 's/^\/dev\/mapper\/ubuntu--vg-swap_1/#\/dev\/mapper\/ubuntu--vg-swap_1/g' /etc/fstab
-    fi
-
-    # config earlyoom
-    echo "EARLYOOM_ARGS=\"-m 2 -r 30 --avoid '(^|/)(init|Xorg|ssh|sublime_text)$' --prefer '(^|/)(slack|java|chrome)$'\"" > /etc/default/earlyoom
-
-    # locally install git-lfs
-    sudo su "$TARGET_USER" -c "git lfs install"
-
     # heroku
     snap install heroku --classic
-
-    # firefox send
-    snap install ffsend
-
-    # microk8s
-    sudo snap install microk8s --classic
-    # don't leave microk8s running
-    microk8s.stop
 
     # asciinema
     snap install asciinema --classic
@@ -268,49 +253,8 @@ base() {
     # google-cloud-sdk
     snap install google-cloud-sdk --classic
 
-    # hugo
-    snap install hugo --classic
-
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
-
-}
-
-# installs all the packages
-full() {
-    base;
-
-    apt-fast install -y \
-        mpv \
-        alsa-tools-gui \
-        pavucontrol \
-        libcanberra-gtk-module \
-        libcanberra-gtk3-module \
-        fonts-hack-ttf \
-        ttf-ubuntu-font-family \
-        snapd-xdg-open \
-        google-chrome-stable \
-        chrome-gnome-shell \
-        gnome-clocks \
-        gnome-tweaks \
-        vanilla-gnome-default-settings \
-        gnome-session \
-        arandr \
-        xclip \
-        qemu-kvm \
-        calibre \
-        obs-studio \
-        ubuntu-restricted-extras \
-        transmission \
-        insync \
-        insync-nautilus \
-        ofono \
-        ofono-phonesim \
-        sublime-text \
-        sublime-merge \
-        shotwell \
-        openshot \
-        slack-desktop
 
     apt remove -y firefox
 
@@ -318,15 +262,6 @@ full() {
     sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
     sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
     dpkg-reconfigure keyboard-configuration -f noninteractive
-
-    # AirPods hacks to get HFP working
-    echo "[phonesim]
-Driver=phonesim
-Address=127.0.0.1
-Port=12345" | sudo tee /etc/ofono/phonesim.conf
-
-    # spotify
-    snap install spotify --classic
 
     # discord
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
@@ -346,25 +281,6 @@ Port=12345" | sudo tee /etc/ofono/phonesim.conf
     # set sublime text as default editor
     update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
     update-alternatives --set editor /usr/bin/subl
-
-    # disable gnome dock
-    apt remove -y gnome-shell-extension-ubuntu-dock
-
-    # set login and lock screen to the gnome default
-    update-alternatives --set gdm3.css /usr/share/gnome-shell/theme/gnome-shell.css
-
-    # show nothing on grub boot
-    sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/g' /etc/default/grub
-    # change plymouth background to black
-    sed -i 's/^black=.*/black=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/^white=.*/white=0xffffff/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/^brown=.*/brown=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/^blue=.*/blue=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    # change default plymouth grub background
-    sed -i 's/44,0,30,0/0,0,0,0/g' /etc/alternatives/default.plymouth.grub
-    sed -i 's/44,0,30,0/0,0,0,0/g' /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
-    update-initramfs -u
-    update-grub
 
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
@@ -406,13 +322,6 @@ check_rbenv_and_install() {
         install_rbenv
     else
         update_rbenv
-    fi
-}
-
-# checks if rustup is installed and installs it
-check_rustup_and_install() {
-    if [ ! -d "$HOME/.rustup" ]; then
-        install_rustup
     fi
 }
 
@@ -462,12 +371,6 @@ update_rbenv() {
     )
 }
 
-# installs rustup
-install_rustup() {
-    curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
-    source "$HOME/.cargo/env" || true
-}
-
 # installs ruby
 install_ruby() {
     rubyv="2.6.5"
@@ -477,7 +380,7 @@ install_ruby() {
 
 # installs go and some go packages
 install_golang() {
-    golangv="1.13.1"
+    golangv="1.14"
     asdf plugin-add go https://github.com/kennyp/asdf-golang || true
     asdf install go "$golangv" || true
     asdf global go "$golangv"
@@ -496,7 +399,7 @@ install_golang() {
 
 # installs python and some python packages
 install_python() {
-    pythonv="3.7.3"
+    pythonv="3.8.2"
     pyenv install -s "$pythonv"
     pyenv global "$pythonv"
 
@@ -504,106 +407,23 @@ install_python() {
         pip \
         py-spy \
         docker-compose \
-        ipython \
-        ptpython \
-        notebook \
-        tensorflow \
-        pandas \
-        sklearn \
-        scipy \
-        keras \
-        matplotlib \
-        seaborn \
-        flake8 \
-        flake8-bugbear \
-        mypy \
-        black \
-        isort \
         httpie \
         seashells \
         pgcli \
-        litecli \
-        pre-commit \
-        wpm \
-        python-language-server
-
-    if [ ! -f ~/.poetry/bin/poetry ]; then
-        curl -sSL https://raw.githubusercontent.com/sdispater/poetry/master/get-poetry.py | python
-    fi
-}
-
-# updates rustup and rust, also installs some rust packages
-install_rust() {
-    rustup self update
-    rustup update
-
-    rustup component add rls-preview rustfmt rust-analysis rust-src clippy llvm-tools-preview
-
-    cargo install --force \
-        cargo-binutils \
-        cargo-fix \
-        cargo-watch \
-        cargo-release \
-        cargo-fuzz \
-        cargo-with \
-        cargo-bloat \
-        systemfd \
-        hyperfine
-}
-
-# installs elixir and erlang
-install_elixir() {
-    erlangv="22.1.1"
-    asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
-    asdf install erlang "$erlangv" || true
-    asdf global erlang "$erlangv"
-
-    elixirv="1.9.1"
-    asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir || true
-    asdf install elixir "$elixirv" || true
-    asdf global elixir "$elixirv"
-
-    mix local.hex --force
-    mix local.rebar --force
-    mix archive.install hex phx_new --force
-    mix local.phx --force
+        litecli
 }
 
 # installs nodejs and some nodejs packages
 install_nodejs() {
-    nodejsv="12.0.0"
+    nodejsv="12.16.1"
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
 
-    npm install -g prettier llnode
+    npm install -g llnode
 }
 
-# installs terraform and some kubernetes utilities
-install_kube() {
-    terraformv="0.11.13"
-    asdf plugin-add terraform https://github.com/Banno/asdf-hashicorp.git || true
-    asdf install terraform "$terraformv" || true
-    asdf global terraform "$terraformv"
-    terraform -uninstall-autocomplete || true
-    terraform -install-autocomplete || true
-
-    minikubev="1.0.0"
-    asdf plugin-add minikube https://github.com/alvarobp/asdf-minikube.git || true
-    asdf install minikube "$minikubev" || true
-    asdf global minikube "$minikubev"
-
-    kubectlv="1.14.1"
-    asdf plugin-add kubectl https://github.com/Banno/asdf-kubectl.git || true
-    asdf install kubectl "$kubectlv" || true
-    asdf global kubectl "$kubectlv"
-
-    helmv="2.13.1"
-    asdf plugin-add helm https://github.com/Antiarchitect/asdf-helm.git || true
-    asdf install helm "$helmv" || true
-    asdf global helm "$helmv"
-}
 
 # updates the local dotfiles with the ones in the repository
 get_dotfiles() {
@@ -651,11 +471,8 @@ usage() {
     echo "  dotfiles                  - fetch dotfiles"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
-    echo "  rust                      - install rust and packages"
     echo "  nodejs                    - install nodejs"
-    echo "  kube                      - install minikube, kubectl, etc"
     echo "  ruby                      - install ruby"
-    echo "  elixir                    - install elixir"
 }
 
 main() {
@@ -669,8 +486,7 @@ main() {
     if [[ $cmd == "linux" ]]; then
         check_is_sudo
         get_user
-        setup_sources
-        full
+        setup_linux
         install_fonts
     elif [[ $cmd == "fonts" ]]; then
         check_is_sudo
@@ -690,22 +506,11 @@ main() {
         check_isnt_sudo
         check_pyenv_and_install
         install_python
-    elif [[ $cmd == "rust" ]]; then
-        check_isnt_sudo
-        check_rustup_and_install
-        install_rust
-    elif [[ $cmd == "elixir" ]]; then
-        check_isnt_sudo
-        check_asdf_and_install
-        install_elixir
     elif [[ $cmd == "nodejs" ]]; then
         check_isnt_sudo
         check_asdf_and_install
         install_nodejs
-    elif [[ $cmd == "kube" ]]; then
-        check_isnt_sudo
-        check_asdf_and_install
-        install_kube
+
     else
         usage
     fi
