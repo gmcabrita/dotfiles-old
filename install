@@ -285,6 +285,19 @@ setup_linux() {
     update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
     update-alternatives --set editor /usr/bin/subl
 
+    # show nothing on grub boot
+    sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/g' /etc/default/grub
+    # change plymouth background to black
+    sed -i 's/^black=.*/black=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^white=.*/white=0xffffff/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^brown=.*/brown=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    sed -i 's/^blue=.*/blue=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
+    # change default plymouth grub background
+    sed -i 's/44,0,30,0/0,0,0,0/g' /etc/alternatives/default.plymouth.grub
+    sed -i 's/44,0,30,0/0,0,0,0/g' /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
+    update-initramfs -u
+    update-grub
+
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
     echo ""
