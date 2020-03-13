@@ -107,6 +107,7 @@ setup_linux() {
         gdb \
         git \
         git-extras \
+        gnome-tweaks \
         gnupg2 \
         gnuplot \
         google-chrome-stable \
