@@ -1,5 +1,6 @@
 {
-	"font_face": "Cascadia Mono PL",
-	"font_size": 10,
-	"time_format": "24h"
+  "font_face": "Cascadia Mono PL",
+  "font_size": 10,
+  "time_format": "24h",
+  "theme": "Merge Dark.sublime-theme"
 }
