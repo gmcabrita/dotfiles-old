@@ -83,6 +83,7 @@ setup_linux() {
         "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
         alsa-tools-gui \
+        anki \
         arandr \
         aspell \
         aspell-pt-pt \
