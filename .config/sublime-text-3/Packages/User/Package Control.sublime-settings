@@ -5,6 +5,7 @@
     ],
     "installed_packages":
     [
+        "Babel",
         "CustomPATH",
         "EditorConfig",
         "FileIcons",
@@ -12,7 +13,6 @@
         "Hide Menu",
         "Jinja2",
         "MoveTab",
-        "Naomi",
         "Package Control",
         "ProjectManager",
         "Python 3",
@@ -26,5 +26,6 @@
         "SublimeLinter-ruby",
         "SublimeLinter-shellcheck",
         "TOML"
-    ]
+    ],
+    "install_prereleases": ["Babel"]
 }
