@@ -52,7 +52,7 @@ setup_linux() {
     echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan edge" > /etc/apt/sources.list.d/docker.list
 
     # google-cloud-sdk
-    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
     curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
     # yarn
@@ -268,6 +268,11 @@ setup_linux() {
     rm discord.deb
     # TODO: check if this is still needed on Ubuntu 19.10 (or 20.04), all it does is enable the AppIndicator
     # sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
+
+    # github cli
+    wget -O github_cli.deb "$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r '.assets[] | select(.name|test(".*_linux_amd64.deb")).browser_download_url')"
+    apt install -y ./github_cli.deb
+    rm github_cli.deb
 
     # steam
     wget -O steam.deb https://steamcdn-a.akamaihd.net/client/installer/steam.deb
