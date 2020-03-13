@@ -43,15 +43,17 @@ setup_linux() {
         ca-certificates \
         software-properties-common
 
-    # apt-fast
     add-apt-repository ppa:apt-fast/stable -y -n
+    add-apt-repository ppa:git-core/ppa -y -n
+    add-apt-repository ppa:obsproject/obs-studio -y -n
 
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan edge" > /etc/apt/sources.list.d/docker.list
 
-    # git
-    add-apt-repository ppa:git-core/ppa -y -n
+    # google-cloud-sdk
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
 
     # yarn
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -64,9 +66,6 @@ setup_linux() {
     # chrome
     curl -fsSL https://dl.google.com/linux/linux_signing_key.pub | apt-key add -
     echo "deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
-
-    # obs
-    add-apt-repository ppa:obsproject/obs-studio -y -n
 
     # sublime text
     curl -fsSL https://download.sublimetext.com/sublimehq-pub.gpg | apt-key add -
@@ -111,6 +110,7 @@ setup_linux() {
         gnupg2 \
         gnuplot \
         google-chrome-stable \
+        google-cloud-sdk \
         graphviz \
         htop \
         icu-devtools \
@@ -251,9 +251,6 @@ setup_linux() {
     # edge shellcheck
     snap install --channel=edge shellcheck --classic
 
-    # google-cloud-sdk
-    snap install google-cloud-sdk --classic
-
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
@@ -268,13 +265,18 @@ setup_linux() {
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
     apt install -y ./discord.deb
     rm discord.deb
+    # TODO: check if this is still needed on Ubuntu 19.10 (or 20.04), all it does is enable the AppIndicator
+    # sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
+
+    # steam
+    wget -O steam.deb https://steamcdn-a.akamaihd.net/client/installer/steam.deb
+    apt install -y ./steam.deb
+    rm steam.deb
 
     # zoom
     wget -O zoom.deb "https://zoom.us/client/latest/zoom_amd64.deb"
     apt install -y ./zoom.deb
     rm zoom.deb
-
-    sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
 
     # set docker to autostart
     systemctl enable docker
@@ -374,7 +376,7 @@ update_rbenv() {
 
 # installs ruby
 install_ruby() {
-    rubyv="2.6.5"
+    rubyv="2.7.0"
     RUBY_CONFIGURE_OPTS="--with-jemalloc" rbenv install "$rubyv" --skip-existing || true
     rbenv global "$rubyv"
 }
@@ -390,7 +392,6 @@ install_golang() {
         github.com/rakyll/hey \
         honnef.co/go/tools/cmd/... \
         golang.org/x/tools/cmd/... \
-        github.com/oxequa/realize \
         github.com/nektos/act \
         github.com/DarthSim/hivemind \
         github.com/DarthSim/overmind \
