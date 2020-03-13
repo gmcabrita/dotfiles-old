@@ -425,13 +425,14 @@ install_python() {
     pyenv global "$pythonv"
 
     pip install -U \
-        pip \
-        py-spy \
+        codemod \
         docker-compose \
         httpie \
-        seashells \
+        litecli \
         pgcli \
-        litecli
+        pip \
+        py-spy \
+        seashells
 }
 
 # installs nodejs and some nodejs packages
