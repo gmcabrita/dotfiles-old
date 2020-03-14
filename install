@@ -304,6 +304,9 @@ setup_linux() {
     update-initramfs -u
     update-grub
 
+    # some gnome settings
+    gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
     echo ""
