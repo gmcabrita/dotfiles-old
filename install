@@ -89,7 +89,6 @@ setup_linux() {
         autoconf \
         automake \
         binutils-multiarch \
-        blueman \
         build-essential \
         clang \
         cmake \
