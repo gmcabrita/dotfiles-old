@@ -434,6 +434,7 @@ install_python() {
         pgcli \
         pip \
         pip-tools \
+        pre-commit \
         py-spy \
         seashells
 }
