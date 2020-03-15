@@ -433,6 +433,7 @@ install_python() {
         litecli \
         pgcli \
         pip \
+        pip-tools \
         py-spy \
         seashells
 }
