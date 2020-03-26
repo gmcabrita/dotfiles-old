@@ -78,7 +78,7 @@ setup_linux() {
     apt update || true
     apt upgrade -y
     apt install -y apt-fast
-    apt-fast install -y \
+    apt install -y \
         "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
         alsa-tools-gui \
