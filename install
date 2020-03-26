@@ -46,6 +46,7 @@ setup_linux() {
     add-apt-repository ppa:apt-fast/stable -y -n
     add-apt-repository ppa:git-core/ppa -y -n
     add-apt-repository ppa:obsproject/obs-studio -y -n
+    apt-add-repository ppa:fish-shell/release-3 -y -n
 
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
