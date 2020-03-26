@@ -7,4 +7,3 @@ for F in $HOME/.config/fish/functions/*
 end
 
 set -U fish_greeting
-xset r rate 300 60

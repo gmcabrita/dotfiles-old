@@ -36,12 +36,12 @@ setup_linux() {
     apt update || true
     apt upgrade -y
     apt install -y \
-        curl \
-        wget \
-        snapd \
         apt-transport-https \
         ca-certificates \
-        software-properties-common
+        curl \
+        snapd \
+        software-properties-common \
+        wget
 
     add-apt-repository ppa:apt-fast/stable -y -n
     add-apt-repository ppa:git-core/ppa -y -n
@@ -49,7 +49,7 @@ setup_linux() {
 
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan edge" > /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic edge" > /etc/apt/sources.list.d/docker.list
 
     # google-cloud-sdk
     echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
@@ -254,19 +254,10 @@ setup_linux() {
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
-    apt remove -y firefox
-
-    # setup keyboard
-    sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
-    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
-    dpkg-reconfigure keyboard-configuration -f noninteractive
-
     # discord
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
     apt install -y ./discord.deb
     rm discord.deb
-    # TODO: check if this is still needed on Ubuntu 19.10 (or 20.04), all it does is enable the AppIndicator
-    # sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
 
     # github cli
     wget -O github_cli.deb "$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r '.assets[] | select(.name|test(".*_linux_amd64.deb")).browser_download_url')"
@@ -289,22 +280,6 @@ setup_linux() {
     # set sublime text as default editor
     update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
     update-alternatives --set editor /usr/bin/subl
-
-    # show nothing on grub boot
-    sed -i 's/^GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT=""/g' /etc/default/grub
-    # change plymouth background to black
-    sed -i 's/^black=.*/black=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/^white=.*/white=0xffffff/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/^brown=.*/brown=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    sed -i 's/^blue=.*/blue=0x000000/g' /usr/share/plymouth/themes/ubuntu-text/ubuntu-text.plymouth
-    # change default plymouth grub background
-    sed -i 's/44,0,30,0/0,0,0,0/g' /etc/alternatives/default.plymouth.grub
-    sed -i 's/44,0,30,0/0,0,0,0/g' /usr/share/plymouth/themes/ubuntu-logo/ubuntu-logo.grub
-    update-initramfs -u
-    update-grub
-
-    # some gnome settings
-    gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
 
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
