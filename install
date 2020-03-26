@@ -102,7 +102,6 @@ setup_linux() {
         fonts-hack-ttf \
         fonts-noto-color-emoji \
         fop \
-        fzf \
         gdb \
         git \
         git-extras \
@@ -134,7 +133,8 @@ setup_linux() {
         libgmp-dev \
         libicu-dev \
         libjemalloc-dev \
-        liblldb-dev \
+        liblldb-9 \
+        liblldb-9-dev \
         liblttng-ust0 \
         libncurses5-dev \
         libncursesw5-dev \
@@ -175,8 +175,8 @@ setup_linux() {
         nethogs \
         ninja-build  \
         obs-studio \
-        openjdk-13-jdk \
-        openjdk-13-jre \
+        openjdk-11-jdk \
+        openjdk-11-jre \
         opensc \
         openshot \
         openssl \
@@ -186,7 +186,7 @@ setup_linux() {
         pcsc-tools \
         pcscd \
         pkg-config \
-        postgresql-client-11 \
+        postgresql-client-10 \
         postgresql-client-common \
         pv \
         python \
@@ -196,7 +196,6 @@ setup_linux() {
         r-base \
         ranger \
         readline-common \
-        ripgrep \
         rlwrap \
         scdaemon \
         shotwell \
@@ -242,6 +241,9 @@ setup_linux() {
     } >> /etc/sysctl.conf
     sysctl -p
 
+    # fzf
+    snap install fzf-carroarmato0 --classic
+
     # heroku
     snap install heroku --classic
 
@@ -253,6 +255,11 @@ setup_linux() {
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
+
+    # ripgrep
+    wget -O ripgrep.deb "$(curl -s https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq -r '.assets[] | select(.name|test(".*_amd64.deb")).browser_download_url')"
+    apt install -y ./ripgrep.deb
+    rm ripgrep.deb
 
     # discord
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
