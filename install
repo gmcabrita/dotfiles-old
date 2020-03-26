@@ -122,8 +122,6 @@ setup_linux() {
         libcanberra-gtk3-module \
         libcap-dev \
         libcurl4 \
-        libcurl4-gnutls-dev \
-        libcurl4-openssl-dev \
         libedit-dev \
         libelf-dev \
         libffi-dev \
@@ -133,8 +131,6 @@ setup_linux() {
         libgmp-dev \
         libicu-dev \
         libjemalloc-dev \
-        liblldb-9 \
-        liblldb-9-dev \
         liblttng-ust0 \
         libncurses5-dev \
         libncursesw5-dev \
@@ -164,7 +160,6 @@ setup_linux() {
         linux-tools-common \
         linux-tools-generic \
         lldb \
-        lldb-9 \
         llvm \
         lnav \
         m4 \
