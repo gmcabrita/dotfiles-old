@@ -105,6 +105,7 @@ setup_linux() {
         fish \
         fonts-hack-ttf \
         fonts-noto-color-emoji \
+        fonts-roboto-hinted \
         fop \
         gdb \
         git \
