@@ -83,6 +83,7 @@ setup_linux() {
     apt-fast install -y \
         "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
+        adb \
         alsa-tools-gui \
         anki \
         arandr \
