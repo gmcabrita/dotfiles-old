@@ -2,7 +2,6 @@ function update
   sudo apt-fast update -y
   sudo apt-fast upgrade -y
   sudo apt-fast autoremove -y
-  sudo apt-fast install fonts-noto-color-emoji --reinstall
   sudo snap refresh
   asdf update --head
   asdf plugin-update --all
