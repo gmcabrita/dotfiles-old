@@ -194,6 +194,7 @@ setup_linux() {
         python3 \
         python3-pip \
         qemu-kvm \
+        qtbase5-dev \
         r-base \
         ranger \
         readline-common \
@@ -218,6 +219,7 @@ setup_linux() {
         unixodbc \
         unixodbc-dev \
         uuid-dev \
+        v4l-utils \
         valgrind \
         vim \
         xclip \
@@ -448,6 +450,28 @@ get_dotfiles() {
         --exclude "README.md" \
         --exclude "LICENSE" \
         -avh --no-perms . ~
+
+    # obscam sink
+    if [ ! -d ~/code/v4l2loopback ]; then
+        (
+            cd ~/code
+            git clone git@github.com:umlaeute/v4l2loopback.git
+            cd v4l2loopback
+            make
+            sudo make install
+            sudo depmod -a
+        )
+
+        git clone --recursive https://github.com/obsproject/obs-studio.git
+        git clone https://github.com/CatxFish/obs-v4l2sink.git
+        (
+            cd obs-v4l2sink
+            mkdir build && cd build
+            cmake -DLIBOBS_INCLUDE_DIR="../../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr ..
+            make -j4
+            sudo make install
+        )
+    fi
 
     if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
