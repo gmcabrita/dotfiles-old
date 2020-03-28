@@ -451,28 +451,6 @@ get_dotfiles() {
         --exclude "LICENSE" \
         -avh --no-perms . ~
 
-    # obscam sink
-    if [ ! -d ~/code/v4l2loopback ]; then
-        (
-            cd ~/code
-            git clone git@github.com:umlaeute/v4l2loopback.git
-            cd v4l2loopback
-            make
-            sudo make install
-            sudo depmod -a
-        )
-
-        git clone --recursive https://github.com/obsproject/obs-studio.git
-        git clone https://github.com/CatxFish/obs-v4l2sink.git
-        (
-            cd obs-v4l2sink
-            mkdir build && cd build
-            cmake -DLIBOBS_INCLUDE_DIR="../../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr ..
-            make -j4
-            sudo make install
-        )
-    fi
-
     if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
         unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
@@ -496,12 +474,37 @@ get_dotfiles() {
     fi
 }
 
+# setup OBS camera sink
+obscam() {
+    if [ ! -d ~/code/v4l2loopback ]; then
+        (
+            cd ~/code
+            git clone git@github.com:umlaeute/v4l2loopback.git
+            cd v4l2loopback
+            make
+            sudo make install
+            sudo depmod -a
+        )
+
+        git clone --recursive https://github.com/obsproject/obs-studio.git
+        git clone https://github.com/CatxFish/obs-v4l2sink.git
+        (
+            cd obs-v4l2sink
+            mkdir build && cd build
+            cmake -DLIBOBS_INCLUDE_DIR="../../obs-studio/libobs" -DCMAKE_INSTALL_PREFIX=/usr ..
+            make -j4
+            sudo make install
+        )
+    fi
+}
+
 usage() {
     echo -e "install\\n"
     echo "Usage:"
     echo "  linux                     - setup sources & install os pkgs"
     echo "  fonts                     - setup fonts"
     echo "  dotfiles                  - fetch dotfiles"
+    echo "  obscam                    - setup OBS camera sink"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
     echo "  nodejs                    - install nodejs"
@@ -527,6 +530,9 @@ main() {
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles "$2"
+    elif [[ $cmd == "obscam" ]]; then
+        check_isnt_sudo
+        obscam "$2"
     elif [[ $cmd == "ruby" ]]; then
         check_isnt_sudo
         check_rbenv_and_install
