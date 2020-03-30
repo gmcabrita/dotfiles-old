@@ -244,9 +244,6 @@ setup_linux() {
     } >> /etc/sysctl.conf
     sysctl -p
 
-    # fzf
-    snap install fzf-carroarmato0 --classic
-
     # heroku
     snap install heroku --classic
 
@@ -258,11 +255,6 @@ setup_linux() {
 
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
-
-    # ripgrep
-    wget -O ripgrep.deb "$(curl -s https://api.github.com/repos/BurntSushi/ripgrep/releases/latest | jq -r '.assets[] | select(.name|test(".*_amd64.deb")).browser_download_url')"
-    apt install -y ./ripgrep.deb
-    rm ripgrep.deb
 
     # discord
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
