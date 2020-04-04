@@ -39,23 +39,22 @@ setup_linux() {
         apt-transport-https \
         ca-certificates \
         curl \
-        snapd \
         software-properties-common \
         wget
 
-    add-apt-repository ppa:apt-fast/stable -y -n
     add-apt-repository ppa:git-core/ppa -y -n
-    add-apt-repository ppa:obsproject/obs-studio -y -n
-    apt-add-repository ppa:fish-shell/release-3 -y -n
-    add-apt-repository ppa:philip.scott/elementary-tweaks -y -n
 
     # docker
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic edge" > /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal edge" > /etc/apt/sources.list.d/docker.list
 
     # google-cloud-sdk
     echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
     curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+    # heroku
+    curl -sS https://cli-assets.heroku.com/apt/release.key | apt-key add -
+    echo "deb https://cli-assets.heroku.com/apt ./" | tee /etc/apt/sources.list.d/heroku.list
 
     # yarn
     curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
@@ -79,12 +78,12 @@ setup_linux() {
 
     apt update || true
     apt upgrade -y
-    apt install -y apt-fast
-    apt-fast install -y \
+    apt install -y \
         "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
         adb \
         anki \
+        asciinema \
         autoconf \
         automake \
         binutils-multiarch \
@@ -93,7 +92,6 @@ setup_linux() {
         cmake \
         docker-ce \
         dos2unix \
-        elementary-tweaks \
         exuberant-ctags \
         ffmpeg \
         fish \
@@ -110,6 +108,7 @@ setup_linux() {
         google-chrome-stable \
         google-cloud-sdk \
         graphviz \
+        heroku \
         htop \
         icu-devtools \
         imagemagick \
@@ -169,8 +168,8 @@ setup_linux() {
         nethogs \
         ninja-build  \
         obs-studio \
-        openjdk-11-jdk \
-        openjdk-11-jre \
+        openjdk-14-jdk \
+        openjdk-14-jre \
         opensc \
         openshot \
         openssl \
@@ -180,7 +179,7 @@ setup_linux() {
         pcsc-tools \
         pcscd \
         pkg-config \
-        postgresql-client-10 \
+        postgresql-client-12 \
         postgresql-client-common \
         pv \
         python \
@@ -191,11 +190,12 @@ setup_linux() {
         readline-common \
         rlwrap \
         scdaemon \
+        shellcheck \
         slack-desktop \
-        snapd-xdg-open \
         software-properties-common \
         spotify-client \
         squashfs-tools \
+        steam \
         sublime-merge \
         sublime-text \
         swig \
@@ -220,6 +220,8 @@ setup_linux() {
         zlib1g-dev \
         zlibc
 
+    apt remove -y firefox thunderbird
+
     truncate -s 0 /etc/sysctl.conf
     {
         # run perf without root
@@ -234,32 +236,25 @@ setup_linux() {
     } >> /etc/sysctl.conf
     sysctl -p
 
-    # heroku
-    snap install heroku --classic
-
-    # asciinema
-    snap install asciinema --classic
-
-    # edge shellcheck
-    snap install --channel=edge shellcheck --classic
-
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
+
+    # setup keyboard
+    sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
+    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
+    dpkg-reconfigure keyboard-configuration -f noninteractive
 
     # discord
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
     apt install -y ./discord.deb
     rm discord.deb
+    # TODO: check if this is needed under Pop!_OS 20.04
+    # sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
 
     # github cli
     wget -O github_cli.deb "$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r '.assets[] | select(.name|test(".*_linux_amd64.deb")).browser_download_url')"
     apt install -y ./github_cli.deb
     rm github_cli.deb
-
-    # steam
-    wget -O steam.deb https://steamcdn-a.akamaihd.net/client/installer/steam.deb
-    apt install -y ./steam.deb
-    rm steam.deb
 
     # zoom
     wget -O zoom.deb "https://zoom.us/client/latest/zoom_amd64.deb"
@@ -273,11 +268,15 @@ setup_linux() {
     update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
     update-alternatives --set editor /usr/bin/subl
 
+    # some gnome settings
+    gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 0
+
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
     echo ""
     if [[ $REPLY =~ ^[Yy]$ ]]; then
-        apt-fast install -y tlp
+        apt install -y tlp
         tlp start
     fi
 
