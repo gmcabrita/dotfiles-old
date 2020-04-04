@@ -84,11 +84,7 @@ setup_linux() {
         "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
         adb \
-        alsa-tools-gui \
         anki \
-        arandr \
-        aspell \
-        aspell-pt-pt \
         autoconf \
         automake \
         binutils-multiarch \
@@ -97,8 +93,6 @@ setup_linux() {
         cmake \
         docker-ce \
         dos2unix \
-        dstat \
-        earlyoom \
         elementary-tweaks \
         exuberant-ctags \
         ffmpeg \
@@ -169,7 +163,6 @@ setup_linux() {
         llvm \
         lnav \
         m4 \
-        mosh \
         mpv \
         ncdu \
         ncurses-base \
@@ -195,12 +188,9 @@ setup_linux() {
         python3-pip \
         qemu-kvm \
         qtbase5-dev \
-        r-base \
-        ranger \
         readline-common \
         rlwrap \
         scdaemon \
-        shotwell \
         slack-desktop \
         snapd-xdg-open \
         software-properties-common \
