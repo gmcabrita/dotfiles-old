@@ -421,6 +421,14 @@ install_nodejs() {
     npm install -g llnode
 }
 
+# installs deno
+install_deno() {
+    denov="0.38.0"
+    asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git || true
+    asdf install deno "$denov" || true
+    asdf global deno "$denov"
+}
+
 # installs elixir and erlang
 install_elixir() {
     erlangv="22.3"
@@ -512,6 +520,7 @@ usage() {
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
     echo "  nodejs                    - install nodejs"
+    echo "  deno                      - install deno"
     echo "  ruby                      - install ruby"
     echo "  elixir                    - install elixir"
 }
@@ -558,7 +567,10 @@ main() {
         check_isnt_sudo
         check_asdf_and_install
         install_nodejs
-
+    elif [[ $cmd == "deno" ]]; then
+        check_isnt_sudo
+        check_asdf_and_install
+        install_deno
     else
         usage
     fi
