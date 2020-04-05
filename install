@@ -76,6 +76,10 @@ setup_linux() {
     curl -fsSL https://packagecloud.io/slacktechnologies/slack/gpgkey | apt-key add -
     echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list
 
+    # signal
+    curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+    echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal.list
+
     apt update || true
     apt upgrade -y
     apt install -y \
@@ -191,6 +195,7 @@ setup_linux() {
         rlwrap \
         scdaemon \
         shellcheck \
+        signal-desktop \
         slack-desktop \
         software-properties-common \
         spotify-client \
