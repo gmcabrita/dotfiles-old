@@ -427,6 +427,7 @@ install_deno() {
     asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git || true
     asdf install deno "$denov" || true
     asdf global deno "$denov"
+    deno completions fish | sudo tee /etc/fish/completions/deno.fish
 }
 
 # installs elixir and erlang
