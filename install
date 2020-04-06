@@ -368,7 +368,7 @@ update_rbenv() {
 
 # installs ruby
 install_ruby() {
-    rubyv="2.7.0"
+    rubyv="2.7.1"
     RUBY_CONFIGURE_OPTS="--with-jemalloc" rbenv install "$rubyv" --skip-existing || true
     rbenv global "$rubyv"
 }
