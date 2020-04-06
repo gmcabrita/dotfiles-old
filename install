@@ -511,6 +511,16 @@ obscam() {
     fi
 }
 
+setup_github() {
+    if [ ! -f ~/.ssh/id_rsa.pub ]; then
+        ssh-keygen -t rsa -b 4096 -C "$(base64 -d <<< "X0BnbWNhYnJpdGEuY29tCg==")"
+        xclip -selection clipboard < ~/.ssh/id_rsa.pub
+        open https://github.com/settings/keys
+    else
+        echo "GitHub keys were already setup!"
+    fi
+}
+
 usage() {
     echo -e "install\\n"
     echo "Usage:"
@@ -524,6 +534,7 @@ usage() {
     echo "  deno                      - install deno"
     echo "  ruby                      - install ruby"
     echo "  elixir                    - install elixir"
+    echo "  github                    - setup github keys"
 }
 
 main() {
@@ -572,6 +583,8 @@ main() {
         check_isnt_sudo
         check_asdf_and_install
         install_deno
+    elif [[ $cmd == "github" ]]; then
+        setup_github
     else
         usage
     fi
