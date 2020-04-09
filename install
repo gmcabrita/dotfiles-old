@@ -119,6 +119,7 @@ setup_linux() {
         inotify-tools \
         iotop \
         jq \
+        key-mon \
         libbsd-dev \
         libbz2-dev \
         libcanberra-gtk-module \
@@ -194,6 +195,7 @@ setup_linux() {
         readline-common \
         rlwrap \
         scdaemon \
+        screenkey \
         shellcheck \
         signal-desktop \
         slack-desktop \
