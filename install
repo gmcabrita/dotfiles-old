@@ -533,9 +533,6 @@ main() {
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles "$2"
-    elif [[ $cmd == "obscam" ]]; then
-        check_isnt_sudo
-        obscam "$2"
     elif [[ $cmd == "ruby" ]]; then
         check_isnt_sudo
         check_rbenv_and_install
