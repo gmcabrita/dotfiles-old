@@ -409,6 +409,7 @@ install_python() {
         pip-tools \
         pre-commit \
         py-spy \
+        pywal \
         seashells
 }
 
