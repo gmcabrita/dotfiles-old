@@ -41,7 +41,7 @@ Plug 'elixir-lang/vim-elixir'
 " Interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'Lokaltog/vim-monotone'
+Plug 'chriskempson/tomorrow-theme', { 'rtp': 'vim' }
 
 call plug#end()
 
@@ -108,11 +108,11 @@ set tm=500
 " Colors, fonts
 " set t_Co=256
 set background=dark
-colorscheme monotone
+colorscheme Tomorrow-Night
 
 " Vim-airline configuration
 let g:airline_powerline_fonts = 1
-let g:airline_theme='minimalist'
+let g:airline_theme='tomorrow'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
