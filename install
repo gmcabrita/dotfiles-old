@@ -467,6 +467,11 @@ get_dotfiles() {
         --exclude "LICENSE" \
         -avh --no-perms . ~
 
+    if [ ! -f ~/.bin/hadolint ] || [ "$1" == "-f" ]; then
+        wget -qO ~/.bin/hadolint "$(curl -s https://api.github.com/repos/hadolint/hadolint/releases/latest | grep -oP "browser_download_url.*\K(https://.*hadolint-Linux-x86_64)")"
+        chmod a+x+r ~/.bin/hadolint
+    fi
+
     if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
         unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
