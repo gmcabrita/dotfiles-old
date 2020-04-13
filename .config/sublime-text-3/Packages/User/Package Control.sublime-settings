@@ -29,6 +29,7 @@
         "SublimeLinter-ruby",
         "SublimeLinter-shellcheck",
         "TOML",
+        "Tomorrow Night Italics Color Scheme"
     ],
     "install_prereleases": ["Babel"]
 }
