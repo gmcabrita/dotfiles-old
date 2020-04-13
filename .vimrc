@@ -41,7 +41,7 @@ Plug 'elixir-lang/vim-elixir'
 " Interface
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'rakr/vim-one'
+Plug 'Lokaltog/vim-monotone'
 
 call plug#end()
 
@@ -108,11 +108,11 @@ set tm=500
 " Colors, fonts
 " set t_Co=256
 set background=dark
-colorscheme one
+colorscheme monotone
 
 " Vim-airline configuration
 let g:airline_powerline_fonts = 1
-let g:airline_theme='one'
+let g:airline_theme='minimalist'
 let g:airline_left_sep = ''
 let g:airline_right_sep = ''
 
