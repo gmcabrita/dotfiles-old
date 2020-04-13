@@ -25,6 +25,7 @@
         "SideBarEnhancements",
         "Solarized Color Scheme",
         "SublimeLinter",
+        "SublimeLinter-contrib-hadolint",
         "SublimeLinter-haml",
         "SublimeLinter-ruby",
         "SublimeLinter-shellcheck",

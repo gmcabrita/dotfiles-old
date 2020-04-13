@@ -11,10 +11,13 @@
     "haml": {
       "executable": "~/.rbenv/shims/haml",
     },
+    "Dockerfile": {
+      "executable": "~/.bin/hadolint",
+    },
   },
   "show_panel_on_save": "window",
   "paths": {
-    "linux": ["~/.rbenv/shims", "~/.asdf/shims", "~/.pyenv/shims"],
+    "linux": ["~/.bin", "~/.rbenv/shims", "~/.asdf/shims", "~/.pyenv/shims"],
     "osx": [],
     "windows": [],
   },
