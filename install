@@ -322,6 +322,13 @@ check_rbenv_and_install() {
     fi
 }
 
+# checks if rustup is installed and installs it
+check_rustup_and_install() {
+    if [ ! -d "$HOME/.rustup" ]; then
+        install_rustup
+    fi
+}
+
 # installs asdf
 install_asdf() {
     git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.6.3
@@ -366,6 +373,12 @@ update_rbenv() {
         cd "$(rbenv root)" && git pull && src/configure && make -C src
         cd plugins/ruby-build && git pull
     )
+}
+
+# installs rustup
+install_rustup() {
+    curl https://sh.rustup.rs -sSf | sh -s -- --no-modify-path
+    source "$HOME/.cargo/env" || true
 }
 
 # installs ruby
@@ -451,6 +464,14 @@ install_elixir() {
     mix local.phx --force
 }
 
+# updates rustup and rust, also installs some rust packages
+install_rust() {
+    rustup self update
+    rustup update
+
+    rustup component add rls rust-analysis rust-src llvm-tools-preview
+}
+
 
 # updates the local dotfiles with the ones in the repository
 get_dotfiles() {
@@ -518,6 +539,7 @@ usage() {
     echo "  nodejs                    - install nodejs"
     echo "  deno                      - install deno"
     echo "  ruby                      - install ruby"
+    echo "  rust                      - install elixir"
     echo "  elixir                    - install elixir"
     echo "  github                    - setup github keys"
 }
@@ -565,6 +587,10 @@ main() {
         check_isnt_sudo
         check_asdf_and_install
         install_deno
+    elif [[ $cmd == "rust" ]]; then
+        check_isnt_sudo
+        check_rustup_and_install
+        install_rust
     elif [[ $cmd == "github" ]]; then
         setup_github
     else
