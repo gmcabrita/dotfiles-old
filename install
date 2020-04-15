@@ -470,6 +470,8 @@ install_rust() {
     rustup update
 
     rustup component add rls rust-analysis rust-src llvm-tools-preview
+
+    cargo install bindgen
 }
 
 
