@@ -45,6 +45,7 @@ setup_linux() {
     add-apt-repository ppa:git-core/ppa -y -n
 
     # docker
+    # TODO: this ppa does not yet exist
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
     echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal edge" > /etc/apt/sources.list.d/docker.list
 
@@ -246,6 +247,7 @@ setup_linux() {
     usermod -aG docker "$TARGET_USER"
 
     # setup keyboard
+    # TODO: doesn't seem to be working correctly in Pop!_OS 20.04
     sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
     sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
     dpkg-reconfigure keyboard-configuration -f noninteractive
@@ -254,8 +256,6 @@ setup_linux() {
     wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
     apt install -y ./discord.deb
     rm discord.deb
-    # TODO: check if this is needed under Pop!_OS 20.04
-    # sed -i 's/^Exec=.*/Exec=env XDG_CURRENT_DESKTOP=Unity \/usr\/share\/discord\/Discord/g' /usr/share/applications/discord.desktop
 
     # github cli
     wget -O github_cli.deb "$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r '.assets[] | select(.name|test(".*_linux_amd64.deb")).browser_download_url')"
