@@ -99,6 +99,7 @@ setup_linux() {
         exuberant-ctags \
         ffmpeg \
         fish \
+        fonts-font-awesome \
         fonts-hack-ttf \
         fonts-noto-color-emoji \
         fonts-roboto-hinted \
@@ -119,7 +120,6 @@ setup_linux() {
         inotify-tools \
         iotop \
         jq \
-        key-mon \
         libbsd-dev \
         libbz2-dev \
         libcanberra-gtk-module \
@@ -143,7 +143,7 @@ setup_linux() {
         libpcap-dev \
         libpng-dev \
         libpq-dev \
-        libpython-dev \
+        libpython3-dev \
         libreadline-dev \
         libsecret-1-dev \
         libsqlite3-dev \
@@ -154,7 +154,7 @@ setup_linux() {
         libu2f-host-dev \
         libunwind-dev \
         libunwind8 \
-        libwxgtk3.0-dev \
+        libwxgtk3.0-gtk3-dev \
         libxml2-dev \
         libxml2-utils \
         libxslt1-dev \
@@ -173,8 +173,8 @@ setup_linux() {
         nethogs \
         ninja-build  \
         obs-studio \
-        openjdk-14-jdk \
-        openjdk-14-jre \
+        openjdk-13-jdk \
+        openjdk-13-jre \
         opensc \
         openshot \
         openssl \
@@ -195,7 +195,6 @@ setup_linux() {
         readline-common \
         rlwrap \
         scdaemon \
-        screenkey \
         shellcheck \
         signal-desktop \
         slack-desktop \
