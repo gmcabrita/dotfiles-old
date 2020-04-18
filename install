@@ -432,8 +432,6 @@ install_nodejs() {
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
-
-    npm install -g llnode
 }
 
 # installs deno
