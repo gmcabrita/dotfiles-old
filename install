@@ -123,6 +123,8 @@ setup_linux() {
         jq \
         libbsd-dev \
         libbz2-dev \
+        libcairo2 \
+        libcairo2-dev \
         libcanberra-gtk-module \
         libcanberra-gtk3-module \
         libcap-dev \
@@ -130,6 +132,7 @@ setup_linux() {
         libedit-dev \
         libelf-dev \
         libffi-dev \
+        libgirepository1.0-dev \
         libgit2-dev \
         libgl1-mesa-dev \
         libglu1-mesa-dev \
