@@ -497,7 +497,7 @@ get_dotfiles() {
 
     setup-tomorrow-night-terminal-colors
 
-    brew install hadolint ctop rbspy stern
+    brew install hadolint ctop rbspy stern grex
 
     if [ ! -f ~/.bin/ngrok ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip

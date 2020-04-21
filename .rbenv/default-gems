@@ -1,7 +1,5 @@
 rails
 hanami
-roda
-sequel
 rubocop
 rbtrace
 rspec
@@ -13,6 +11,5 @@ pry
 pry-doc
 fasterer
 standard
-solargraph
 md2man
 haml
