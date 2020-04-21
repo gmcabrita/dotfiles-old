@@ -500,6 +500,9 @@ get_dotfiles() {
     brew install hadolint ctop rbspy stern grex
     brew install khanhas/tap/spicetify-cli
 
+    sudo chmod 777 -R /usr/share/spotify
+    spicetify backup apply enable-devtool
+
     if [ ! -f ~/.bin/ngrok ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
         unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
