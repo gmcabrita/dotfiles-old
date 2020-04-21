@@ -12,12 +12,12 @@
       "executable": "~/.rbenv/shims/haml",
     },
     "Dockerfile": {
-      "executable": "~/.bin/hadolint",
+      "executable": "/home/linuxbrew/.linuxbrew/bin/hadolint",
     },
   },
   "show_panel_on_save": "window",
   "paths": {
-    "linux": ["~/.bin", "~/.rbenv/shims", "~/.asdf/shims", "~/.pyenv/shims"],
+    "linux": ["~/.bin", "~/.rbenv/shims", "~/.asdf/shims", "~/.pyenv/shims", "/home/linuxbrew/.linuxbrew/bin/"],
     "osx": [],
     "windows": [],
   },
