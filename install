@@ -290,6 +290,9 @@ setup_linux() {
     fi
 
     apt autoremove -y
+
+    # Setup homebrew (to manage misc bins)
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
 # installs some extra fonts
@@ -490,34 +493,19 @@ get_dotfiles() {
         --exclude "LICENSE" \
         -avh --no-perms . ~
 
+    . ~/.config/fish/config.fish || true
+
     setup-tomorrow-night-terminal-colors
 
-    if [ ! -f ~/.bin/hadolint ] || [ "$1" == "-f" ]; then
-        wget -qO ~/.bin/hadolint "$(curl -s https://api.github.com/repos/hadolint/hadolint/releases/latest | grep -oP "browser_download_url.*\K(https://.*hadolint-Linux-x86_64)")"
-        chmod a+x+r ~/.bin/hadolint
-    fi
+    brew install hadolint ctop rbspy stern
 
-    if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
+    if [ ! -f ~/.bin/ngrok ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
         unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
         chmod a+x+r ~/.bin/ngrok
         rm ngrok-stable-linux-amd64.zip
     fi
 
-    if [ ! -f ~/.bin/ctop ] || [ "$1" == "-f" ]; then
-        wget -qO ~/.bin/ctop "$(curl -s https://api.github.com/repos/bcicen/ctop/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux-amd64)")"
-        chmod a+x+r ~/.bin/ctop
-    fi
-
-    if [ ! -f ~/.bin/rbspy ] || [ "$1" == "-f" ]; then
-        curl -sL "$(curl -s https://api.github.com/repos/rbspy/rbspy/releases/latest | grep -oP "browser_download_url.*\K(https://.*unknown-linux-musl.tar.gz)")" | tar -xzf - -C ~/.bin
-        chmod a+x+r ~/.bin/rbspy
-    fi
-
-    if [ ! -f ~/.bin/stern ] || [ "$1" == "-f" ]; then
-        wget -qO ~/.bin/stern "$(curl -s https://api.github.com/repos/wercker/stern/releases/latest | grep -oP "browser_download_url.*\K(https://.*linux_amd64)")"
-        chmod a+x+r ~/.bin/stern
-    fi
 }
 
 setup_github() {
