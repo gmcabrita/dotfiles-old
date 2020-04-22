@@ -1,6 +1,0 @@
-{
-  "scope": "source.ruby",
-  "completions": [
-    { "trigger": "frozen|fsl", "contents": "# frozen_string_literal: true\n\n$0"}
-  ]
-}
