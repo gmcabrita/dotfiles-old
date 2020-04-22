@@ -6,6 +6,10 @@
       "command": ["~/elixir-ls/language_server.sh"],
       "enabled": true
     },
+    "javascript-typescript-langserver":
+    {
+      "enabled": true
+    },
     "ruby":
     {
       "enabled": true
