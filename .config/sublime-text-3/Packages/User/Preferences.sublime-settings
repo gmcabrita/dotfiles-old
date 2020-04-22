@@ -44,7 +44,8 @@
     "_build/",
     "dist/",
     "site/",
-    "deps/"
+    "deps/",
+    ".elixir_ls/"
   ],
   "block_caret": true,
   "bold_folder_labels": true,
@@ -66,7 +67,8 @@
     ".tox",
     ".venv",
     "CVS",
-    "_build"
+    "_build",
+    ".elixir_ls"
   ],
   "font_face": "Cascadia Mono PL",
   "font_options":

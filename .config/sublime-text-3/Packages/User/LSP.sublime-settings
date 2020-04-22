@@ -1,0 +1,14 @@
+{
+  "clients":
+  {
+    "elixir-ls":
+    {
+      "command": ["~/elixir-ls/language_server.sh"],
+      "enabled": true
+    },
+    "ruby":
+    {
+      "enabled": true
+    }
+  }
+}

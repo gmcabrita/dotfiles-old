@@ -503,13 +503,18 @@ get_dotfiles() {
     sudo chmod 777 -R /usr/share/spotify
     spicetify backup apply enable-devtool
 
-    if [ ! -f ~/.bin/ngrok ]; then
+    if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
         unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
         chmod a+x+r ~/.bin/ngrok
         rm ngrok-stable-linux-amd64.zip
     fi
 
+    if [ ! -d ~/elixir-ls ] || [ "$1" == "-f" ]; then
+        wget -qO elixir-ls.zip "$(curl -s https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest | jq -r '.assets[] | select(.name|test(".*.zip")).browser_download_url')"
+        unzip -qu elixir-ls.zip -d ~/elixir-ls
+        rm elixir-ls.zip
+    fi
 }
 
 setup_github() {
