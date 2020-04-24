@@ -183,6 +183,7 @@ setup_linux() {
         openshot \
         openssl \
         p7zip-full \
+        parallel \
         pavucontrol \
         pcregrep \
         pcsc-tools \
