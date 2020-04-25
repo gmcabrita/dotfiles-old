@@ -45,9 +45,9 @@ setup_linux() {
     add-apt-repository ppa:git-core/ppa -y -n
 
     # docker
-    # TODO: this ppa does not yet exist
+    # TODO: focal ppa does not yet exist
     curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
-    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal edge" > /etc/apt/sources.list.d/docker.list
+    echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu eoan edge" > /etc/apt/sources.list.d/docker.list
 
     # google-cloud-sdk
     echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
