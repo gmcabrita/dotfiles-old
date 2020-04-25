@@ -410,11 +410,9 @@ install_golang() {
         github.com/rakyll/hey \
         honnef.co/go/tools/cmd/... \
         golang.org/x/tools/cmd/... \
-        github.com/nektos/act \
-        github.com/DarthSim/hivemind \
-        github.com/DarthSim/overmind \
         github.com/go-delve/delve/cmd/dlv \
-        github.com/davecheney/httpstat
+        github.com/davecheney/httpstat \
+        golang.org/x/tools/gopls@latest
 }
 
 # installs python and some python packages
