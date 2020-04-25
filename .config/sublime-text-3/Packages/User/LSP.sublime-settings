@@ -3,7 +3,12 @@
   {
     "elixir-ls":
     {
-      "command": ["~/elixir-ls/language_server.sh"],
+      "command": ["~/code/elixir-ls/language_server.sh"],
+      "enabled": true
+    },
+    "gopls":
+    {
+      "command": ["~/go/bin/gopls"],
       "enabled": true
     },
     "javascript-typescript-langserver":

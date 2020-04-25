@@ -406,7 +406,7 @@ install_golang() {
     asdf install go "$golangv" || true
     asdf global go "$golangv"
 
-    go get -u -v \
+    go get -v \
         github.com/rakyll/hey \
         honnef.co/go/tools/cmd/... \
         golang.org/x/tools/cmd/... \
@@ -500,6 +500,7 @@ get_dotfiles() {
         -avh --no-perms . ~
 
     . ~/.config/fish/config.fish || true
+    mkdir -p ~/code
 
     setup-tomorrow-night-terminal-colors
 
@@ -518,7 +519,7 @@ get_dotfiles() {
 
     if [ ! -d ~/elixir-ls ] || [ "$1" == "-f" ]; then
         wget -qO elixir-ls.zip "$(curl -s https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest | jq -r '.assets[] | select(.name|test(".*.zip")).browser_download_url')"
-        unzip -qu elixir-ls.zip -d ~/elixir-ls
+        unzip -qu elixir-ls.zip -d ~/code/elixir-ls
         rm elixir-ls.zip
     fi
 }
