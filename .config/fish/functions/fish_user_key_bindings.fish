@@ -4,4 +4,8 @@ function fish_user_key_bindings
 
   # ctrl-backspace
   bind \cH backward-kill-word
+
+  # ctrl+home/end
+  bind \e\[1\;5H beginning-of-line
+  bind \e\[1\;5F end-of-line
 end
