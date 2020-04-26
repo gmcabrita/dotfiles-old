@@ -176,7 +176,6 @@ setup_linux() {
         llvm \
         lnav \
         m4 \
-        mpv \
         ncdu \
         ncurses-base \
         nethogs \
@@ -228,6 +227,7 @@ setup_linux() {
         v4l-utils \
         valgrind \
         vim \
+        vlc \
         xclip \
         xdot \
         xsltproc \
