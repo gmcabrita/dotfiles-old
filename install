@@ -276,6 +276,11 @@ setup_linux() {
     apt install -y ./zoom.deb
     rm zoom.deb
 
+    # screen.so
+    wget -O screen-so.deb "https://download.screen.so/desktop-app/linux/1.0.34/screen-desktop_1.0.34_amd64.deb"
+    apt install -y ./screen-so.deb
+    rm screen-so.deb
+
     # set docker to autostart
     systemctl enable docker
 
