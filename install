@@ -406,7 +406,7 @@ install_ruby() {
 
 # installs go and some go packages
 install_golang() {
-    golangv="1.14"
+    golangv="1.14.2"
     asdf plugin-add go https://github.com/kennyp/asdf-golang || true
     asdf install go "$golangv" || true
     asdf global go "$golangv"
@@ -442,7 +442,7 @@ install_python() {
 
 # installs nodejs and some nodejs packages
 install_nodejs() {
-    nodejsv="12.16.1"
+    nodejsv="12.16.2"
     asdf plugin-add nodejs https://github.com/asdf-vm/asdf-nodejs.git || true
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
@@ -453,7 +453,7 @@ install_nodejs() {
 
 # installs deno
 install_deno() {
-    denov="0.39.0"
+    denov="0.41.0"
     asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git || true
     asdf install deno "$denov" || true
     asdf global deno "$denov"
@@ -462,12 +462,12 @@ install_deno() {
 
 # installs elixir and erlang
 install_elixir() {
-    erlangv="22.3"
+    erlangv="22.3.2"
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
     asdf install erlang "$erlangv" || true
     asdf global erlang "$erlangv"
 
-    elixirv="1.10.2"
+    elixirv="1.10.3"
     asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir || true
     asdf install elixir "$elixirv" || true
     asdf global elixir "$elixirv"
