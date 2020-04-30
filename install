@@ -287,18 +287,6 @@ setup_linux() {
     update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
     update-alternatives --set editor /usr/bin/subl
 
-    # some gnome settings
-    gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
-    gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 0
-    gsettings set org.gnome.desktop.peripherals.keyboard delay 200
-    # cps = characters per second
-    # 30  cps = 1000/30  ≈ 33 ms (30.3  cps)
-    # 60  cps = 1000/60  ≈ 16 ms (62.5  cps)
-    # 90  cps = 1000/90  ≈ 11 ms (90.9  cps)
-    # 120 cps = 1000/120 ≈ 8  ms (125.0 cps)
-    # 144 cps = 1000/144 ≈ 7  ms (142.0 cps)
-    gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 11
-
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
     echo ""
@@ -523,6 +511,18 @@ get_dotfiles() {
 
     brew install hadolint ctop rbspy stern grex
     brew install khanhas/tap/spicetify-cli
+
+    # some gnome settings
+    gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
+    gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 0
+    gsettings set org.gnome.desktop.peripherals.keyboard delay 200
+    # cps = characters per second
+    # 30  cps = 1000/30  ≈ 33 ms (30.3  cps)
+    # 60  cps = 1000/60  ≈ 16 ms (62.5  cps)
+    # 90  cps = 1000/90  ≈ 11 ms (90.9  cps)
+    # 120 cps = 1000/120 ≈ 8  ms (125.0 cps)
+    # 144 cps = 1000/144 ≈ 7  ms (142.0 cps)
+    gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 16
 
     if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
