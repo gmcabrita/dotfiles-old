@@ -549,7 +549,7 @@ setup_github() {
     if [ ! -f ~/.ssh/id_rsa.pub ]; then
         ssh-keygen -t rsa -b 4096 -C "$(base64 -d <<< "X0BnbWNhYnJpdGEuY29tCg==")"
         xclip -selection clipboard < ~/.ssh/id_rsa.pub
-        open https://github.com/settings/keys
+        xdg-open https://github.com/settings/keys
     else
         echo "GitHub keys were already setup!"
     fi
