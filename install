@@ -298,7 +298,7 @@ setup_linux() {
     # 90  cps = 1000/90  ≈ 11 ms (90.9  cps)
     # 120 cps = 1000/120 ≈ 8  ms (125.0 cps)
     # 144 cps = 1000/144 ≈ 7  ms (142.0 cps)
-    gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 16
+    gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 17
 
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
