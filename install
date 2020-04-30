@@ -493,6 +493,13 @@ install_rust() {
 }
 
 
+setup_homebrew() {
+    if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+        # Setup homebrew (to manage misc bins)
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+}
+
 # updates the local dotfiles with the ones in the repository
 get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
@@ -512,17 +519,10 @@ get_dotfiles() {
     mkdir -p ~/code
 
     setup-tomorrow-night-terminal-colors
-
-    if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
-        # Setup homebrew (to manage misc bins)
-        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-    fi
+    setup_homebrew
 
     brew install hadolint ctop rbspy stern grex
     brew install khanhas/tap/spicetify-cli
-
-    sudo chmod 777 -R /usr/share/spotify
-    spicetify backup apply enable-devtool
 
     if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
@@ -536,6 +536,13 @@ get_dotfiles() {
         unzip -qu elixir-ls.zip -d ~/code/elixir-ls
         rm elixir-ls.zip
     fi
+}
+
+setup_spotify() {
+    setup_homebrew
+    spotify &
+    sudo chmod 777 -R /usr/share/spotify
+    spicetify backup apply enable-devtool
 }
 
 setup_github() {
@@ -562,6 +569,7 @@ usage() {
     echo "  rust                      - install elixir"
     echo "  elixir                    - install elixir"
     echo "  github                    - setup github keys"
+    echo "  spotify                   - setup spotify"
 }
 
 main() {
@@ -613,6 +621,8 @@ main() {
         install_rust
     elif [[ $cmd == "github" ]]; then
         setup_github
+    elif [[ $cmd == "spotify" ]]; then
+        setup_spotify
     else
         usage
     fi
