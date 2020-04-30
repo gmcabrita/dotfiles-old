@@ -503,7 +503,6 @@ get_dotfiles() {
         --exclude "LICENSE" \
         -avh --no-perms . ~
 
-    . ~/.config/fish/config.fish || true
     mkdir -p ~/code
 
     setup-tomorrow-night-terminal-colors
