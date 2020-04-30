@@ -169,7 +169,6 @@ setup_linux() {
         libxslt1-dev \
         libxslt1-dev \
         libyaml-dev \
-        linux-image-extra-virtual \
         linux-tools-common \
         linux-tools-generic \
         lldb \
