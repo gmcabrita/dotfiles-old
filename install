@@ -255,30 +255,38 @@ setup_linux() {
     usermod -aG docker "$TARGET_USER"
 
     # setup keyboard
-    # TODO: doesn't seem to be working correctly in Pop!_OS 20.04
+    # TODO: doesn't seem to be working correctly in Pop!_OS 20.04 on the first run
     sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
     sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
     dpkg-reconfigure keyboard-configuration -f noninteractive
 
     # discord
-    wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
-    apt install -y ./discord.deb
-    rm discord.deb
+    if [ ! -f /usr/bin/discord ]; then
+        wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
+        apt install -y ./discord.deb
+        rm discord.deb
+    fi
 
     # github cli
-    wget -O github_cli.deb "$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r '.assets[] | select(.name|test(".*_linux_amd64.deb")).browser_download_url')"
-    apt install -y ./github_cli.deb
-    rm github_cli.deb
+    if [ ! -f /usr/local/bin/gh ]; then
+        wget -O github_cli.deb "$(curl -s https://api.github.com/repos/cli/cli/releases/latest | jq -r '.assets[] | select(.name|test(".*_linux_amd64.deb")).browser_download_url')"
+        apt install -y ./github_cli.deb
+        rm github_cli.deb
+    fi
 
     # zoom
-    wget -O zoom.deb "https://zoom.us/client/latest/zoom_amd64.deb"
-    apt install -y ./zoom.deb
-    rm zoom.deb
+    if [ ! -f /usr/bin/zoom ]; then
+        wget -O zoom.deb "https://zoom.us/client/latest/zoom_amd64.deb"
+        apt install -y ./zoom.deb
+        rm zoom.deb
+    fi
 
     # screen.so
-    wget -O screen-so.deb "https://download.screen.so/desktop-app/linux/1.0.34/screen-desktop_1.0.34_amd64.deb"
-    apt install -y ./screen-so.deb
-    rm screen-so.deb
+    if [ ! -f /usr/bin/screen-desktop ]; then
+        wget -O screen-so.deb "https://download.screen.so/desktop-app/linux/1.0.34/screen-desktop_1.0.34_amd64.deb"
+        apt install -y ./screen-so.deb
+        rm screen-so.deb
+    fi
 
     # set docker to autostart
     systemctl enable docker
