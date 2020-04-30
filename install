@@ -254,12 +254,6 @@ setup_linux() {
     # setup docker for non-root
     usermod -aG docker "$TARGET_USER"
 
-    # setup keyboard
-    # TODO: doesn't seem to be working correctly in Pop!_OS 20.04 on the first run
-    sed -i 's/^XKBOPTIONS=.*/XKBOPTIONS="compose:ralt,caps:none"/g' /etc/default/keyboard
-    sed -i 's/^XKBLAYOUT=.*/XKBLAYOUT="us"/g' /etc/default/keyboard
-    dpkg-reconfigure keyboard-configuration -f noninteractive
-
     # discord
     if [ ! -f /usr/bin/discord ]; then
         wget -O discord.deb "https://discordapp.com/api/download?platform=linux&format=deb"
@@ -521,6 +515,7 @@ get_dotfiles() {
     # some gnome settings
     gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
     gsettings set org.gnome.settings-daemon.plugins.media-keys max-screencast-length 0
+    gsettings set org.gnome.desktop.input-sources xkb-options "['compose:ralt', 'caps:none']"
     gsettings set org.gnome.desktop.peripherals.keyboard delay 200
     # cps = characters per second
     # 30  cps = 1000/30  ≈ 33 ms (30.3  cps)
