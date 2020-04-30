@@ -308,9 +308,6 @@ setup_linux() {
     fi
 
     apt autoremove -y
-
-    # Setup homebrew (to manage misc bins)
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 }
 
 # installs some extra fonts
@@ -515,6 +512,11 @@ get_dotfiles() {
     mkdir -p ~/code
 
     setup-tomorrow-night-terminal-colors
+
+    if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
+        # Setup homebrew (to manage misc bins)
+        /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
 
     brew install hadolint ctop rbspy stern grex
     brew install khanhas/tap/spicetify-cli
