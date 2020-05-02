@@ -236,10 +236,6 @@ setup_linux() {
 
     apt remove -y firefox thunderbird
 
-    sed -i 's/^Exec=\/usr\/bin\/google-chrome-stable %U$/Exec=\/usr\/bin\/google-chrome-stable %U --enable-features=WebUIDarkMode --force-dark-mode/g' /usr/share/applications/google-chrome.desktop
-    sed -i 's/^Exec=\/usr\/bin\/google-chrome-stable$/Exec=\/usr\/bin\/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode/g' /usr/share/applications/google-chrome.desktop
-    sed -i 's/^Exec=\/usr\/bin\/google-chrome-stable --incognito$/Exec=\/usr\/bin\/google-chrome-stable --incognito --enable-features=WebUIDarkMode --force-dark-mode/g' /usr/share/applications/google-chrome.desktop
-
     truncate -s 0 /etc/sysctl.conf
     {
         # run perf without root

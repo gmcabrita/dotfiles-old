@@ -7,10 +7,6 @@ function update
   asdf update --head
   asdf plugin-update --all
 
-  sudo sed -i 's/^Exec=\/usr\/bin\/google-chrome-stable %U$/Exec=\/usr\/bin\/google-chrome-stable %U --enable-features=WebUIDarkMode --force-dark-mode/g' /usr/share/applications/google-chrome.desktop
-  sudo sed -i 's/^Exec=\/usr\/bin\/google-chrome-stable$/Exec=\/usr\/bin\/google-chrome-stable --enable-features=WebUIDarkMode --force-dark-mode/g' /usr/share/applications/google-chrome.desktop
-  sudo sed -i 's/^Exec=\/usr\/bin\/google-chrome-stable --incognito$/Exec=\/usr\/bin\/google-chrome-stable --incognito --enable-features=WebUIDarkMode --force-dark-mode/g' /usr/share/applications/google-chrome.desktop
-
   if test -d $HOME/.rbenv/bin
     cd (rbenv root)
     git pull
