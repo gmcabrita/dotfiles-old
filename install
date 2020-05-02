@@ -225,6 +225,7 @@ setup_linux() {
         valgrind \
         vim \
         vlc \
+        wmctrl \
         xclip \
         xdot \
         xsltproc \
