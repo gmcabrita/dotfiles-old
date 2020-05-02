@@ -105,9 +105,7 @@ setup_linux() {
         ffmpeg \
         fish \
         fonts-font-awesome \
-        fonts-hack-ttf \
         fonts-noto-color-emoji \
-        fonts-roboto-hinted \
         fop \
         gdb \
         git \
@@ -219,7 +217,6 @@ setup_linux() {
         tmux \
         transmission \
         tree \
-        ttf-ubuntu-font-family \
         ubuntu-restricted-extras \
         unixodbc \
         unixodbc-dev \
