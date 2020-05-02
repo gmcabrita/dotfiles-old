@@ -206,6 +206,7 @@ setup_linux() {
         shellcheck \
         signal-desktop \
         slack-desktop \
+        slop \
         software-properties-common \
         spotify-client \
         squashfs-tools \
@@ -430,6 +431,8 @@ install_python() {
         pip-tools \
         pre-commit \
         py-spy \
+        pycairo \
+        PyGObject \
         seashells
 }
 
@@ -536,6 +539,16 @@ get_dotfiles() {
         wget -qO elixir-ls.zip "$(curl -s https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest | jq -r '.assets[] | select(.name|test(".*.zip")).browser_download_url')"
         unzip -qu elixir-ls.zip -d ~/code/elixir-ls
         rm elixir-ls.zip
+    fi
+
+    if [ ! -f /usr/local/bin/screenkey ]; then
+        (
+            cd ~/code
+            sudo rm -rf screenkey
+            git clone https://gitlab.com/screenkey/screenkey
+            cd screenkey
+            sudo python3 setup.py install
+        )
     fi
 }
 
