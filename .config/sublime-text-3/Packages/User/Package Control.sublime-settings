@@ -6,6 +6,7 @@
     "installed_packages":
     [
         "Babel",
+        "CloseOtherWindows",
         "CustomPATH",
         "Dockerfile Syntax Highlighting",
         "DotENV",

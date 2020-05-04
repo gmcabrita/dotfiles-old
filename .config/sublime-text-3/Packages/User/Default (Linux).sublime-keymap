@@ -18,4 +18,6 @@
   { "keys": ["ctrl+shift+,"], "command": "side_bar_copy_path_quoted" },
   { "keys": ["ctrl+shift+alt+d"], "command": "find_all_under" },
   { "keys": ["ctrl+u"], "command": "soft_undo" },
+  { "keys": ["ctrl+super+q"], "command": "close_other_windows" },
+  { "keys": ["ctrl+super+w"], "command": "close_other_tabs" },
 ]
