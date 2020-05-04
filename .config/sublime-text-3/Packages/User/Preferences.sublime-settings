@@ -92,15 +92,6 @@
   ],
   "line_padding_bottom": 3,
   "line_padding_top": 3,
-  "material_theme_arrow_folders": true,
-  "material_theme_bold_tab": true,
-  "material_theme_bright_scrollbars": true,
-  "material_theme_bullet_tree_indicator": true,
-  "material_theme_compact_sidebar": true,
-  "material_theme_panel_separator": true,
-  "material_theme_small_statusbar": true,
-  "material_theme_small_tab": true,
-  "material_theme_tabs_autowidth": true,
   "rulers":
   [
     72,
