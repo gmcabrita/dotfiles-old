@@ -5,7 +5,6 @@
     ],
     "installed_packages":
     [
-        "A File Icon",
         "Babel",
         "CloseOtherWindows",
         "CustomPATH",
@@ -17,7 +16,6 @@
         "fish",
         "Hide Menu",
         "Jinja2",
-        "Material Theme",
         "MoveTab",
         "Package Control",
         "ProjectManager",
