@@ -405,12 +405,13 @@ install_golang() {
     asdf global go "$golangv"
 
     go get -v \
-        github.com/rakyll/hey \
-        honnef.co/go/tools/cmd/... \
-        golang.org/x/tools/cmd/... \
-        github.com/go-delve/delve/cmd/dlv \
         github.com/davecheney/httpstat \
-        golang.org/x/tools/gopls@latest
+        github.com/go-delve/delve/cmd/dlv \
+        github.com/oligot/go-mod-upgrade \
+        github.com/rakyll/hey \
+        golang.org/x/tools/cmd/... \
+        golang.org/x/tools/gopls@latest \
+        honnef.co/go/tools/cmd/...
 }
 
 # installs python and some python packages
