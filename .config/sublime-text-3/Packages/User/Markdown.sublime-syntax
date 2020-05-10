@@ -455,6 +455,7 @@ contexts:
     - include: fenced-reason
     - include: fenced-haskell
     - include: fenced-rust
+    - include: fenced-elixir
     - include: fenced-undefined
   fenced-coffee:
     - match: '^(\s*[`~]{3,})\s*(coffee|cjsx)\s*$'
@@ -589,6 +590,11 @@ contexts:
   fenced-rust:
     - match: '^(\s*[`~]{3,})\s*(rust)\s*$'
       embed: scope:source.rust
+      embed_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
+      escape: ^(\1)\n
+  fenced-elixir:
+    - match: '^(\s*[`~]{3,})\s*(elixir|iex)\s*$'
+      embed: scope:source.elixir
       embed_scope: markup.raw.block.markdown markup.raw.block.fenced.markdown
       escape: ^(\1)\n
   fenced-undefined:
