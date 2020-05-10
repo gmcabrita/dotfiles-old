@@ -7,6 +7,7 @@
     [
         "Babel",
         "CloseOtherWindows",
+        "ColorSchemeEditor",
         "CustomPATH",
         "Dockerfile Syntax Highlighting",
         "DotENV",
@@ -15,7 +16,6 @@
         "FileIcons",
         "fish",
         "Hide Menu",
-        "Jinja2",
         "MarkdownEditing",
         "MoveTab",
         "Package Control",
@@ -26,14 +26,12 @@
         "Rust Enhanced",
         "Sass",
         "SideBarEnhancements",
-        "Solarized Color Scheme",
         "SublimeLinter",
         "SublimeLinter-contrib-hadolint",
         "SublimeLinter-haml",
         "SublimeLinter-ruby",
         "SublimeLinter-shellcheck",
-        "TOML",
-        "Tomorrow Night Italics Color Scheme"
+        "TOML"
     ],
     "install_prereleases": ["Babel"]
 }
