@@ -678,6 +678,7 @@ contexts:
     - include: link-inet
     - include: link-email
     - include: link-wiki
+    - include: link-mention
     - include: image-ref
     - include: link-ref
     - include: link-ref-literal
@@ -758,6 +759,12 @@ contexts:
         - include: link-ref
         - include: link-ref-literal
         - include: link-footnote
+  link-mention:
+    - match: '(@)([A-z]+)'
+      scope: meta.link.mention.markdown
+      captures:
+        1: markup.mention.markdown
+        2: markup.mention.markdown
   line-break:
     - match: " {2,}$"
       scope: meta.dummy.line-break

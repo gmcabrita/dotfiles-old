@@ -635,6 +635,21 @@
           <string>#212121</string>
         </dict>
       </dict>
+      <dict>
+        <key>name</key>
+        <string>@ Mentions</string>
+        <key>scope</key>
+        <string>markup.mention.markdown</string>
+        <key>settings</key>
+        <dict>
+          <key>foreground</key>
+          <string>#de935f</string>
+          <key>background</key>
+          <string>#212121</string>
+          <key>fontStyle</key>
+          <string>italic</string>
+        </dict>
+      </dict>
     </array>
     <key>uuid</key>
     <string>F96223EB-1A60-4617-92F3-D24D4F13DB09</string>
