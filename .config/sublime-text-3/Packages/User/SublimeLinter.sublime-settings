@@ -6,6 +6,9 @@
       "excludes": [
         "*.haml",
         "*.html",
+        "*.mdown",
+        "*.txt",
+        "*.md"
       ],
     },
     "haml": {
