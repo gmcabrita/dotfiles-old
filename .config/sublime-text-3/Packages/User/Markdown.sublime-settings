@@ -26,4 +26,6 @@
   "mde.keymap_disable.make_page_reference": false,
   "mde.keymap_disable.list_back_links": false,
   "mde.keymap_disable.open_journal": false,
+  "mde.keymap_disable.fold_section": true,
+  "mde.keymap_disable.show_fold_all_sections": true
 }
