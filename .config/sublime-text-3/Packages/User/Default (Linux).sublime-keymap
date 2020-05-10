@@ -20,4 +20,13 @@
   { "keys": ["ctrl+u"], "command": "soft_undo" },
   { "keys": ["ctrl+super+q"], "command": "close_other_windows" },
   { "keys": ["ctrl+super+w"], "command": "close_other_tabs" },
+  { "keys": ["alt+shift+h"], "command": "open_home_page" },
+  {
+    "keys": ["alt+shift+d"],
+    "command": "open_page",
+    "context":[
+      { "key": "selector", "operator": "equal", "operand": "meta.link.wiki.markdown", "match_all": true }
+    ]
+  },
+  { "keys": ["alt+shift+j"], "command": "open_journal" }
 ]
