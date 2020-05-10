@@ -8,7 +8,7 @@
   "color_scheme": "Packages/User/Tomorrow-Night-Italics.tmTheme",
   "tab_size": 2,
   "translate_tabs_to_spaces": true,
-  "trim_trailing_white_space_on_save": false,
+  "trim_trailing_white_space_on_save": true,
   "auto_match_enabled": true,
   "draw_centered": true,
   "word_wrap": true,
