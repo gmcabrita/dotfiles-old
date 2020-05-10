@@ -21,4 +21,9 @@
   "caret_style": "smooth",
   "caret_extra_top": 3,
   "caret_extra_bottom": 3,
+  "mde.keymap_disable.open_home_page": false,
+  "mde.keymap_disable.open_page": false,
+  "mde.keymap_disable.make_page_reference": false,
+  "mde.keymap_disable.list_back_links": false,
+  "mde.keymap_disable.open_journal": false,
 }
