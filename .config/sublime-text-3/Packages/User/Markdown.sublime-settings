@@ -1,0 +1,24 @@
+{
+  "extensions":
+  [
+    "mdown",
+    "txt",
+    "md"
+  ],
+  "color_scheme": "Packages/User/Tomorrow-Night-Italics.tmTheme",
+  "tab_size": 2,
+  "translate_tabs_to_spaces": true,
+  "trim_trailing_white_space_on_save": false,
+  "auto_match_enabled": true,
+  "draw_centered": true,
+  "word_wrap": true,
+  "wrap_width": 80,
+  "rulers": [],
+  "line_numbers": false,
+  "highlight_line": true,
+  "line_padding_top": 2,
+  "line_padding_bottom": 2,
+  "caret_style": "smooth",
+  "caret_extra_top": 3,
+  "caret_extra_bottom": 3,
+}

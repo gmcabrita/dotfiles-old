@@ -51,7 +51,7 @@
   "bold_folder_labels": true,
   "caret_style": "smooth",
   "close_windows_when_empty": false,
-  "color_scheme": "Packages/Tomorrow Night Italics Color Scheme/Tomorrow-Night-Italics.tmTheme",
+  "color_scheme": "Packages/User/Tomorrow-Night-Italics.tmTheme",
   "default_line_ending": "unix",
   "detect_identation": true,
   "draw_white_space": "all",
@@ -81,6 +81,7 @@
   "hot_exit": true,
   "ignored_packages":
   [
+    "Markdown",
     "Rust",
     "Vintage"
   ],
