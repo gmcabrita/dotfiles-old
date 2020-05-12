@@ -65,6 +65,7 @@
     # Word-based diff
     wd = diff --color-words
 
+
     # View history graph
     graph = log --graph --abbrev-commit --decorate --date=relative --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all
 
@@ -79,6 +80,7 @@
     # Quick commit ammend
     amend = commit --amend
 
+    publish = !git commit -am \"Publish updates\" && git push
     puxaforte = !git reset --hard "@{upstream}" && git clean -d -f && git pull
     rip = !git reset --hard HEAD && git clean -d -f
 
