@@ -511,7 +511,7 @@ get_dotfiles() {
     setup-tomorrow-night-terminal-colors
     setup_homebrew
 
-    brew install hadolint ctop rbspy stern grex overmind comby fd
+    brew install hadolint ctop rbspy stern grex overmind comby fd rg
     brew install khanhas/tap/spicetify-cli
 
     # some gnome settings
