@@ -1,0 +1,67 @@
+# [PackageDev] target_format: plist, ext: tmLanguage
+---
+name: Systemd Service
+scopeName: source.service
+fileTypes: [ service ]
+uuid: 9db82014-225f-40fe-b087-d5c2915d1c51
+
+patterns:
+- include: '#section'
+- include: '#comment'
+
+repository:
+  boolean:
+    patterns:
+    - name: constant.language.boolean.service
+      match: \b(?i:yes|no|0|1|true|false)\b
+  comment:
+    patterns:
+    - name: comment.line.hash.service
+      match: ^(#).*$\n?
+      captures:
+        '1': {name: punctuation.definition.comment.service}
+    - name: comment.line.semi-colon.service
+      match: ^(;).*$\n?
+      captures:
+        '1': {name: punctuation.definition.comment.service}
+  section:
+    patterns:
+    - name: meta.section.service
+      begin: \[\s*([\w_-]+)(?:\s+((")(?:[^"\\]|\\["\\])*("))|\.([\w_-]+))?\s*\]
+      captures:
+        '1': {name: entity.name.section.service}
+        '2': {name: entity.name.section.subsection.service}
+        '3': {name: punctuation.definition.section.subsection.begin.service}
+        '4': {name: punctuation.definition.section.subsection.end.service}
+        '5': {name: entity.name.section.subsection.service}
+      end: (?=\[)
+      patterns:
+      - include: '#value_pair'
+      - include: '#comment'
+  string:
+    patterns:
+    - name: string.quoted.double.service
+      begin: '"'
+      beginCaptures:
+        '0': {name: punctuation.definition.string.begin.service}
+      end: '"'
+      endCaptures:
+        '0': {name: punctuation.definition.string.end.service}
+      patterns:
+      - name: constant.character.escape.service
+        match: \\[ntb"\\]
+      - name: invalid.illegal.unknown-escape.service
+        match: '\\.'
+  value_pair:
+    patterns:
+    - name: meta.value-pair.section-item.service
+      begin: ([-\w]+)\s*(=-|=)\s*(?!$)
+      captures:
+        '1': {name: constant.language.service}
+        '2': {name: keyword.operator.assignment.service}
+      end: $|(?=[#;])
+      patterns:
+      - include: '#boolean'
+      - include: '#string'
+      - include: '#comment'
+
