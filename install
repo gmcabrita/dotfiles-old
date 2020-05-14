@@ -526,7 +526,7 @@ get_dotfiles() {
     # 90  cps = 1000/90  ≈ 11 ms (90.9  cps)
     # 120 cps = 1000/120 ≈ 8  ms (125.0 cps)
     # 144 cps = 1000/144 ≈ 7  ms (142.0 cps)
-    gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 16
+    gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 17
 
     if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
         wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
