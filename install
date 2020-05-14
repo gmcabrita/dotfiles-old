@@ -229,6 +229,7 @@ setup_linux() {
         wmctrl \
         xclip \
         xdot \
+        xdotool \
         xsltproc \
         xz-utils \
         yarn \
