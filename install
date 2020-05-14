@@ -145,6 +145,7 @@ setup_linux() {
         liblttng-ust0 \
         libncurses5-dev \
         libncursesw5-dev \
+        libnotify-bin \
         libopenblas-base \
         libopenblas-dev \
         libpcap-dev \
