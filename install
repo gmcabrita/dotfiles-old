@@ -244,11 +244,14 @@ setup_linux() {
         echo "kernel.perf_event_paranoid = -1"
         echo "kernel.kptr_restrict=0"
 
+        # rbtrace
+        echo "kernel.msgmnb=1048576"
+
         # elasticsearch
-        echo "vm.max_map_count=262144" >> /etc/sysctl.conf
+        echo "vm.max_map_count=262144"
 
         # inotify limits
-        echo "fs.inotify.max_user_watches = 1048576" >> /etc/sysctl.conf
+        echo "fs.inotify.max_user_watches=1048576"
     } >> /etc/sysctl.conf
     sysctl -p
 
