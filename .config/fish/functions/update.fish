@@ -1,6 +1,6 @@
 function update
   sudo apt update -y
-  sudo apt upgrade -y
+  sudo apt upgrade -y --allow-downgrades
   sudo apt autoremove -y
   brew update
   brew upgrade
