@@ -1,0 +1,1 @@
+Pry.commands.delete '.<shell command>'
