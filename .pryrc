@@ -1,1 +1,1 @@
-Pry.commands.delete '.<shell command>'
+Pry.commands.delete ".<shell command>" rescue nil
