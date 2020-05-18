@@ -73,7 +73,10 @@
   "font_face": "Cascadia Mono PL",
   "font_options":
   [
-    "subpixel_antialias"
+    "subpixel_antialias",
+    "no_clig",
+    "no_liga",
+    "no_calt"
   ],
   "font_size": 13.0,
   "highlight_line": true,
