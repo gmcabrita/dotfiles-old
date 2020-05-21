@@ -461,7 +461,7 @@ install_deno() {
 
 # installs elixir and erlang
 install_elixir() {
-    erlangv="23.0"
+    erlangv="23.0.1"
     asdf plugin-add erlang https://github.com/asdf-vm/asdf-erlang || true
     asdf install erlang "$erlangv" || true
     asdf global erlang "$erlangv"
