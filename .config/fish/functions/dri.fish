@@ -1,3 +1,3 @@
 function dri
-  docker run --rm -it $argv
+    docker run --rm -it $argv
 end

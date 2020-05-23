@@ -1,3 +1,3 @@
 function dcleanup
-  docker system prune --all --volumes
+    docker system prune --all --volumes
 end

@@ -1,9 +1,9 @@
 for F in $HOME/.config/fish/env/*
-  source $F
+    source $F
 end
 
 for F in $HOME/.config/fish/functions/*
-  source $F
+    source $F
 end
 
 # Tomorrow Night fish colors

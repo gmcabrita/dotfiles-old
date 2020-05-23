@@ -16,26 +16,26 @@
 #   * z -l foo  # list all dirs matching foo (by frecency)
 
 function addzhist --on-variable PWD
-  z --add "$PWD"
+    z --add "$PWD"
 end
 
 function z -d "Jump to a recent directory."
-  set -l datafile "$HOME/.z"
+    set -l datafile "$HOME/.z"
 
-  # add entries
-  if [ "$argv[1]" = "--add" ]
-    set -e argv[1]
+    # add entries
+    if [ "$argv[1]" = "--add" ]
+        set -e argv[1]
 
-    # $HOME isn't worth matching
-    [ "$argv" = "$HOME" ]
-    and return
+        # $HOME isn't worth matching
+        [ "$argv" = "$HOME" ]
+        and return
 
-    set -l tempfile (command mktemp $datafile.XXXXXX)
-    test -f $tempfile
-    or return
+        set -l tempfile (command mktemp $datafile.XXXXXX)
+        test -f $tempfile
+        or return
 
-    # maintain the file
-    command awk -v path="$argv" -v now=(date +%s) -F"|" '
+        # maintain the file
+        command awk -v path="$argv" -v now=(date +%s) -F"|" '
       BEGIN {
         rank[path] = 1
         time[path] = now
@@ -57,12 +57,12 @@ function z -d "Jump to a recent directory."
       }
     ' $datafile ^/dev/null >$tempfile
 
-    command mv -f $tempfile $datafile
+        command mv -f $tempfile $datafile
 
-    # tab completion
-  else
-    if [ "$argv[1]" = "--complete" ]
-      command awk -v q="$argv[2]" -F"|" '
+        # tab completion
+    else
+        if [ "$argv[1]" = "--complete" ]
+            command awk -v q="$argv[2]" -F"|" '
         BEGIN {
           if( q == tolower(q) ) nocase = 1
           split(q,fnd," ")
@@ -79,52 +79,52 @@ function z -d "Jump to a recent directory."
         }
       ' "$datafile" 2>/dev/null
 
-    else
-      # list/go
-      set -l last ''
-      set -l list 0
-      set -l typ ''
-      set -l fnd ''
+        else
+            # list/go
+            set -l last ''
+            set -l list 0
+            set -l typ ''
+            set -l fnd ''
 
-      while [ (count $argv) -gt 0 ]
-        switch "$argv[1]"
-          case -- '-h'
-            echo "z [-h][-l][-r][-t] args" >&2
-            return
-          case -- '-l'
-            set list 1
-          case -- '-r'
-            set typ "rank"
-          case -- '-t'
-            set typ "recent"
-          case -- '--'
-            while [ "$argv[1]" ]
-              set -e argv[1]
-              set fnd "$fnd $argv[1]"
+            while [ (count $argv) -gt 0 ]
+                switch "$argv[1]"
+                    case -- '-h'
+                        echo "z [-h][-l][-r][-t] args" >&2
+                        return
+                    case -- '-l'
+                        set list 1
+                    case -- '-r'
+                        set typ "rank"
+                    case -- '-t'
+                        set typ "recent"
+                    case -- '--'
+                        while [ "$argv[1]" ]
+                            set -e argv[1]
+                            set fnd "$fnd $argv[1]"
+                        end
+                    case '*'
+                        set fnd "$fnd $argv[1]"
+                end
+                set last $1
+                set -e argv[1]
             end
-          case '*'
-            set fnd "$fnd $argv[1]"
-        end
-        set last $1
-        set -e argv[1]
-      end
 
-      [ "$fnd" ]
-      or set list 1
+            [ "$fnd" ]
+            or set list 1
 
-      # if we hit enter on a completion just go there
-      [ -d "$last" ]
-      and cd "$last"
-      and return
+            # if we hit enter on a completion just go there
+            [ -d "$last" ]
+            and cd "$last"
+            and return
 
-      # no file yet
-      [ -f "$datafile" ]
-      or return
+            # no file yet
+            [ -f "$datafile" ]
+            or return
 
-      set -l tempfile (command mktemp $datafile.XXXXXX)
-      test -f $tempfile
-      or return
-      set -l target (command awk -v t=(date +%s) -v list="$list" -v typ="$typ" -v q="$fnd" -v tmpfl="$tempfile" -F"|" '
+            set -l tempfile (command mktemp $datafile.XXXXXX)
+            test -f $tempfile
+            or return
+            set -l target (command awk -v t=(date +%s) -v list="$list" -v typ="$typ" -v q="$fnd" -v tmpfl="$tempfile" -F"|" '
         function frecent(rank, time) {
           dx = t-time
           if( dx < 3600 ) return rank*4
@@ -185,13 +185,13 @@ function z -d "Jump to a recent directory."
         }
       ' "$datafile")
 
-      if [ $status -gt 0 ]
-        command rm -f "$tempfile"
-      else
-        command mv -f "$tempfile" "$datafile"
-        [ "$target" ]
-        and cd "$target"
-      end
+            if [ $status -gt 0 ]
+                command rm -f "$tempfile"
+            else
+                command mv -f "$tempfile" "$datafile"
+                [ "$target" ]
+                and cd "$target"
+            end
+        end
     end
-  end
 end

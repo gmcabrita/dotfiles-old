@@ -1,3 +1,3 @@
 function xcopy
-  cat | xclip -selection clipboard
+    cat | xclip -selection clipboard
 end

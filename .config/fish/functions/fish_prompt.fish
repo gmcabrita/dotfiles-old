@@ -8,8 +8,8 @@ set -g __fish_git_prompt_char_stagedstate ' ·'
 set -g __fish_git_prompt_char_untrackedfiles ' :'
 
 function fish_prompt
-  set_color $fish_color_cwd
-  printf '%s' (prompt_pwd)
-  set_color normal
-  printf '%s ' (__fish_git_prompt)
+    set_color $fish_color_cwd
+    printf '%s' (prompt_pwd)
+    set_color normal
+    printf '%s ' (__fish_git_prompt)
 end

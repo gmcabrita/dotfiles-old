@@ -1,5 +1,5 @@
 function dhome
-  eval (
+    eval (
     echo docker run \
       --user (id -u):(id -g) \
       --volume "$HOME:$HOME" \
