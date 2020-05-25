@@ -95,6 +95,8 @@ setup_linux() {
         autoconf \
         automake \
         binutils-multiarch \
+        bpfcc-tools \
+        bpftrace \
         build-essential \
         clang \
         cmake \
