@@ -1,0 +1,8 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Type=Application
+Terminal=false
+Exec=/home/gmc/.bin/obsidian
+Name=Obsidian
+Icon=/home/gmc/.local/share/images/obsidian.png
