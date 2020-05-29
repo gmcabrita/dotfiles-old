@@ -457,7 +457,7 @@ install_nodejs() {
 
 # installs deno
 install_deno() {
-    denov="0.41.0"
+    denov="1.0.3"
     asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git || true
     asdf install deno "$denov" || true
     asdf global deno "$denov"
