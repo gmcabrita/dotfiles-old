@@ -407,7 +407,7 @@ install_ruby() {
 
 # installs go and some go packages
 install_golang() {
-    golangv="1.14.2"
+    golangv="1.14.4"
     asdf plugin-add go https://github.com/kennyp/asdf-golang || true
     asdf install go "$golangv" || true
     asdf global go "$golangv"
