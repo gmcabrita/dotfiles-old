@@ -116,6 +116,8 @@
 [push]
     default = simple
     followTags = true
+[pull]
+    rebase = false
 
 # URL shorthands
 [url "git@github.com:"]
