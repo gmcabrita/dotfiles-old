@@ -536,6 +536,10 @@ get_dotfiles() {
     # 144 cps = 1000/144 ≈ 7  ms (142.0 cps)
     gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
 
+    if [ ! -f /usr/local/bin/bandwhich ]; then
+      sudo ln -s $(which bandwhich) /usr/local/bin/bandwhich
+    fi
+
     if [ ! -f ~/.bin/obsidian ] || [ "$1" == "-f" ]; then
         wget -qO ~/.bin/obsidian "$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | jq -r '.assets[] | select(.name|test(".*.AppImage")).browser_download_url')"
         chmod a+x ~/.bin/obsidian
