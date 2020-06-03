@@ -520,7 +520,7 @@ get_dotfiles() {
     setup-one-dark-terminal-colors
     setup_homebrew
 
-    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi
+    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich
     brew install khanhas/tap/spicetify-cli
 
     # some gnome settings
