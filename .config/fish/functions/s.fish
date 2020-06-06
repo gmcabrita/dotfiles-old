@@ -1,3 +1,3 @@
 function s
-  subl
+  subl $argv
 end
