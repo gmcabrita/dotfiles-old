@@ -13,6 +13,13 @@
     "ruby":
     {
       "enabled": true
+    },
+    "zig":{
+      "enabled": true,
+      "command": ["~/code/zls/zig-cache/bin/zls"],
+      "languageId": "zig",
+      "scopes": ["source.zig"],
+      "syntaxes": ["Packages/Zig/Syntaxes/Zig.tmLanguage"]
     }
   }
 }
