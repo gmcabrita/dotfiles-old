@@ -1,11 +1,6 @@
 {
   "clients":
   {
-    "elixir-ls":
-    {
-      "command": ["~/code/elixir-ls/language_server.sh"],
-      "enabled": true
-    },
     "gopls":
     {
       "command": ["~/go/bin/gopls"],

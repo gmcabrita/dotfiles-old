@@ -292,9 +292,9 @@ setup_linux() {
     # set docker to autostart
     systemctl enable docker
 
-    # set vscode as default editor
-    update-alternatives --install /usr/bin/editor editor /usr/bin/code 90
-    update-alternatives --set editor /usr/bin/code
+    # set sublime text as default editor
+    update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
+    update-alternatives --set editor /usr/bin/subl
 
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
@@ -525,7 +525,7 @@ get_dotfiles() {
 
     mkdir -p ~/code
 
-    setup-one-dark-terminal-colors
+    setup-tomorrow-night-terminal-colors
     setup_homebrew
 
     brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich
@@ -545,7 +545,7 @@ get_dotfiles() {
     gsettings set org.gnome.desktop.peripherals.keyboard repeat-interval 20
 
     if [ ! -f /usr/local/bin/bandwhich ]; then
-      sudo ln -s $(which bandwhich) /usr/local/bin/bandwhich
+      sudo ln -s "$(command -v bandwhich)" /usr/local/bin/bandwhich
     fi
 
     if [ ! -f ~/.bin/obsidian ] || [ "$1" == "-f" ]; then
@@ -558,12 +558,6 @@ get_dotfiles() {
         unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
         chmod a+x+r ~/.bin/ngrok
         rm ngrok-stable-linux-amd64.zip
-    fi
-
-    if [ ! -d ~/code/elixir-ls ] || [ "$1" == "-f" ]; then
-        wget -qO elixir-ls.zip "$(curl -s https://api.github.com/repos/elixir-lsp/elixir-ls/releases/latest | jq -r '.assets[] | select(.name|test(".*.zip")).browser_download_url')"
-        unzip -qu elixir-ls.zip -d ~/code/elixir-ls
-        rm elixir-ls.zip
     fi
 
     if [ ! -f /usr/local/bin/screenkey ]; then

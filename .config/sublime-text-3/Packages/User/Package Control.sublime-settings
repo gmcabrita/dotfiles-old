@@ -7,20 +7,16 @@
     [
         "Babel",
         "CloseOtherWindows",
-        "ColorSchemeEditor",
+        "ColorHelper",
         "CustomPATH",
         "Dockerfile Syntax Highlighting",
         "DotENV",
         "EditorConfig",
-        "Elixir",
-        "FileIcons",
         "fish",
         "Hide Menu",
         "LSP",
         "MarkdownEditing",
-        "MarkdownPreview",
         "MoveTab",
-        "Open URL",
         "Package Control",
         "ProjectManager",
         "Python 3",
@@ -31,10 +27,9 @@
         "SideBarEnhancements",
         "SublimeLinter",
         "SublimeLinter-contrib-hadolint",
-        "SublimeLinter-haml",
-        "SublimeLinter-ruby",
         "SublimeLinter-shellcheck",
-        "TOML"
+        "TOML",
+        "Zig Language"
     ],
     "install_prereleases": ["Babel"]
 }
