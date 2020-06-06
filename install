@@ -464,6 +464,14 @@ install_deno() {
     deno completions fish | sudo tee /etc/fish/completions/deno.fish
 }
 
+# installs zig
+install_zig() {
+    zigv="0.6.0"
+    asdf plugin-add zig https://github.com/cheetah/asdf-zig.git || true
+    asdf install zig "$zigv" || true
+    asdf global zig "$zigv"
+}
+
 # installs elixir and erlang
 install_elixir() {
     erlangv="23.0.1"
@@ -603,7 +611,8 @@ usage() {
     echo "  nodejs                    - install nodejs"
     echo "  deno                      - install deno"
     echo "  ruby                      - install ruby"
-    echo "  rust                      - install elixir"
+    echo "  rust                      - install rust"
+    echo "  zig                       - install zig"
     echo "  elixir                    - install elixir"
     echo "  github                    - setup github keys"
     echo "  spotify                   - setup spotify"
@@ -640,6 +649,10 @@ main() {
         check_isnt_sudo
         check_pyenv_and_install
         install_python
+    elif [[ $cmd == "zig" ]]; then
+        check_isnt_sudo
+        check_asdf_and_install
+        install_zig
     elif [[ $cmd == "elixir" ]]; then
         check_isnt_sudo
         check_asdf_and_install
