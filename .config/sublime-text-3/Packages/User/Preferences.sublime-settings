@@ -99,6 +99,7 @@
     79,
     100
   ],
+  "show_minimap": false,
   "show_git_status": true,
   "show_tab_close_buttons": false,
   "tab_size": 2,
