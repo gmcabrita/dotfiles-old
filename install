@@ -549,10 +549,15 @@ get_dotfiles() {
       sudo ln -s "$(command -v bandwhich)" /usr/local/bin/bandwhich
     fi
 
-    if [ ! -f ~/.bin/qemu-aarch64 ] || [ "$1" == "-f" ]; then
-        wget -qO ~/.bin/qemu-aarch64 "$(curl -s https://api.github.com/repos/multiarch/qemu-user-static/releases/latest | jq -r '.assets[] | select(.name|test("^qemu-aarch64-static$")).browser_download_url')"
-        chmod a+x ~/.bin/qemu-aarch64
-    fi
+    # setup qemu-*-static local binaries
+    for static_bin_json in $(curl -s https://api.github.com/repos/multiarch/qemu-user-static/releases/latest | jq -c -r '.assets[] | select(.name|test("^qemu-.*-static$"))'); do
+        BIN_NAME=$(echo "$static_bin_json" | jq -r '.name' | cut -f1,2 -d '-')
+        BIN_PATH="$HOME/.bin/$BIN_NAME"
+        if [ ! -f "$BIN_PATH" ] || [ "$1" == "-f" ]; then
+            wget -qO "$BIN_PATH" "$(echo "$static_bin_json" | jq -r '.browser_download_url')"
+            chmod a+x "$BIN_PATH"
+        fi
+    done
 
     if [ ! -f ~/.bin/obsidian ] || [ "$1" == "-f" ]; then
         wget -qO ~/.bin/obsidian "$(curl -s https://api.github.com/repos/obsidianmd/obsidian-releases/releases/latest | jq -r '.assets[] | select(.name|test(".*.AppImage")).browser_download_url')"
