@@ -6,7 +6,7 @@
       "command": ["~/go/bin/gopls"],
       "enabled": true
     },
-    "javascript-typescript-langserver":
+    "typescript-language-server":
     {
       "enabled": true
     },
