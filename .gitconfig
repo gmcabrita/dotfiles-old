@@ -37,10 +37,6 @@
     # Use `hexdump` to diff binary files
     textconv = hexdump -v -C
 [alias]
-    # git new (uses main as default branch instead of master)
-    new = !git init && git symbolic-ref HEAD refs/heads/main
-    master2main = !git branch -m master main && git push -u origin main
-
     # Quick commit
     c = commit
 
