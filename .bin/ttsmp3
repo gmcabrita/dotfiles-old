@@ -1,0 +1,67 @@
+#!/usr/bin/env bash
+set -ue
+set -o pipefail
+
+VALID_VOICES=(
+  Aditi Amy Astrid Bianca Brian
+  Camila Carla Carmen Celine Chantal
+  Conchita Cristiano Dora Emma Enrique
+  Ewa Filiz Geraint Giorgio Gwyneth
+  Hans Ines Ivy Jacek Jan
+  Joanna Joey Justin Karl Kendra
+  Kimberly Lea Liv Lotte Lucia
+  Lupe Mads Maja Marlene Mathieu
+  Matthew Maxim Mia Miguel Mizuki
+  Naja Nicole Penelope Raveena Ricardo
+  Ruben Russell Salli Seoyeon Takumi
+  Tatyana Vicki Vitoria Zeina Zhiyu
+)
+
+help() {
+  echo "Usage: ttsmp3 [-h] [-o filename] [-v voice] TEXT"
+  echo "Available voices:"
+  i=0
+  while [ -n "${VALID_VOICES[*]:${i}:${i+5}}" ]; do
+    echo -e "\t${VALID_VOICES[*]:${i}:${i+5}}"
+    i=$((i + 5))
+  done
+  exit 1
+}
+
+main() {
+  output_file=''
+  voice='Justin'
+  while getopts "o:v:hp" opt; do
+    case $opt in
+      o)
+        output_file="$OPTARG"
+        ;;
+      v)
+        voice=$(echo "$OPTARG" | sed 's/.*/\L&/; s/[a-z]*/\u&/g')
+        ;;
+      h)
+        help
+        exit 0
+        ;;
+      *)
+        help
+        exit 1
+        ;;
+    esac
+  done
+  shift $((OPTIND -1))
+
+  if [ -z "$*" ] || [[ ! " ${VALID_VOICES[*]} " =~ [[:space:]]"$voice"[[:space:]] ]]; then
+    help
+    exit 1
+  fi
+
+  mp3_url=$(curl -sS --data-urlencode 'msg='"$*"'' --data-urlencode 'lang='"$voice"'' https://ttsmp3.com/makemp3_new.php | jq -r '.URL')
+  if [ -n "$output_file" ]; then
+    curl -o "$output_file" -sS "$mp3_url"
+  else
+    curl -sS --output - "$mp3_url" | ffplay -nodisp -nostats -loglevel 0 -autoexit -i -
+  fi
+}
+
+main "$@"
