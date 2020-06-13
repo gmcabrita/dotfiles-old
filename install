@@ -77,12 +77,16 @@ setup_linux() {
     echo "deb https://packagecloud.io/slacktechnologies/slack/debian/ jessie main" > /etc/apt/sources.list.d/slack.list
 
     # signal
-    curl -sS https://updates.signal.org/desktop/apt/keys.asc | sudo apt-key add -
+    curl -sS https://updates.signal.org/desktop/apt/keys.asc | apt-key add -
     echo "deb [arch=amd64] https://updates.signal.org/desktop/apt xenial main" > /etc/apt/sources.list.d/signal.list
 
     # insync
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys ACCAF35C
     echo "deb http://apt.insync.io/ubuntu focal non-free contrib" > /etc/apt/sources.list.d/insync.list
+
+    # riot.im
+    curl -sS -O /usr/share/keyrings/riot-im-archive-keyring.gpg https://packages.riot.im/debian/riot-im-archive-keyring.gpg
+    echo "deb [signed-by=/usr/share/keyrings/riot-im-archive-keyring.gpg] https://packages.riot.im/debian/ default main" > /etc/apt/sources.list.d/riot-im.list
 
     apt update || true
     apt upgrade -y
@@ -203,6 +207,7 @@ setup_linux() {
         qemu-kvm \
         qtbase5-dev \
         readline-common \
+        riot-desktop \
         rlwrap \
         scdaemon \
         shellcheck \
