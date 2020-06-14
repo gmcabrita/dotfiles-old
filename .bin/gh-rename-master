@@ -1,0 +1,27 @@
+#!/bin/bash
+# Usage: gh-rename-master <newbranch> [<remote>]
+#
+# Renames the "master" branch of the current repository both locally and on GitHub.
+#
+# dependencies: GitHub CLI v0.10
+set -ue
+set -o pipefail
+
+newbranch="${1?}"
+remote="${2:-origin}"
+
+git fetch "$remote" master
+git checkout -b "$newbranch" "${remote}/master" --no-track
+git push -u "$remote" "$newbranch"
+git remote set-head "$remote" "$newbranch"
+
+# update the default branch
+gh api -XPATCH "repos/:owner/:repo" -f default_branch="$newbranch" >/dev/null
+
+# update the base branch of all open pull requests
+for num in `gh pr list -B master -L999 | cut -f1`; do
+  gh api -XPATCH "repos/:owner/:repo/pulls/${num}" -f base="$newbranch" >/dev/null
+  echo -n .
+done
+
+printf '\nDone!\n'
