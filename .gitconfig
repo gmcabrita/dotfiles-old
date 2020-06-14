@@ -37,6 +37,8 @@
     # Use `hexdump` to diff binary files
     textconv = hexdump -v -C
 [alias]
+    # New
+    new = !git init && git symbolic-ref HEAD refs/heads/main
     # Quick commit
     c = commit
 
