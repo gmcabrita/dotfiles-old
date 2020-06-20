@@ -22,4 +22,5 @@
   { "keys": ["ctrl+shift+]"], "command": ""},
   { "keys": ["ctrl+super+q"], "command": "close_other_windows" },
   { "keys": ["ctrl+super+w"], "command": "close_other_tabs" },
+  { "keys": ["f12"], "command": "lsp_symbol_definition", "context": [{ "key": "setting.lsp_active" }] },
 ]
