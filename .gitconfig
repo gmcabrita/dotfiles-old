@@ -4,7 +4,7 @@
 [credential]
     helper = cache --timeout 3600
 [core]
-    editor = code --wait
+    editor = subl -n -w
     fscache = true
     autocrlf = false
     excludesfile = ~/.gitignore_global
@@ -27,12 +27,6 @@
     untracked = cyan
 [gist]
     private = yes
-[diff]
-    tool = vscode
-[difftool]
-    prompt = false
-[difftool "vscode"]
-    cmd = code --wait --diff $LOCAL $REMOTE
 [diff "bin"]
     # Use `hexdump` to diff binary files
     textconv = hexdump -v -C
