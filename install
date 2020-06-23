@@ -130,6 +130,7 @@ setup_linux() {
         insync \
         iotop \
         jq \
+        kitty \
         libbsd-dev \
         libbz2-dev \
         libcairo2 \
@@ -293,6 +294,9 @@ setup_linux() {
     # set vscode as default editor
     update-alternatives --install /usr/bin/editor editor /usr/bin/subl 90
     update-alternatives --set editor /usr/bin/subl
+
+    # set kitty as default terminal emulator
+    update-alternatives --set x-terminal-emulator /usr/bin/kitty
 
     # install and start tlp if we are on a laptop
     read -rp "Do you want to install TLP? (y/n) " -n 1
@@ -524,7 +528,6 @@ get_dotfiles() {
 
     mkdir -p ~/code
 
-    setup-tomorrow-night-terminal-colors
     setup_homebrew
 
     brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich hyperfine step gh terraform websocat scrcpy
