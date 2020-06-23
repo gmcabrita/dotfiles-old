@@ -1,13 +1,16 @@
 {
-    "name": "Monokai",
-    "author": "Sublime HQ Pty Ltd - modified for Gravity theme",
+    "name": "Polykai",
     "variables":
     {
         "black": "hsl(0, 0%, 0%)",
         "black2": "hsl(0, 0%, 24%)",
-        "black3": "hsl(0, 0%, 17%)",
+        "black3": "hsl(0, 0%, 12%)",
         "blue": "hsl(203, 55%, 63%)",
         "grey": "hsl(0, 0%, 21%)",
+        "grey2": "hsl(220, 7%,  20%)",
+        "grey3": "hsl(216, 8%, 23%)",
+        "green": "hsl(80, 43%, 58%)",
+        "green2": "hsl(80, 43%, 58%)",
         "orange": "hsl(40, 93%, 52%)",
         "orange2": "hsl(37, 94%, 35%)",
         "orange3": "hsl(47, 100%, 79%)",
@@ -18,22 +21,21 @@
         "white2": "hsl(0, 0%, 95%)",
         "white3": "hsl(0, 0%, 91%)",
         "yellow": "hsl(37, 81%, 65%)",
-        "yellow2": "hsl(80, 43%, 58%)",
-        "yellow3": "hsl(0, 0%, 87%)",
-        "yellow4": "hsl(0, 0%, 51%)",
-        "yellow5": "hsl(0, 0%, 41%)"
+        "yellow2": "hsl(0, 0%, 87%)",
+        "yellow3": "hsl(0, 0%, 51%)",
+        "yellow4": "hsl(0, 0%, 41%)"
     },
     "globals":
     {
         "foreground": "var(white3)",
         "background": "var(black3)",
         "caret": "var(blue)",
-        "invisibles": "color(var(white3) alpha(0.35))",
-        "line_highlight": "var(black2)",
-        "selection": "var(grey)",
+        "invisibles": "color(var(white3) alpha(0.15))",
+        "line_highlight": "var(grey2)",
+        "selection": "color(var(yellow4) alpha(0.6))",
         "selection_border": "var(black2)",
         "misspelling": "var(red2)",
-        "active_guide": "var(yellow5)",
+        "active_guide": "var(yellow4)",
         "find_highlight_foreground": "var(black)",
         "find_highlight": "var(orange3)",
         "brackets_options": "underline",
@@ -48,7 +50,7 @@
         {
             "name": "Comment",
             "scope": "comment",
-            "foreground": "var(yellow5)"
+            "foreground": "var(yellow4)"
         },
         {
             "name": "String",
@@ -58,17 +60,17 @@
         {
             "name": "Number",
             "scope": "constant.numeric",
-            "foreground": "var(purple)"
+            "foreground": "var(green2)"
         },
         {
             "name": "Built-in constant",
             "scope": "constant.language",
-            "foreground": "var(purple)"
+            "foreground": "var(green2)"
         },
         {
             "name": "User-defined constant",
             "scope": "constant.character, constant.other",
-            "foreground": "var(purple)"
+            "foreground": "var(green2)"
         },
         {
             "name": "Variable",
@@ -103,12 +105,12 @@
         {
             "name": "Entity name",
             "scope": "entity.name - (entity.name.filename | entity.name.section | entity.name.tag | entity.name.label)",
-            "foreground": "var(yellow2)"
+            "foreground": "var(green)"
         },
         {
             "name": "Inherited class",
             "scope": "entity.other.inherited-class",
-            "foreground": "var(yellow2)",
+            "foreground": "var(green)",
             "font_style": "italic underline"
         },
         {
@@ -131,7 +133,7 @@
         {
             "name": "Tag attribute",
             "scope": "entity.other.attribute-name",
-            "foreground": "var(yellow2)"
+            "foreground": "var(green)"
         },
         {
             "name": "Function call",
@@ -173,7 +175,7 @@
         {
             "name": "JSON String",
             "scope": "meta.structure.dictionary.json string.quoted.double.json",
-            "foreground": "var(yellow3)"
+            "foreground": "var(yellow2)"
         },
         {
             "name": "YAML String",
@@ -183,7 +185,7 @@
         {
             "name": "diff.header",
             "scope": "meta.diff, meta.diff.header",
-            "foreground": "var(yellow5)"
+            "foreground": "var(yellow4)"
         },
         {
             "name": "markup headings",
@@ -223,12 +225,12 @@
         {
             "name": "markup hr",
             "scope": "punctuation.definition.thematic-break",
-            "foreground": "var(yellow5)"
+            "foreground": "var(yellow4)"
         },
         {
             "name": "markup blockquote",
             "scope": "markup.quote punctuation.definition.blockquote",
-            "foreground": "var(yellow5)"
+            "foreground": "var(yellow4)"
         },
         {
             "name": "markup bullets",
@@ -263,7 +265,7 @@
         {
             "name": "diff.inserted",
             "scope": "markup.inserted",
-            "foreground": "var(yellow2)"
+            "foreground": "var(green)"
         },
         {
             "name": "diff.changed",
@@ -272,7 +274,7 @@
         },
         {
             "scope": "constant.numeric.line-number.find-in-files - match",
-            "foreground": "color(var(purple) alpha(0.63))"
+            "foreground": "color(var(green2) alpha(0.63))"
         },
         {
             "scope": "entity.name.filename",
