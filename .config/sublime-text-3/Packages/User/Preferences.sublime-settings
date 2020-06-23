@@ -1,109 +1,113 @@
 {
-  "auto_complete": true,
-  "auto_complete_triggers":
-  [
-    {
-      "characters": "<",
-      "selector": "text.html"
-    },
-    {
-      "characters": ".",
-      "selector": "source.go"
-    }
-  ],
-  "binary_file_patterns":
-  [
-    "*.jpg",
-    "*.jpeg",
-    "*.png",
-    "*.gif",
-    "*.ttf",
-    "*.tga",
-    "*.dds",
-    "*.ico",
-    "*.eot",
-    "*.pdf",
-    "*.swf",
-    "*.jar",
-    "*.zip",
-    "node_modules/",
-    "bower_components/",
-    "tmp/",
-    "log/",
-    "build/",
-    "public/packs/",
-    ".svn/",
-    ".git/",
-    ".hg/",
-    ".mypy_cache/",
-    "data_exports/",
-    ".pyre/",
-    ".tox/",
-    ".venv/",
-    "CVS/",
-    "_build/",
-    "dist/",
-    "site/",
-    "deps/",
-    ".elixir_ls/"
-  ],
-  "block_caret": true,
-  "bold_folder_labels": true,
-  "caret_style": "smooth",
-  "close_windows_when_empty": false,
-  "color_scheme": "Packages/User/Polykai.sublime-color-scheme",
-  "default_line_ending": "unix",
-  "detect_identation": true,
-  "draw_white_space": "all",
-  "find_selected_text": true,
-  "fold_buttons": false,
-  "folder_exclude_patterns":
-  [
-    ".svn",
-    ".git",
-    ".hg",
-    ".mypy_cache",
-    ".pyre",
-    ".tox",
-    ".venv",
-    "CVS",
-    "_build",
-    ".elixir_ls"
-  ],
-  "font_face": "LiterationMono Nerd Font Mono",
-  "font_options":
-  [
-    "subpixel_antialias",
-    "no_clig",
-    "no_liga",
-    "no_calt"
-  ],
-  "font_size": 15.0,
-  "highlight_line": true,
-  "highlight_modified_tabs": true,
-  "hot_exit": true,
-  "ignored_packages":
-  [
-    "Rust",
-    "Vintage"
-  ],
-  "indent_guide_options":
-  [
-    "draw_normal",
-    "draw_active"
-  ],
-  "rulers":
-  [
-    80,
-    100
-  ],
-  "show_minimap": false,
-  "show_git_status": true,
-  "show_tab_close_buttons": false,
-  "tab_size": 2,
-  "theme": "Adaptive.sublime-theme",
-  "translate_tabs_to_spaces": true,
-  "trim_trailing_white_space_on_save": true,
-  "wide_caret": false,
-  "word_wrap": true
+	"auto_complete": true,
+	"auto_complete_triggers":
+	[
+		{
+			"characters": "<",
+			"selector": "text.html",
+		},
+		{
+			"characters": ".",
+			"selector": "source.go",
+		}
+	],
+	"binary_file_patterns":
+	[
+		"*.jpg",
+		"*.jpeg",
+		"*.png",
+		"*.gif",
+		"*.ttf",
+		"*.tga",
+		"*.dds",
+		"*.ico",
+		"*.eot",
+		"*.pdf",
+		"*.swf",
+		"*.jar",
+		"*.zip",
+		"node_modules/",
+		"bower_components/",
+		"tmp/",
+		"log/",
+		"build/",
+		"public/packs/",
+		".svn/",
+		".git/",
+		".hg/",
+		".mypy_cache/",
+		"data_exports/",
+		".pyre/",
+		".tox/",
+		".venv/",
+		"CVS/",
+		"_build/",
+		"dist/",
+		"site/",
+		"deps/",
+		".elixir_ls/"
+	],
+	"block_caret": true,
+	"bold_folder_labels": true,
+	"caret_style": "smooth",
+	"close_windows_when_empty": false,
+	"color_scheme": "Packages/User/Polykai.sublime-color-scheme",
+	"default_line_ending": "unix",
+	"detect_identation": true,
+	"draw_white_space": "all",
+	"find_selected_text": true,
+	"fold_buttons": false,
+	"folder_exclude_patterns":
+	[
+		".svn",
+		".git",
+		".hg",
+		".mypy_cache",
+		".pyre",
+		".tox",
+		".venv",
+		"CVS",
+		"_build",
+		".elixir_ls"
+	],
+	"font_face": "LiterationMono Nerd Font Mono",
+	"font_options":
+	[
+		"subpixel_antialias",
+		"no_clig",
+		"no_liga",
+		"no_calt"
+	],
+	"font_size": 15.0,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"hot_exit": true,
+	"ignored_packages":
+	[
+		"Rust",
+		"Vintage",
+	],
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"rulers":
+	[
+		80,
+		100
+	],
+	"show_minimap": false,
+	"show_git_status": true,
+	"show_tab_close_buttons": false,
+	"tab_size": 2,
+	"theme": "Adaptive.sublime-theme",
+	"translate_tabs_to_spaces": true,
+	"trim_trailing_white_space_on_save": true,
+	"wide_caret": false,
+	"word_wrap": true,
+	"hardware_acceleration": "opengl",
+	"hide_pointer_while_typing": true,
+	"scroll_speed": 1.0,
+	"drag_text": false,
 }

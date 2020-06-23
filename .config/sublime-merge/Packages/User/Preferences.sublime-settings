@@ -1,8 +1,8 @@
 {
-  "font_face": "LiterationMono Nerd Font Mono",
-  "font_size": 15,
-  "time_format": "24h",
-  "theme": "Merge Dark.sublime-theme",
-  "hide_menu": true,
-  "hardware_acceleration": "opengl",
+	"font_face": "LiterationMono Nerd Font Mono",
+	"font_size": 15,
+	"time_format": "24h",
+	"theme": "Merge Dark.sublime-theme",
+	"hide_menu": true,
+	"hardware_acceleration": "opengl",
 }
