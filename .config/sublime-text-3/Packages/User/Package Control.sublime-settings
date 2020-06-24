@@ -7,7 +7,6 @@
     [
         "Babel",
         "CloseOtherWindows",
-        "ColorHelper",
         "CustomPATH",
         "Dockerfile Syntax Highlighting",
         "DotENV",
