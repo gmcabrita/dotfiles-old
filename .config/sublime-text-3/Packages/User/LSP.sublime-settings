@@ -4,15 +4,15 @@
     "gopls":
     {
       "command": ["~/go/bin/gopls"],
-      "enabled": true
+      "enabled": false
     },
     "typescript-language-server":
     {
-      "enabled": true
+      "enabled": false
     },
     "ruby":
     {
-      "enabled": true
+      "enabled": false
     },
     "zig":{
       "enabled": true,
