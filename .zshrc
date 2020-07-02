@@ -25,7 +25,13 @@ source "$HOME/.zsh-z"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U compinit && compinit
-PS1='%F{green}%~%f %# '
+autoload -Uz vcs_info
+precmd() { vcs_info }
+
+zstyle ':vcs_info:git:*' formats '(%b) '
+
+setopt PROMPT_SUBST
+PS1='%F{green}%~%f ${vcs_info_msg_0_}%# '
 
 alias ls='ls --color=auto'
 alias ll='ls -lh'
