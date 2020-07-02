@@ -25,7 +25,7 @@ source "$HOME/.zsh-z"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 autoload -U compinit && compinit
-PS1='%F{green}%~%f '
+PS1='%F{green}%~%f %# '
 
 alias ls='ls --color=auto'
 alias ll='ls -lh'
