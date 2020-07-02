@@ -109,7 +109,6 @@ setup_linux() {
         dos2unix \
         exuberant-ctags \
         ffmpeg \
-        fish \
         fonts-font-awesome \
         fonts-noto-color-emoji \
         fop \
@@ -243,7 +242,9 @@ setup_linux() {
         xz-utils \
         yarn \
         zlib1g-dev \
-        zlibc
+        zlibc \
+        zsh \
+        zsh-syntax-highlighting
 
     apt remove -y firefox thunderbird
 
@@ -358,7 +359,7 @@ install_asdf() {
 # installs pyenv
 install_pyenv() {
     curl -fsSL https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer | bash
-    . ~/.config/fish/config.fish || true
+    . ~/.zshrc || true
 }
 
 update_pyenv() {
@@ -383,7 +384,7 @@ install_rbenv() {
         git clone https://github.com/rbenv/rbenv-default-gems.git plugins/rbenv-default-gems
         git clone https://github.com/rbenv/ruby-build.git plugins/ruby-build
     )
-    . ~/.config/fish/config.fish || true
+    . ~/.zshrc || true
 }
 
 update_rbenv() {
@@ -464,7 +465,6 @@ install_deno() {
     asdf plugin-add deno https://github.com/asdf-community/asdf-deno.git || true
     asdf install deno "$denov" || true
     asdf global deno "$denov"
-    deno completions fish | sudo tee /etc/fish/completions/deno.fish
 }
 
 # installs zig
@@ -514,9 +514,6 @@ setup_homebrew() {
 # updates the local dotfiles with the ones in the repository
 get_dotfiles() {
     cd "$(dirname "${BASH_SOURCE[0]}")"
-
-    rm ~/.config/fish/env/* || true
-    rm ~/.config/fish/functions/* || true
 
     rsync --quiet \
         --exclude ".git/" \
