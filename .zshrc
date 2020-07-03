@@ -24,14 +24,31 @@ setopt SHARE_HISTORY
 source "$HOME/.zsh-z"
 source /usr/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
+#### Completions
+
 autoload -U compinit && compinit
+zmodload zsh/complist
+
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+#### Keybindings
+
+bindkey '^[[3;5~' kill-word # ctrl+delete
+bindkey '^H' backward-kill-word # ctrl+backspace
+bindkey '^[[1;5H' beginning-of-line # ctrl+home
+bindkey '^[[1;5F' end-of-line # ctrl+end
+bindkey -M menuselect '^[[Z' reverse-menu-complete # shift+tab
+
+#### Prompt
+
 autoload -Uz vcs_info
 precmd() { vcs_info }
-
 zstyle ':vcs_info:git:*' formats '(%b) '
-
 setopt PROMPT_SUBST
 PS1='%F{green}%~%f ${vcs_info_msg_0_}%# '
+
+#### Aliases
 
 alias ls='ls --color=auto'
 alias ll='ls -lh'
@@ -51,6 +68,9 @@ alias tree='tree -C'
 alias pager='less -cRS'
 
 alias dcleanup='docker system prune --all --volumes'
+
+
+#### Functions
 
 function open() {
   for i in "$@"; do
@@ -129,15 +149,3 @@ function update() {
 
   rm -r ~/.cache/fontconfig
 }
-
-zstyle ':completion:*' menu select
-
-# ctrl-delete
-bindkey '^[[3;5~' kill-word
-
-# ctrl-backspace
-bindkey '^H' backward-kill-word
-
-# ctrl+home/end
-bindkey '^[[1;5H' beginning-of-line
-bindkey '^[[1;5F' end-of-line
