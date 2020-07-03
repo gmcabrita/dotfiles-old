@@ -98,6 +98,10 @@ function s() {
   subl "$@"
 }
 
+function sm() {
+  smerge "$@"
+}
+
 function todo() {
   grep \
     --exclude-dir=public \
