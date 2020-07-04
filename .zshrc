@@ -1,3 +1,4 @@
+#!/usr/bin/env zsh
 export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"
 export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"
 export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"
@@ -38,12 +39,14 @@ bindkey '^[[3;5~' kill-word # ctrl+delete
 bindkey '^H' backward-kill-word # ctrl+backspace
 bindkey '^[[1;5H' beginning-of-line # ctrl+home
 bindkey '^[[1;5F' end-of-line # ctrl+end
+bindkey '^[[1;5C' forward-word # ctrl+right
+bindkey '^[[1;5D' backward-word # ctrl+left
 bindkey -M menuselect '^[[Z' reverse-menu-complete # shift+tab
 
 #### Prompt
 
 autoload -Uz vcs_info
-precmd() { vcs_info }
+function precmd() { vcs_info; }
 zstyle ':vcs_info:git:*' formats '(%b) '
 setopt PROMPT_SUBST
 PS1='%F{green}%~%f ${vcs_info_msg_0_}%# '
