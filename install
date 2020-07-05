@@ -218,6 +218,7 @@ setup_linux() {
         spotify-client \
         squashfs-tools \
         steam \
+        streamlink \
         sublime-merge \
         sublime-text \
         swig \
