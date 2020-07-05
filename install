@@ -218,7 +218,6 @@ setup_linux() {
         spotify-client \
         squashfs-tools \
         steam \
-        streamlink \
         sublime-merge \
         sublime-text \
         swig \
@@ -528,7 +527,7 @@ get_dotfiles() {
 
     setup_homebrew
 
-    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich hyperfine step gh terraform websocat scrcpy
+    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich hyperfine step gh terraform websocat scrcpy streamlink
 
     # some gnome settings
     gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
