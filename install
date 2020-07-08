@@ -527,7 +527,7 @@ get_dotfiles() {
 
     setup_homebrew
 
-    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich hyperfine step gh terraform websocat scrcpy streamlink
+    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich hyperfine step gh terraform websocat scrcpy streamlink fzf
 
     # some gnome settings
     gsettings set org.gnome.desktop.wm.preferences auto-raise 'true'
