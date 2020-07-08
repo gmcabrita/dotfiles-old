@@ -156,3 +156,4 @@ function update() {
 
   rm -r ~/.cache/fontconfig
 }
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
