@@ -121,6 +121,7 @@ setup_linux() {
         google-chrome-stable \
         google-cloud-sdk \
         graphviz \
+        heaptrack \
         heroku \
         htop \
         icu-devtools \
