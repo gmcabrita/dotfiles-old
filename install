@@ -94,6 +94,7 @@ setup_linux() {
         "linux-headers-$(uname -r)" \
         "linux-tools-$(uname -r)" \
         adb \
+        anacron \
         anki \
         asciinema \
         autoconf \
