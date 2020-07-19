@@ -32,6 +32,163 @@ check_isnt_sudo() {
     fi
 }
 
+setup_linux_wsl() {
+    apt update || true
+    apt upgrade -y
+    apt install -y \
+        apt-transport-https \
+        ca-certificates \
+        curl \
+        software-properties-common \
+        wget
+
+    add-apt-repository ppa:git-core/ppa -y -n
+
+    # docker
+    # curl -fsSL https://download.docker.com/linux/ubuntu/gpg | apt-key add -
+    # echo "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal edge" > /etc/apt/sources.list.d/docker.list
+
+    # google-cloud-sdk
+    echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] http://packages.cloud.google.com/apt cloud-sdk main" | tee /etc/apt/sources.list.d/google-cloud-sdk.list
+    curl -sS https://packages.cloud.google.com/apt/doc/apt-key.gpg | apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+
+    # heroku
+    curl -sS https://cli-assets.heroku.com/apt/release.key | apt-key add -
+    echo "deb https://cli-assets.heroku.com/apt ./" | tee /etc/apt/sources.list.d/heroku.list
+
+    # yarn
+    curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" > /etc/apt/sources.list.d/yarn.list
+
+    sudo apt install \
+        anacron \
+        autoconf \
+        automake \
+        binutils-multiarch \
+        bpfcc-tools \
+        bpftrace \
+        build-essential \
+        clang \
+        cmake \
+        dos2unix \
+        exuberant-ctags \
+        gdb \
+        git-extras \
+        google-cloud-sdk \
+        htop \
+        icu-devtools \
+        imagemagick \
+        iotop \
+        jq \
+        libbsd-dev \
+        libbz2-dev \
+        libcairo2 \
+        libcairo2-dev \
+        libcanberra-gtk-module \
+        libcanberra-gtk3-module \
+        libcap-dev \
+        libcurl4 \
+        libedit-dev \
+        libelf-dev \
+        libffi-dev \
+        libgirepository1.0-dev \
+        libgit2-dev \
+        libgl1-mesa-dev \
+        libglu1-mesa-dev \
+        libgmp-dev \
+        libicu-dev \
+        libjemalloc-dev \
+        liblttng-ust0 \
+        libncurses5-dev \
+        libncursesw5-dev \
+        libnotify-bin \
+        libopenblas-base \
+        libopenblas-dev \
+        libpcap-dev \
+        libpng-dev \
+        libpq-dev \
+        libpython3-dev \
+        libreadline-dev \
+        libsecret-1-dev \
+        libsqlite3-dev \
+        libssh-dev \
+        libssh2-1-dev \
+        libssl-dev \
+        libtool \
+        libu2f-host-dev \
+        libunwind-dev \
+        libunwind8 \
+        libwxgtk3.0-gtk3-dev \
+        libxml2-dev \
+        libxml2-utils \
+        libxslt1-dev \
+        libxslt1-dev \
+        libyaml-dev \
+        linux-tools-common \
+        linux-tools-generic \
+        lldb \
+        llvm \
+        lnav \
+        m4 \
+        mitmproxy \
+        ncurses-base \
+        ninja-build \
+        openjdk-13-jdk \
+        openjdk-13-jre \
+        openssl \
+        p7zip-full \
+        parallel \
+        pcregrep \
+        pkg-config \
+        postgresql-client-12 \
+        postgresql-client-common \
+        python \
+        python3 \
+        python3-pip \
+        qemu-kvm \
+        qtbase5-dev \
+        readline-common \
+        rlwrap \
+        shellcheck \
+        software-properties-common \
+        squashfs-tools \
+        systemtap \
+        tk-dev \
+        tmux \
+        tree \
+        unixodbc \
+        unixodbc-dev \
+        uuid-dev \
+        v4l-utils \
+        valgrind \
+        vim \
+        xz-utils \
+        yarn \
+        zlib1g-dev \
+        zlibc \
+        zsh \
+        zsh-syntax-highlighting
+
+    truncate -s 0 /etc/sysctl.conf
+    {
+        # run perf without root
+        echo "kernel.perf_event_paranoid = -1"
+        echo "kernel.kptr_restrict=0"
+
+        # rbtrace
+        echo "kernel.msgmnb=1048576"
+
+        # elasticsearch
+        echo "vm.max_map_count=262144"
+
+        # inotify limits
+        echo "fs.inotify.max_user_watches=1048576"
+    } >> /etc/sysctl.conf
+    sysctl -p
+
+    ln -s "/mnt/c/Program\ Files/Sublime\ Text\ 3/subl.exe" /usr/bin/subl
+}
+
 setup_linux() {
     apt update || true
     apt upgrade -y
@@ -436,7 +593,6 @@ install_python() {
 
     pip install -U \
         codemod \
-        docker-compose \
         httpie \
         litecli \
         pgcli \
@@ -448,6 +604,10 @@ install_python() {
         pygments \
         PyGObject \
         seashells
+
+    if ! grep -qEi "(Microsoft|WSL)" /proc/version; then
+        pip install -U docker-compose
+    fi
 }
 
 # installs nodejs and some nodejs packages
@@ -457,8 +617,6 @@ install_nodejs() {
     bash ~/.asdf/plugins/nodejs/bin/import-release-team-keyring
     asdf install nodejs "$nodejsv" || true
     asdf global nodejs "$nodejsv"
-
-    npm install -g typescript-language-server
 }
 
 # installs deno
@@ -510,6 +668,50 @@ setup_homebrew() {
     if [ ! -f /home/linuxbrew/.linuxbrew/bin/brew ]; then
         # Setup homebrew (to manage misc bins)
         /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+    fi
+}
+
+get_dotfiles_wsl() {
+    cd "$(dirname "${BASH_SOURCE[0]}")"
+
+    rsync --quiet \
+        --exclude ".git/airport-wifi" \
+        --exclude ".git/" \
+        --exclude ".fonts/" \
+        --exclude ".config/" \
+        --exclude ".local/" \
+        --exclude "Pictures/" \
+        --exclude "install" \
+        --exclude "README.md" \
+        --exclude "LICENSE" \
+        -avh --no-perms . ~
+
+    mkdir -p ~/code
+
+    setup_homebrew
+
+    brew install hadolint ctop rbspy stern grex overmind comby fd rg pulumi bandwhich hyperfine step gh terraform websocat fzf tokei
+
+    # symlink so root can run it
+    if [ ! -f /usr/local/bin/bandwhich ]; then
+      sudo ln -s "$(command -v bandwhich)" /usr/local/bin/bandwhich
+    fi
+
+    # setup qemu-*-static local binaries
+    for static_bin_json in $(curl -s https://api.github.com/repos/multiarch/qemu-user-static/releases/latest | jq -c -r '.assets[] | select(.name|test("^qemu-.*-static$"))'); do
+        BIN_NAME=$(echo "$static_bin_json" | jq -r '.name' | cut -f1,2 -d '-')
+        BIN_PATH="$HOME/.bin/$BIN_NAME"
+        if [ ! -f "$BIN_PATH" ] || [ "$1" == "-f" ]; then
+            wget -qO "$BIN_PATH" "$(echo "$static_bin_json" | jq -r '.browser_download_url')"
+            chmod a+x "$BIN_PATH"
+        fi
+    done
+
+    if [ ! -f ~/.bin/ngrok ] || [ "$1" == "-f" ]; then
+        wget -q https://bin.equinox.io/c/4VmDzA7iaHb/ngrok-stable-linux-amd64.zip
+        unzip -qu ngrok-stable-linux-amd64.zip ngrok -d ~/.bin
+        chmod a+x+r ~/.bin/ngrok
+        rm ngrok-stable-linux-amd64.zip
     fi
 }
 
@@ -606,6 +808,8 @@ usage() {
     echo "  linux                     - setup sources & install os pkgs"
     echo "  fonts                     - setup fonts"
     echo "  dotfiles                  - fetch dotfiles"
+    echo "  linux_wsl                 - setup sources & install os pkgs (wsl)"
+    echo "  dotfiles_wsl              - fetch dotfiles (wsl)"
     echo "  python                    - install python and packages"
     echo "  golang                    - install golang and packages"
     echo "  nodejs                    - install nodejs"
@@ -631,12 +835,19 @@ main() {
         get_user
         setup_linux
         install_fonts
+    elif [[ $cmd == "linux_wsl" ]]; then
+        check_is_sudo
+        get_user
+        setup_linux_wsl
     elif [[ $cmd == "fonts" ]]; then
         check_is_sudo
         install_fonts
     elif [[ $cmd == "dotfiles" ]]; then
         check_isnt_sudo
         get_dotfiles "$2"
+    elif [[ $cmd == "dotfiles_wsl" ]]; then
+        check_isnt_sudo
+        get_dotfiles_wsl "$2"
     elif [[ $cmd == "ruby" ]]; then
         check_isnt_sudo
         check_rbenv_and_install
