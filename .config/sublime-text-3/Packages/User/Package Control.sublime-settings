@@ -1,33 +1,26 @@
 {
-    "bootstrapped": true,
-    "in_process_packages":
-    [
-    ],
-    "installed_packages":
-    [
-        "Babel",
-        "CloseOtherWindows",
-        "CustomPATH",
-        "Dockerfile Syntax Highlighting",
-        "DotENV",
-        "EditorConfig",
-        "fish",
-        "Hide Menu",
-        "LSP",
-        "MoveTab",
-        "Package Control",
-        "ProjectManager",
-        "Python 3",
-        "rainbow_csv",
-        "RSpec",
-        "Rust Enhanced",
-        "Sass",
-        "SideBarEnhancements",
-        "SublimeLinter",
-        "SublimeLinter-contrib-hadolint",
-        "SublimeLinter-shellcheck",
-        "TOML",
-        "Zig Language"
-    ],
-    "install_prereleases": ["Babel"]
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"install_prereleases":
+	[
+		"Babel"
+	],
+	"installed_packages":
+	[
+		"Babel",
+		"CustomPATH",
+		"Dockerfile Syntax Highlighting",
+		"DotENV",
+		"EditorConfig",
+		"Hide Menu",
+		"Package Control",
+		"ProjectManager",
+		"Python 3",
+		"rainbow_csv",
+		"Sass",
+		"SideBarEnhancements",
+		"TOML"
+	]
 }
